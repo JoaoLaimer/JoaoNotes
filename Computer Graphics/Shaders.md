@@ -1,0 +1,1 @@
+Used in "rendering" - converting mathematical scene into an outpu scene. Shaders tell the computer how to render the scene. Is executed in parallel on the GPU.

@@ -1,0 +1,1 @@
+Domínio 2: Segurança e conformidade (30% do conteúdo pontuado)

@@ -1,0 +1,2 @@
+Kroll Artifact Parser and Extractor (KAPE) parses and extracts Windows forensics artifacts. KAPE serves two primary purposes, 1) collect files and 2) process the collected files as per the provided options. For achieving these purposes, KAPE uses the concept of targets and modules. Targets can be defined as the forensic artifacts that need to be collected. Modules are programs that process the collected artifacts and extract information from them.
+KAPE also supports `Compound Targets`. These are `Targets` that are compounds of multiple other targets.

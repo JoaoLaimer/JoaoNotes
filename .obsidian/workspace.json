@@ -1,0 +1,296 @@
+{
+  "main": {
+    "id": "dba2f9d238ee0bfc",
+    "type": "split",
+    "children": [
+      {
+        "id": "f2938e379a4e4b2d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d1ecb9f643109212",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.8.9"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.8.9"
+            }
+          },
+          {
+            "id": "82e3c7da989f03c5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Python Parallelism.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Python Parallelism"
+            }
+          },
+          {
+            "id": "d172d897c529d090",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Computer Graphics/Discretization and Tesselation.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Discretization and Tesselation"
+            }
+          },
+          {
+            "id": "0a9a316e90eeb16b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Computer Graphics/Mesh Encoding.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Mesh Encoding"
+            }
+          },
+          {
+            "id": "bf742e40dd80b46e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Computer Graphics/Colors and Textures.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Colors and Textures"
+            }
+          },
+          {
+            "id": "4f6edca0dc978db4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Computer Graphics/Colors and Textures.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Colors and Textures"
+            }
+          },
+          {
+            "id": "b36d7394abc04173",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Computer Graphics/Occlusion Culling.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Occlusion Culling"
+            }
+          }
+        ],
+        "currentTab": 6
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "5ce1a1178c95c3c1",
+    "type": "split",
+    "children": [
+      {
+        "id": "99e881581775f7c8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1afc0f013e2cf012",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "1764ba13ca1d7673",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "bc26cc4d312336dd",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "39b4e732542c9399",
+    "type": "split",
+    "children": [
+      {
+        "id": "86ebd98091c7b925",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0bcb716eef008dc1",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Computer Graphics/Occlusion Culling.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Occlusion Culling"
+            }
+          },
+          {
+            "id": "87e00eda83e2c447",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Sysinternals.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Sysinternals"
+            }
+          },
+          {
+            "id": "666389e74d793939",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "d9762a378225f5af",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Sysinternals.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Sysinternals"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "b36d7394abc04173",
+  "lastOpenFiles": [
+    "Computer Graphics/Mesh Encoding.md",
+    "Computer Graphics/Occlusion Culling.md",
+    "Computer Graphics/Colors and Textures.md",
+    "Computer Graphics/Discretization and Tesselation.md",
+    "Computer Graphics/Shaders.md",
+    "Python Parallelism.md",
+    "Computer Graphics",
+    "OpenCTI.md",
+    "Windows Privilege Escalation.md",
+    "Wazuh.md",
+    "Metasploit.md",
+    "Nmap.md",
+    "McCumber Cube.md",
+    "Kibana.md",
+    "KAPE.md",
+    "jq (TO WRITE).md",
+    "ElasticStack.md",
+    "CAPA (Common Analysis Platform for Artifacts).md",
+    "BurpSuite.md",
+    "Windows/Core Windows Processes.md",
+    "Windows/Sysinternals.md",
+    "Windows/Windows Event Logs.md",
+    "Volatility.md",
+    "TheHive Project.md",
+    "SQL Injection.md",
+    "Osquery.md",
+    "Forensics/Linux Forensics.md",
+    "IMGs/Yara Rules CheatSheet.png",
+    "IMGs/SPF Framework IMG.png",
+    "IMGs/THM Snort Rules IMG.png",
+    "IMGs/Unified Cyber Kill Chain IMG.png",
+    "IMGs/MISP Taxonomies IMG.png",
+    "IMGs/Biba Model IMG.png",
+    "Forensics",
+    "AWS/Dominio 4",
+    "AWS/Dominio 3",
+    "AWS/Dominio 2",
+    "AWS/Dominio 1",
+    "IA",
+    "AWS",
+    "Windows",
+    "Aircrack-Suite",
+    "IMGs/Bell LaPadula Model IMG.png",
+    "Untitled 1.canvas",
+    "Untitled.canvas"
+  ]
+}

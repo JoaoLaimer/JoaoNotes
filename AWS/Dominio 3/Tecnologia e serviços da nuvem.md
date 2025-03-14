@@ -1,0 +1,1 @@
+Domínio 3: Tecnologia e serviços da nuvem (34% do conteúdo pontuado)
