@@ -31,3 +31,6 @@ If a ray bounces (shadow ray) on a surface intersects an object and can't reach 
 
 ### Tree of light rays
 We can represent the recursive ray tracer using a tree.
+
+### Ray Tracing Pipeline
+Ray Generation -> Traversal and Intersection -> Shading.

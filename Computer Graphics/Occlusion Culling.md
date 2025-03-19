@@ -10,7 +10,7 @@ Z defines the depth of the vertex.
 **Painter Algorithm**: We sort all **objects** in a scene by distance on the projection plane and 
 draw the closest **object** first. Can cause some objects to be incorrectly drawn.
 
-**Z-buffer / Depth Buffer**: Creates a buffer by depth, and draw only the closest z coord in the vertex.
+**Z-buffer / Depth Buffer**: Creates a buffer by depth, and draw only the closest z coord in the pixel.
 
 We use the Painter Algorithm in combination with the z-buffer, we use the painter first than the z-buffer as to not draw a object twice.
 

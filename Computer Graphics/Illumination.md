@@ -5,7 +5,7 @@ With lighting we have depth.
  - Object Surface (color, reflectivity, transparency, etc.)
  - Interaction between lights and objects.
 
-**Physically-Based** Illumination Models
+**Physicall y-Based** Illumination Models
 Require accurate input data and few assumptions, rarely has enough information to specify all inputs, and takes a long time to compute.
 
 **Non-Physically-based** Illumination Models
