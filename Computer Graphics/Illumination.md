@@ -2,7 +2,7 @@ The only way to see objects without light, is drawing just the color, but that w
 With lighting we have depth.
  An "illumination model" describe inputs, assumptions, and outputs used to calculate illumination of surfaces.
  - Light Attributes (intensity, color, position, direction, shape).
- -  Object Surface (color, reflectivity, trasparency, etc.)
+ - Object Surface (color, reflectivity, transparency, etc.)
  - Interaction between lights and objects.
 
 **Physically-Based** Illumination Models
