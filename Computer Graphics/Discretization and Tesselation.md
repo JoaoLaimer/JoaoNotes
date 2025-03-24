@@ -1,3 +1,4 @@
+[[Computer Graphics]]
 # Rendering
 Process of computing a image, often it uses a GPU for it.
 Highly parallel process.

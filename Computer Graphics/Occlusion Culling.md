@@ -1,3 +1,4 @@
+[[Computer Graphics]]
 # Back Face Culling
 How can you not render the back face of an object?
 Calculating the dot product normals between the camera and the object face, if the product is lower than 0, it means that the face of the object is facing the camera and the object has to be drawn, if the product is higher than 0, we don't draw the face.

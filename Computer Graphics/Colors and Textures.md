@@ -1,3 +1,4 @@
+[[Computer Graphics]]
 Each vertex can have a color, represented by a three dimension vector. The color in an object appear as a gradient between the color of each vector in a triangle.
 
 Unless you're using a texture. Which has to map correctly to the shape of the object. To achieve this we use a UV map.

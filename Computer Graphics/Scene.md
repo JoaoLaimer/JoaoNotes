@@ -1,3 +1,4 @@
+[[Computer Graphics]]
 Each object has its own coordinate systems, we need to transform it to place on the coordinate system of the world. Then we have to place the world to the camera, then the camera to the projection.
 
 Model -> World -> Camera -> Projection

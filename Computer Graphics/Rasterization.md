@@ -1,3 +1,4 @@
+[[Computer Graphics]]
 The screen is a discrete grid where the elements are pixels. We need to convert the geometry to pixels. Rasterization is the process of selecting the pixels to draw.
 Is done frequently.
 **Line Drawing**

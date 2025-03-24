@@ -1,3 +1,4 @@
+[[Computer Graphics]]
 Two Classes of Planar Geometric projections
 a) Perspective: determined by Center of Projection (COP),
 Can be your eye or the camera.

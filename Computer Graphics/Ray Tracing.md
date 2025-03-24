@@ -1,3 +1,4 @@
+[[Computer Graphics]]
 Rasterization is a "passive" renderer, vertices and geometric shapes are inputs and outputs the image.
 
 Ray Tracing is an "active" renderer.

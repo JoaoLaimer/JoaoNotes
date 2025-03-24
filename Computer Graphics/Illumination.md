@@ -1,3 +1,4 @@
+[[Computer Graphics]]
 The only way to see objects without light, is drawing just the color, but that way we lose depth.
 With lighting we have depth.
  An "illumination model" describe inputs, assumptions, and outputs used to calculate illumination of surfaces.

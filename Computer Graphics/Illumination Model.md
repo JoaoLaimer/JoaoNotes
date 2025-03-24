@@ -1,3 +1,4 @@
+[[Computer Graphics]]
 Reduces the light to **Ambient, Diffuse and Specular**
 The Illumination (color intensity) of a point is the sum of all those components.
 

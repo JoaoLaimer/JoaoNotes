@@ -1,3 +1,4 @@
+[[Computer Graphics]]
 Is a problem with the sampling, creates jagged lines in the border of objects.
 Another Problem **Temporal Aliasing**:
 When a pixel keeps blinking because of a slight move of an object.
