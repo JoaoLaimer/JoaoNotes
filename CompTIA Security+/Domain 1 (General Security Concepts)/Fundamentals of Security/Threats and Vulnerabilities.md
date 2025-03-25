@@ -1,5 +1,3 @@
-[[Domain 1 (General Security Concepts)]]
-
 **Threat**: Anything that could cause harm, loss, damage, or compromise to information technology systems.
 
 **Vulnerability**: Any weakness in the system design or implementation.

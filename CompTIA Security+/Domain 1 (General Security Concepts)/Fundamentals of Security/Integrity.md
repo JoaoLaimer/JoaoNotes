@@ -1,4 +1,3 @@
-[[Domain 1 (General Security Concepts)]]
 Helps to ensure information and data remain accurate and unchanged from their original state unless intentionally modified by an authorized individual.
 Integrity verifies the accuracy and trustworthiness of data over the entire life cycle.
 

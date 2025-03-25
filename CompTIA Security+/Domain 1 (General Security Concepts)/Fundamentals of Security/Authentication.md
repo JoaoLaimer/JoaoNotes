@@ -1,4 +1,3 @@
-[[Domain 1 (General Security Concepts)]]
 Security measure that ensures individuals or entities are who they claim to be during a communication or transaction.
 
 - **Something you know (Knowledge Factor)**

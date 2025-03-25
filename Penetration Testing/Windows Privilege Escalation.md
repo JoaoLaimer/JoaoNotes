@@ -180,3 +180,36 @@ C:\Windows\System32\> copy cmd.exe utilman.exe
 o trigger utilman, we will lock our screen from the start button.
 
 And finally, proceed to click on the "Ease of Access" button, which runs utilman.exe with SYSTEM privileges. Since we replaced it with a cmd.exe copy, we will get a command prompt with SYSTEM privileges.
+
+# SeImpersonate / SeAssignPrimaryToken
+These privileges allow a process to impersonate other users and act on their behalf. Impersonation usually consists of being able to spawn a process or thread under the security context of another user.
+As attackers, if we manage to take control of a process with SeImpersonate or SeAssignPrimaryToken privileges, we can impersonate any user connecting and authenticating to that process.
+
+In Windows systems, you will find that the LOCAL SERVICE and NETWORK SERVICE ACCOUNTS already have such privileges. Since these accounts are used to spawn services using restricted accounts, it makes sense to allow them to impersonate connecting users if the service needs. Internet Information Services (IIS) will also create a similar default account called "iis apppool\defaultapppool" for web applications.
+
+To elevate privileges using such accounts, an attacker needs the following: 1. To spawn a process so that users can connect and authenticate to it for impersonation to occur. 2. Find a way to force privileged users to connect and authenticate to the spawned malicious process.
+
+We will use RogueWinRM exploit to accomplish both conditions.
+
+# Unpatched Software
+We can use `wmic` tool to list software installed on the target system and its version.
+```shell
+wmic product get name,version,vendor
+```
+
+# Tools
+#### WinPeas
+Is a script that enumerate the target system to uncover privilege escalation paths.
+#### PrivescCheck
+Is a PowerShell script that searches common privilege escalation on the target system. It provides an alternative to WinPEAS without requiring the execution of a bin file.
+To run PrivescCheck on the target system, you may need to bypass the execution policy restrictions. To achieve this, you can use the `Set-ExecutionPolicy` cmdlet.
+
+#### WES-NG: Windows Exploit Suggester - Next Generation
+Exploiting suggesting scripts will require you to upload them to the target system and run them there. This cause antivirus software to detect them. You may prefer using WES-NG, which will run on your attacking machine.
+To use the script, you will need to run the `systeminfo` command on the target system. Then use the output on `wes.py`
+```bash
+wes.py systeminfo.txt
+```
+
+#### Metasploit
+If you already have a Meterpreter shell on the target, you can use `multi/recon/local_exploit_suggester` module.

@@ -19,7 +19,7 @@ Nmap uses address mask queries (ICMP Type 17) and checks whether it gets an addr
 
 ICMP Address Mask: `-PM`
 
-**Nmap Host DIscovery Using TCP and UDP**
+**Nmap Host Discovery Using TCP and UDP**
 We can send a packet with the SYN (Synchronize) flag set to a TCP port, 80 by default, and wait for a response. An open port should reply with a SYN/ACK (Acknowledge); a closed port would result in an RST (Reset).
 
 TCP SYN Ping: `-PS<port range>`

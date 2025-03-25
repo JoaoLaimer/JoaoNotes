@@ -1,4 +1,3 @@
-[[Domain 1 (General Security Concepts)]]
 Used to ensure that information, systems, and resources are accessible and operational when needed by authorized users.
 
 99.9% Availability (3 Nines): In a year a system can be down for a maximum of 8.76 hours.

@@ -1,4 +1,3 @@
-[[Domain 1 (General Security Concepts)]]
 Focused on providing undeniable proof in digital transactions.
 
 ## Digital Signature

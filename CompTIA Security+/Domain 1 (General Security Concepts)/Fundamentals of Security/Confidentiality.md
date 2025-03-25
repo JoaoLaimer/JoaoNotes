@@ -1,5 +1,3 @@
-[[Domain 1 (General Security Concepts)]]
-
 Refers to the protection of information from unauthorized access and disclosure.
 Keeping information secret and safe from prying eyes.
 
