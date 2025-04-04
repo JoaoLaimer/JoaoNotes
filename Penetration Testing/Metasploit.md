@@ -51,3 +51,11 @@ You will see four different directories under payloads: adapters, singles, stage
 # Post
 
 Post modules will be useful on the final stage of the penetration testing process listed above, post-exploitation.
+
+## Multi/Handler
+Multi/Handler is a superb tool for catching reverse shells. It's essential if you want to use Meterpreter shells, and is the go-to when using staged payloads.
+1. Open Metasploit with `msfconsole`
+2. Type `use multi/handler`, and press enter.
+We can see the available options using `show option` command.
+
+The `exploit -j` command Metasploit to launch the module, running as a **j**ob in the background.
