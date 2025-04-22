@@ -1,0 +1,9 @@
+## Batch
+## Network
+## Distributed
+## Multi-user
+## Server
+## Desktop
+## Mobile
+## Embedded
+## Real-Time
