@@ -24,3 +24,19 @@ The attacker can send a link with a malicious redirect and submits the request t
 The **state** parameter in the OAuth 2.0 framework protects against CSRF attacks, which occur when an attacker tricks a user into executing unwanted actions on a web application where they are currently authenticated. In the context of OAuth, CSRF attacks can lead to unauthorized access to sensitive resources by hijacking the OAuth flow.
 #### Vulnerability of Weak or Missing State Parameter
 For instance, consider an OAuth implementation where the state parameter is either **missing** or **predictable** (e.g., a static value like "state" or a simple sequential number). An attacker can initiate an OAuth flow and provide their malicious redirect URI. After the user authenticates and authorizes the application, the authorization server redirects the authorization code to the attacker's controlled URI, as specified by the weak or absent state parameter.
+
+## Implicit Grant Flow
+Tokens are directly returned to the client via the browser without requiring an intermediary authorization code. This flow is primarily used by single-page applications and is designed for public clients who cannot securely store client secrets.
+- Exposing Access Token in URL
+- Inadequate Validation of Redirects URIs: The OAuth server does not adequately validate the redirect URIs.
+- No HTTPS Implementation.
+- Improper Handling of Access Tokens: The application stores the access token insecurely, possibly in `localStorage`or `sessionStorage`, making it vulnerable to XSS attacks.
+#### Deprecation of Implicit Grant Flow
+Due to these vulnerabilities, OAuth 2.0 recommends deprecating the implicit grant flow in favor of the authorization code flow with Proof Key for Code Exchange (PKCE).
+
+## Insufficient Token Expiry
+Access tokens with long or infinite lifetimes poses a significant security risk. If an attacker obtains such a token, they can access protected resources indefinitely.
+## Replay Attacks  
+Replay attacks involve capturing valid tokens and reusing them to gain unauthorized access. Attackers can exploit tokens multiple times without mechanisms to detect and prevent token reuse. Implementing `nonce` values and `timestamp` checks can help mitigate replay attacks by ensuring each token is used only once.
+## Insecure Storage of Tokens
+Storing access tokens and refresh tokens insecurely (e.g., in local storage or unencrypted files) can lead to token theft and unauthorized access. Using secure storage mechanisms, such as secure cookies or encrypted databases, can protect tokens from being accessed by malicious actors.
