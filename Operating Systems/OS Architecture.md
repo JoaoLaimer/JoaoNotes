@@ -3,6 +3,8 @@ The operating system is a "solid block" of code that operates in kernel mode, wi
 The advantage of this architecture is the performance: any component can access each other without barriers and without the need to use specific communication protocols between components.
 But if a component fails it can lead other to fail as well, because every component is so close to each other. This also lead to higher maintenance cost and time.
 Older UNIX systems and the MS-DOS followed this model. Linux kernel is monolithic, but its code is being modularized.
+## Monotasks
+The first computational systems in the 40s, executed only one task at a time. 
 ## Microkernels
 This idea comes from removing high level code from kernel, leaving only the necessary for accessing the hardware and creating basic abstractions.
 The rest of the code is transferred to user space as applications called services. 

@@ -1,4 +1,3 @@
-
 The access door to the kernel.
 Some instructions are privileged, they are only executed by the operating system or in supervisor/admin mode.
 Some calls are available as routines written in C/C++, they can also be written in assembly.
