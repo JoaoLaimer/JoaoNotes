@@ -1,0 +1,21 @@
+Process for Attack Simulation and Threat Analysis, is a structured, risk-centric threat modelling framework. PASTA provides a systematic, seven-step process that enables security teams to understand potential attack scenarios better, assess the likelihood and impact of threats, and priorities remediation efforts accordingly.
+Created by Tony UcedaVélez and Marco Morana. They introduced the PASTA framework in their book **"Risk Centric Threat Modeling: Process for Attack Simulation and Threat Analysis"**, published in 2015.
+
+## Seven-Step Methodology
+1. **Define the Objectives**: Identify systems, apps, networks and specific security objectives and compliance requirements to be met.
+2. **Define the Technical Scope**: Create an inventory of assets.
+3. **Decompose the Application**: Break down the system into its components, identifying entry points, trust boundaries and potential attack surfaces. This step also includes mapping out data flows and understanding user roles and privileges within the system.
+4. **Analyse the Threats**: Identify potential threats to the system by considering various threat sources.
+5. **Vulnerabilities and Weaknesses Analysis**: Analyse the system for existing vulnerabilities, such as misconfigurations, software bugs, or unpatched systems, that an attacker could exploit to achieve their objectives. 
+6. **Analyse the Attacks**: Simulate potential attack scenarios and evaluate the likelihood and impact of each threat.
+7. **Risk and Impact Analysis**: Develop and implement appropriate security controls and countermeasures to address the identified risks.
+## Methodology Guidelines
+
+| **Define the Objectives**                   | - Set clear and realistic security objectives for the threat modelling exercise.<br>- Identify relevant compliance requirements and industry-specific security standards.                                                                                                                |
+| ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Define the Technical Scope**              | - Identify all critical assets, such as systems and applications, that handle sensitive data owned by the organisation.<br>- Develop a thorough understanding of the system architecture, including data flows and dependencies.                                                         |
+| **Decompose the Application**               | - Break down the system into manageable components or modules.<br>- Identify and document each component's possible entry points, trust boundaries, attack surfaces, data flows, and user flows.                                                                                         |
+| **Analyse the Threats**                     | - Research and list potential threats from various sources, such as external attackers, insider threats, and accidental exposures.<br>- Leverage threat intelligence feeds and industry best practices to stay updated on emerging threats.                                              |
+| **Vulnerabilities and Weaknesses Analysis** | - Use a combination of tools and techniques, such as static and dynamic code analysis, vulnerability scanning, and penetration testing, to identify potential weaknesses in the system.<br>- Keep track of known vulnerabilities and ensure they are addressed promptly.                 |
+| **Analyse the Attacks**                     | - Develop realistic attack scenarios and simulate them to evaluate their potential consequences.<br>- Create a blueprint of scenarios via Attack Trees and ensure that all use cases are covered and aligned with the objective of the exercise.                                         |
+| **Risk and Impact Analysis**                | - Assess the likelihood and impact of each identified threat and prioritise risks based on their overall severity.<br>- Determine the most effective and cost-efficient countermeasures for the identified risks, considering the organisation's risk tolerance and security objectives. |
