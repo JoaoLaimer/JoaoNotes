@@ -20,6 +20,7 @@ The OS materializes the process with a Process Control Block - PCB. Inside the P
 **Waiting or Blocked** - The process is waiting an event, for instance, I/O.
 **Ready** - The process is waiting to be attached to a processor.
 **Finished** - The process has finished the execution.
+**Zombie** - Can't get the CPU, also known as orphan process.
 
 ## Process Managing 
 When a process is in executing it's hardware context is stored in the registers. When a process A loses the CPU to a process B, the systems must save the information of process A. The information of process B are loaded, when A gets the CPU again, the state of the registers are restored.

@@ -34,7 +34,8 @@ Before trying to make a script, let's take a look at the response of a failed at
 Let's use "Invalid" and "expired" as the filtering words, and build the script.![[Hammer12IMG.png]]
 In this script I've created an array of numbers from 0000 to 9999, and created 50 threads to post request for each number with an random IP-address attached to the "X-Forwarded-For" header, also an important thing to notice is that we are also sending the session token in the "Cookie" header.
 Once an possible valid code is found we can use it in the "4-Digit Code" field.
-![[Hammer11IMG.png]]Resetting the password to something simple should do the trick, now we can log in and get the first flag!![[HammerFlag1IMG.png]]
+![[Hammer11IMG.png]]
+Resetting the password to something simple should do the trick, now we can log in and get the first flag!![[HammerFlag1IMG.png]]
 Strangely, the site redirects us to the login page after a while... Looking into the source of the page we can see it has a script that after some time tries to get the "persistentSession" value and if it's false, log us out.
 ``` html
 	<script>
