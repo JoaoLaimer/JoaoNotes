@@ -48,7 +48,7 @@ subprocess.check_output([command, arg1, arg2])
 #### Twig
 If you use the payload {{7*'7'}} in Twig, the output would be 49.
 #### NodeJS - Jade/Pug
-Pug/Jade evaluates JavaScript expressions within `#{}`. For example usign the payload #{7* 7} would return 49. 
+Pug/Jade evaluates JavaScript expressions within `#{}`. For example using the payload #{7* 7} would return 49. 
 Pug/Jade allows JavaScript execution within its templates without the need for additional delimiters like {{ }}. For example: `#{root.process.mainModule.require{'child_process'}.spawnSync("id").stdout}
 
 The function signature for `spawnSync` is:
