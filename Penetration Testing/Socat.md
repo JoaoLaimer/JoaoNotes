@@ -1,5 +1,5 @@
 ### Reverse Shells
-Here's the syntax for a basic reverse shell listener in socat:
+Here's the syntax for a basic reverse [[shell]] listener in socat:
 `socat TCP-L:<port> -`
 
 This is taking two points (a listening port, and standard input) and connecting them together. The resulting shell is unstable, but this will work on either Linux or Windows.

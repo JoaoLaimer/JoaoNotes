@@ -1,4 +1,4 @@
- TShark is an open-source cli alternative to Wireshark, it was developed by the same people behind Wireshark too.
+ TShark is an open-source cli alternative to Wireshark, it was developed by the same people behind [[Wireshark]] too.
 
 **Command-Line Packet Analysis**
 - ```capinfos```: provides details of a specified pcap file. Suggested to view before starting investigation.

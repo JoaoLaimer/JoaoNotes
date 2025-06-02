@@ -8,7 +8,7 @@ The proc filesystem (procfs) provides information about the target system proces
 #### `/etc/issue`
 Systems can also be identified by looking at the `/etc/issue` file. This file usually contains some information about the operating system but can easily be customized or changed.
 #### `ps` Command
-The `ps` command is an effective way to see the running processes on a Linux system. Typing `ps` on your terminal will show processes for the current shell. The “ps” command provides a few useful options.
+The `ps` command is an effective way to see the running processes on a Linux system. Typing `ps` on your terminal will show processes for the current [[shell]]. The “ps” command provides a few useful options.
 
 - `ps -A`: View all running processes
 - `ps axjf`: View process tree (see the tree formation until `ps axjf` is run below)

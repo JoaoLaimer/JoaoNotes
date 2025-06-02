@@ -1,5 +1,5 @@
 **Event Viewer**
-[[Windows]] Event Logs are not text files that can be viewed using a text editor. However, the raw data can be translated into XML using the Windows API.
+[[Windows]] Event Logs are not text files that can be viewed using a text editor. However, the raw data can be translated into [[XML]] using the Windows API.
 Logs with the .evtx file extension reside in C:\Windows\System32\winevt\Logs.
 
 **Elements of Windows Event Log**

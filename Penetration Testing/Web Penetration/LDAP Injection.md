@@ -1,5 +1,5 @@
 LDAP injection happens when input is not sanitized before being incorporated into queries. This can lead to manipulation of directory data and unauthorized access.
-The process is analogous to SQL Injection, where malicious SQL statements are injected into queries to manipulate database operations. In LDAP Injection, the malicious code targets LDAP queries instead.
+The process is analogous to [[SQL Injection]], where malicious SQL statements are injected into queries to manipulate database operations. In LDAP Injection, the malicious code targets LDAP queries instead.
 ### Common Attack Vectors
 1. **Authentication Bypass:** Modifying LDAP authentication queries to log in as another user without knowing their password.
 2. **Unauthorized Data Access:** Altering LDAP search queries to retrieve sensitive information not intended for the attacker's access.

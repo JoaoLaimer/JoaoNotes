@@ -1,4 +1,4 @@
-SQL injection and ORM injection are both techniques used to exploit vulnerabilities in database interactions, but they target different levels of the stack.
+[[SQL injection]] and ORM injection are both techniques used to exploit vulnerabilities in database interactions, but they target different levels of the stack.
 - **SQL Injection**: Target raw SQL queries, allowing attackers to manipulate SQL statements directly.
 - **ORM injection**: Targets the ORM framework, exploiting how it constructs queries from object operations.
 

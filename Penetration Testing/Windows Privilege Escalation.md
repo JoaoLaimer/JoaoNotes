@@ -212,4 +212,4 @@ wes.py systeminfo.txt
 ```
 
 #### Metasploit
-If you already have a Meterpreter shell on the target, you can use `multi/recon/local_exploit_suggester` module.
+If you already have a Meterpreter [[shell]] on the target, you can use `multi/recon/local_exploit_suggester` module.

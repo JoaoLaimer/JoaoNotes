@@ -30,7 +30,7 @@ When run as an unprivileged user, `getcap -r /` will generate a huge amount of e
 Cron jobs are used to run scripts or binaries at specific times. By default, they run with the privilege of their owners and not the current user. Cron job configurations are stored as crontabs (cron tables) to see the next time and date the task will run.
 Any user can read the file keeping system-wide cron jobs under `/etc/crontab`.
 ## PATH
-PATH in Linux is an environmental variable that tells the operating system where to search for executables. For any command that is not built into the shell or that is not defined with an absolute path, Linux will start searching in folders defined under PATH. (PATH is the environmental variable we're talking about here, path is the location of a file).
+PATH in Linux is an environmental variable that tells the operating system where to search for executables. For any command that is not built into the [[shell]] or that is not defined with an absolute path, Linux will start searching in folders defined under PATH. (PATH is the environmental variable we're talking about here, path is the location of a file).
 ## NFS
 NFS (Network File Sharing) configuration is kept in the /etc/exports file. This file is created during the NFS server installation and can usually be read by users.
 The critical element for this privilege escalation vector is the “no_root_squash” option. By default, NFS will change the root user to nfsnobody and strip any file from operating with root privileges. If the “no_root_squash” option is present on a writable share, we can create an executable with SUID bit set and run it on the target system

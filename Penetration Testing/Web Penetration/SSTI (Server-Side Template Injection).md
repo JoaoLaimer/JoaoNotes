@@ -37,7 +37,7 @@ Below is the breakdown of the above payload:
 - `"".__class__.__mro__[1]` accesses the base `object` class, the superclass of all Python classes.
 - `__subclasses__()`: Lists all subclasses of `object`, and `[157]` is typically the index for the `subprocess.Popen` class (this index may vary and should be checked in the target environment).
 - The subsequent method chains dynamically import and use the `subprocess` module to execute the `ls` command, capturing its output.
-The `check_output` function is designed to enhance security by separating the command from its arguments, which helps to prevent shell injection attacks. Here's the general syntax:
+The `check_output` function is designed to enhance security by separating the command from its arguments, which helps to prevent [[shell]] injection attacks. Here's the general syntax:
 
 ```python
 subprocess.check_output([command, arg1, arg2])

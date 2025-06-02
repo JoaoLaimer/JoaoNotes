@@ -1,5 +1,5 @@
 Developed by FireEye Mandiant.
-Identify capabilities in PE, ELF, .NET, Shell 
+Identify capabilities in PE, ELF, .NET, [[Shell]] 
 Describe common behaviours.
 determine what a program is capable of doing.
 
