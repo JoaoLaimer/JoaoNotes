@@ -1,3 +1,5 @@
+
+_Python's threading module does not achieve true parallelism due to the Global Interpreter Lock (GIL). The GIL is a mutex that only allows one thread to execute Python bytecode at a time, even on multi-core processors._
 # threading
 
 Based on a single process, with multiple threading capabilities. The `threading` module on python implements basic methods for creating and handling threads in a python program, that is, creating a Thread object, which needs to be specified a function to it and the parameters of the function on its constructor:

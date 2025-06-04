@@ -417,3 +417,246 @@ Pre-create the destination index with custom setting for performance:
 - use index sorting if grouping by multiple fields.
 #### Latest Transforms
 Use Latest transforms to copy the most recent documents into a new index.
+
+# Changing Data
+## Processors
+Can be used to transform documents before being indexed or reindexed into Elasticsearch.
+There are different ways to deploy processors:
+- Elastic Agent processors
+- Logstash filters
+- Ingest node pipelines
+
+### Ingest Node Pipeline
+Consists of a pipeline of processors run sequentially. Perform common transformation on your data before indexing.
+You can use Kibana Ingest Pipelines UI to create and manage pipeline.
+You can test a pipeline before you save it. You can write the `_source` of any document or explicitly select one that is in an index.
+#### Use the Pipeline
+`POST new_index/_doc?pipeline=set_views`
+Or
+```json
+PUT new_index
+{
+	"settings": {
+		"default_pipeline": "set_views"
+	}
+}
+PUT new_index
+{
+	"settings": {
+		"final_pipeline": "set_views"
+	}
+}
+```
+
+A pipeline can be used in other pipeline.
+
+## reindex API
+Indexes source documents into a destination index.
+To index a subset of the source index use "max_docs" and add a "query".
+You can also apply a "pipeline" to the documents before being indexed to the destination index.
+### Update by Query
+To change all the documents in an existing index use the `_update_by_query` API and specify a pipeline. This will reindex every document into the same index. 
+## Enrichment
+### Denormalize
+Documents should be modeled so that search-time operations are as cheap as possible, denormalization gives you the most power and flexibility.
+Denormalizing your data refers to "flattening" your data, storing redundant copies of data in each document instead of using some type of relationship.
+### Enrich Processor
+Add data from your existing indices to incoming document during ingest.
+- Step 1: Set Up an Enrich Policy
+```json
+PUT _enrich/policy/cat_policy
+{
+	"match": {
+		"indices": "categories",
+		"match_field": "uid",
+		"enrich_fields": ["title"]
+	}
+}
+```
+Once created, you can't update or change an enrich policy.
+- Step 2: Create an Enrich Index for the Policy
+`POST _enrich/policy/cat_policy/_execute`
+- Step 3: Create Ingest pipeline with Enrich Processor
+```json
+PUT /_ingest/pipeline/categories_pipeline
+{
+	"processors": [
+		{
+			"enrich": {
+				"policy_name": "cat_policy",
+				"field": "category",
+				"target_field": "cat_title"
+			}
+		},
+		...
+	]
+}
+```
+- Step 4: Use the Pipeline
+`POST blogs_fixed/_update_by_query?pipeline=categories_pipeline`
+
+## Runtime Fields
+### Scripting 
+```json
+"script": {
+	"lang": "...",
+	"source" | "id" : "...",
+	"params": {...}
+}
+```
+### Painless Scripting
+Is the default language, with Java-like syntax (and can contain actual Java code).
+Fields of a document can be accessed using a **Map** named **doc** or **ctx**.
+
+Ideally, your schema is defined at index time ("schema on write"), however, there are situation, where you may want to define a schema on read, without having to reindex your data.
+
+### Creating a Runtime Field
+- Configure: 
+	- a name for the field
+	- a type
+	- a custom label (optional)
+	- a description (optional)
+	- a value (optional)
+	- a format (optional)
+Avoid runtime fields if you can, if not, avoid error by checking for null values, use the preview pane to validate your script.
+### Runtime Mapping
+"runtime_mappings" sections defines the field at query time.
+Use a Painless script to emit a field of a given type.
+
+# Shards
+
+## The Cluster
+Largest unit of scale in Elasticsearch. A cluster is made of 1 or more nodes. Nodes communicate with each other and exchange information.
+## The Node
+Is an instance of a Elasticsearch, typically deployed 1-to-1 to a host. To scale out your cluster, add more nodes.
+## The Index
+Is a collection of documents that are related to each other, the documents stored in Elasticsearch are distributed across nodes.
+## The Shard
+An index distributes documents over on or more shards, each shard is an instance of Lucene and contains all the data of any one documents.
+There are two types of shards:
+- **primary shards**: the original shards of an index.
+- **replica shards**: copies of the primary shard.
+Documents are replicated between a primary and its replicas and they are guaranteed to be on different nodes.
+Shards are optimally sized around 30-80GB.
+
+You cannot increase the number of primary shards after an index is created, the number of replicas is dynamic.
+### Configuring the Number of Primaries
+You can specify the number of primary shards when you create the index, the default is 1, use the "number_of_shards" in the "settings" parameter.
+### Configuring the Number of Replicas
+The default number of replicas per primary is 1. You can specify the number on the "number_of_shard" in the "settings" parameter, and can be changed at any time.
+Adding nodes to a cluster will trigger a redistribution of shards.
+
+# Data Management
+Data management needs differ depending on the type of data you are collecting.
+## Index Aliases
+### Scaling Indices
+indices scale by adding more shards, we may create a new index when the index is almost full.
+Use index aliases to simply your access to the growing number of indices.
+
+To create a alias us the`_aliases` endpoint to create an alias. Define an alias at index creation.
+
+```json
+POST _aliases
+{
+	"actions": [{
+		"add": {
+			"index": "my_logs-*",
+			"alias": "my_logs"
+		}
+	}, 
+	{
+		"add": {
+			"index": "my_logs-2021-07",
+			"alias": "my_logs",
+			"is_write_index": true
+		}
+	}]
+}
+```
+
+## Index Template
+Allows to create multiple indices with the same settings and mappings.
+```json
+PUT _index_template/logs-tamplate
+{
+	"index_patterns": ["logs*"],
+	"template": {
+		"settings": {
+			"number_of_replicas": 2
+		}
+	}
+}
+```
+#### Component Template
+Let you save index settings, mappings and aliases and inherit them in index templates.
+#### Template Match Conflicts
+One and only one template will be applied to a newly created index.
+If more than one template defines a matching index pattern, the **priority** setting is used to determine which template applies. Use the `_simulate` tool to test how an index would match.
+
+## Data Streams
+Time series data typically grows quickly and is almost never updated.
+A data stream lets you store time-series data across multiple indices, while giving you a single named resource for requests. 
+
+To choose the data stream we use the "index.mode" setting to optimize the storage of your documents.
+
+#### Naming Convention
+- type, to describe the generic data type
+- dataset, to describe the specific subset of data
+- namespace, for user-specific details
+Example: ` metrics system.cpu production`
+
+## Data Tier
+Collection of nodes with the same data role:
+- content (default)
+- hot
+- warm
+- cold
+- frozen
+Sorted by access frequency.
+You can change the node roles using the "node.roles".
+Set the data tier preference of an index using the `routing.allocation.include._tier_preference` property.
+
+### Index Lifecycle Management (ILM)
+Policies to manage data from a data tier to other.
+ILM consists of policies that trigger actions, such as:
+- rollover: create a new index based on age, size, or doc count
+- shrink: reduce the number of primary shards
+- force merge: optimize storage space
+- searchable snapshot: saves memory on rarely used indices
+- delete: permanently remove an index
+
+Examples:
+- During the hot phase you might want to create a new index every two weeks.
+- During the warm phase you might make the index read-only and move to warm for one week.
+- In the cold phase you might want to convert to a fully-mounted index, decrease the number of replicas, and move to cold for three weeks.
+- In the delete phase the only action allowed is to delete the 28-days-old index.
+
+## Snapshots
+A backup from a running cluster, stored in a repository, on premise or on the cloud.
+
+# Multi-Cluster Operations
+## Cross-Cluster Replication
+AKA CCR enables replication of indices across clusters, uses an active passive model:
+- you index to a leader index,
+- the data is replicated to one or more read-only follower indices.
+## Replication is Pull-Based
+The replication is driven by the follower index.
+- The follower watches for changes in the leader.
+Replication is done at the shard level.
+- The follower has the same number of shards as the leader.
+Replication appears in near real-time.
+
+## Configuring CCR
+You need to configure appropriate TLS/SSL certificates.
+```json
+PUT copy_of_the_leader/_ccr/follow
+{
+	"remote_cluster": "cluster2",
+	"leader_index": "index_to_be_replicated"
+}
+```
+## Cross-Cluster Search
+Simply prefix the cluster name to the index.
+` GET eu-west-1:blogs/_search `
+You can also use wildcards in the names of the remote cluster.
+
