@@ -114,3 +114,14 @@ If the application uses these values directly in a SQL query like `SELECT * FROM
 - **[SQLNinja](https://github.com/xxgrunge/sqlninja)**: SQLNinja is a tool specifically designed to exploit SQL Injection vulnerabilities in web applications that use Microsoft SQL Server as the backend database. It automates various stages of exploitation, including database fingerprinting and data extraction. 
 - [**JSQL Injection**](https://github.com/ron190/jsql-injection): A Java library focused on detecting SQL injection vulnerabilities within Java applications. It supports various types of SQL Injection attacks and provides a range of options for extracting data and taking control of the database.
 - **[BBQSQL](https://github.com/CiscoCXSecurity/bbqsql)**: BBQSQL is a Blind SQL Injection exploitation framework designed to be simple and highly effective for automated exploitation of Blind SQL Injection vulnerabilities.
+
+### Finding SQL Flavor
+- Oracle: `select * from V$VERSION;`
+- DB2: `select service_level from sysibmadm.env_inst_info;`
+- PostgreSQL: `select version();`
+- SQL Server: `select @@version;`
+- MariaDB: `select version();`
+- MySQL: `select version();`
+- H2: `SELECT H2VERSION() FROM DUAL`
+- SQLite: `select sqlite_version();`
+- Firebird: `select rdb$get_context('SYSTEM', 'ENGINE_VERSION') as version from rdb$database;`
