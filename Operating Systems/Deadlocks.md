@@ -43,4 +43,11 @@ A deadlock to occur, it needs mutual exclusion, circular wait, no-preemption, an
 
 Ensuring that at least one of the conditions does not occur will avoid deadlock.
 - 1) Mutual Exclusion: Guarantee that resources will always be shared simultaneously, reduce the exclusion areas to a minimum, and alternative strategies like spooling (printers).
-- 2) Hold and wait: All request must comes from the beginning, or a process 
+- 2) Hold and wait: All request must comes from the beginning, or when a process requests a resource it has to free all resources it already has. Can cause starvation.
+- 3) No-Preemption: Yank resources from tasks, and sabe it's state so you can restore later. Can cause inconsistency.
+- 4) Circular wait: Sorting algorithms.
+
+**Safe State**: When a system can allocated resources in a specific order and continue avoiding deadlock.
+
+#### Avoiding Deadlock
+- Follow resource allocation to tasks and deny any resource access that can reach a unsafe state.
