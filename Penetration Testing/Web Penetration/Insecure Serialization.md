@@ -1,6 +1,6 @@
 ## Identifying
 ### Source Code
-When access to the source code is available, identifying [[serialization]] vulnerabilities can be more straightforward but requires a keen understanding of what to look for. For example, through code review, we can examine the source code for uses of serialization functions such as `serialize()`, `unserialize()`, `pickle.loads(`), and others. We must pay special attention to any point where user-supplied input might be passed directly to these functions.
+When access to the source code is available, identifying [[Serialization]] vulnerabilities can be more straightforward but requires a keen understanding of what to look for. For example, through code review, we can examine the source code for uses of serialization functions such as `serialize()`, `unserialize()`, `pickle.loads(`), and others. We must pay special attention to any point where user-supplied input might be passed directly to these functions.
 ### No Access to the Source Code
 Here, we focus on detecting patterns in server responses and cookies that might indicate the use of serialization and potential vulnerabilities. As a pentester, appending a tilde `~` at the end of a PHP file name is a common technique attackers use to try to access backup or temporary files created by text editors or version control systems. When a file is edited or saved, some text editors or version control systems may make a backup copy of the original file with a tilde appended to the file name.
 #### Analyzing Server Responses

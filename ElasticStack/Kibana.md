@@ -13,4 +13,3 @@ Wild Card: *
 Field search: FIELD:VALUE
 
 Search Query Example: `source_ip : 238.163.231.224 AND UserName : Suleman`
-
