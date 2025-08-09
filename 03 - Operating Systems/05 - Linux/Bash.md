@@ -9,6 +9,7 @@ Command line parameters are used using $1 $2 $3 $n... where 1 is the first argum
 `$@` is the array containing all input arguments.
 `$#` is the number of elements of arguments.
 
+The `read` command reads user input.
 ### Output Redirection
 `PROGRAM > FILENAME` Writes the program's output into the file with that name ( or creates it).
 `PROGRAM >> FILENAME` Appends the output of the program to the end of the file. 
@@ -38,7 +39,20 @@ else
 #code block
 fi #closes the if clause
 ```
-
+Instead of using `<` or `==` and similar symbols, bash uses flag:
+- `-eq` Equal
+- `-ne` Not Equal
+- `-gt` Greater Than
+- `-ge` Greater Equal
+- `-lt` Lesser Than
+- `-le` Lesser Equal
+There is other flags for evaluating strings:
+- `-z`and `-n` flags test whether a string is empty.
+- `-d` checks if a directory exists.
+- `-f` checks if a file exists.
+- `-r` checks if a file is readable.
+- `-w` checks if a file is writable.
+- `-x` checks if a file is executable.
 Switch clause is also available on bash scripting as case:
 ```bash
 case $VAR in
@@ -96,7 +110,12 @@ do
 done
 ```
 And the while loop:
-
+```bash
+while CONDITION
+do
+	#code
+done
+```
 ### Options
 Using the `getopts OPTSTRING NAME` we can parse options from the command line by using single-character flags.
 Where  `OPTSTRING` specifies the options letters that getopts should recognize and `OPTIND` is the starting index position of the flag.
