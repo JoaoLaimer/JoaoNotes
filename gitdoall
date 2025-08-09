@@ -1,0 +1,9 @@
+#!/bin/bash
+
+DATE=$(date)
+
+git add .
+git commit -m "Notes updated on $DATE"
+git push origin main
+
+
