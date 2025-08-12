@@ -88,7 +88,7 @@ Two disadvantages:
 Memory wastage is called internal fragmentation.
 
 #### Variable Sized 
-Those two advantages can be minimized using variable partition sizes.
+Those two disadvantages can be minimized using variable partition sizes.
 - Bigger programs can be allocated into bigger partitions.
 - Smaller programs can be allocated into smaller partitions.
 A strategy must be used to choose the partition.
