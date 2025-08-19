@@ -5,7 +5,7 @@
 	- _Proteção: Processos não podem referenciar outras areas de memória sem permissão, todas areas devem ser checadas durante execução. A MMU (Unidade de Gerencia de Memoria) é o componente hardware responsável por interceptar acessos indevidos._
 	- _Compartilhamento: Um mecanismo de proteção deve ser flexível e permitir que vários processos compartilhem a mesma area de memoria, como o compartilhamento de bibliotecas, onde uma biblioteca é carregada para mais de um processo, economizando memória RAM._ 
 	- _Organização Lógica: Programas são separados em módulos de memória que são escritos e compilados independentemente e referencias de um modulo para outro podem ser resolvidos em tempo de execução. Com isso, também, diferentes níveis de proteção podem ser implementados e módulos podem ser compartilhados._
-	- Organização Física: O gerenciados deve ser capaz de alocar e desalocar blocos de memória física e gerenciar a hierarquia de memória.
+	- Organização Física: O gerenciador deve ser capaz de alocar e desalocar blocos de memória física e gerenciar a hierarquia de memória.
 2. **Descreva a alocação contígua simples.**
 	_Na alocação contígua simples, a memória é dividida em duas partes, uma para o SO e outra para o espaço do usuário. Nessa arquitetura somente um programa pode estar na memória a qualquer momento, se um programa não utilizar toda a memória, o restante permanecerá inutilizado, fenômeno conhecido como fragmentação interna. Para programas maiores que a memória, era utilizado a técnica do overlay._
 3. **Descreva e exemplifique o uso de Overlay.**
@@ -26,7 +26,7 @@
 	_Podemos usar a estrategia do Bitmap, onde a memória é dividia em unidades, quanto menor a unidade maior sera o bitmap. Nessa estratégia, uma string de bits, representa se um espaço da memoria esta sendo utilizado ou não. Se a unidade ser muito grande, o mapa sera menor, porém, memoria é desperdiçada na ultima unidade de alocação._
 	_Outra estratégia é usar listas encadeadas, onde cada elemento representa um fragmento de memória livre ou alocada, em ordem crescente. Cada elemento possui: uma flag de livre/alocada, o primeiro endereço do fragmento, o tamanho, e o endereço do próximo fragmento._
 9. **O que é swapping e qual seu funcionamento?**
-	_Quando programas não podem ser executados pois falta espaço na memória, eles estão esperando o swapping. Esse processo ocorre quando um programa que esta na memória principal é movido para a memória secundaria (swap out) e quando ele é escalonado para execução ele é movido para a memória principal novamente como se nada tivesse acontecido (swap in). Utilizando um registrador de realocação, podemos guardar o endereço inicial da região da região da memoria onde o programa sera alocado, quando há uma refeceria a um endereço seu valor é somado com o valor do registrador. Porém, um_
+	_Quando programas não podem ser executados pois falta espaço na memória, eles estão esperando o swapping. Esse processo ocorre quando um programa que esta na memória principal é movido para a memória secundaria (swap out) e quando ele é escalonado para execução ele é movido para a memória principal novamente como se nada tivesse acontecido (swap in). Utilizando um registrador de realocação, podemos guardar o endereço inicial da região da memoria onde o programa sera alocado, quando há uma referencia a um endereço seu valor é somado com o valor do registrador. Porém, um_
 10. **Descreva com suas próprias palavras a Memória Virtual e evidencie a sua importância.**
 	_Memória Virtual é uma técnica sofisticada de gerenciamento de memória. Essa técnica combina memória principal e secundária, dando a impressão de uma memória maior que a memória principal. Essa técnica é importante pois, melhora o referenciamento de endereços e também podemos utilizar um programa maior que a memória principal em que parte dele reside na memoria primaria e outra parte na secundaria._
 	_Essa técnica permite melhor abstração e facilidade de programação e proteção e isolamento entre processos, pois cada processo possui seu próprio espaço de endereçamento virtual._
@@ -219,3 +219,76 @@ _LRU:_
 _Tivemos 5 page faults._
 
 _Para essa sequência o algoritmo LRU é o que causou menos page faults._
+
+# Lista - Gerência de Memória - Segmentação
+1. **Qual a principal diferença entre os sistemas que implementam paginação e os que implementam segmentação?**
+	_A diferença reside na forma como a memória é organizada e gerenciada, e na perspectiva que cada um oferece ao programador.
+	Na paginação divide tanto o espaço de endereçamento lógico do processo quanto a memória física em **blocos de tamanho fixo** (páginas e quadros, respectivamente).
+	E na segmentação, divide o espaço de endereçamento de um processo em **áreas lógicas de tamanhos variáveis**, chamadas segmentos (e.g., código, dados, pilha)._
+2. **Para que serve o bit de validade nas tabelas de segmentos.**
+	_Para indicar se o segmento reside na memória principal._
+3. **Descreva o mecanismo de tradução de um endereço virtual em um endereço real em sistemas que implementam gerência de memória virtual utilizando segmentação com paginação.**
+	_Em um sistema que implementa segmentação com paginação, o endereço virtual é construído pelo numero do segmento, numero da pagina virtual e seu descolocamento. A tradução ocorre quando acessamos a tabela de páginas._
+4. **Na técnica de swapping, que critérios o sistema operacional pode utilizar para selecionar os processos que sofrerão swap out?**
+	_Podemos escolher qual processo sofrerá swap out, vendo o tempo de espera, prioridade do processo, estado do processo, taxa da paginação e tamanho do processo._
+5. **Existe fragmentação em sistemas que implementam gerência de memória virtual? Se existe, que tipo de fragmentação é encontrado em sistemas com paginação? Que tipo de fragmentação é encontrado em sistemas com segmentação?** 
+	_Sim, existe fragmentação. Em sistemas que implementam paginação, temos, a fragmentação interna, na ultima página de um processo, onde o tamanho do processo não é suficiente para completar a última página. Em sistemas que implementam segmentação, temos fragmentação externa, em que durante a remoção e inserção de segmentações, são deixados blocos livres de memória entre os segmentos._
+6. **O que é o thrashing em sistemas que implementam memória virtual?**
+	 _Thrashing ocorre quando o sistema perde a maioria do tempo transferindo páginas entre disco e memória principal_._
+7. **Descreva o que é anomalia de Belady e se pode ocorrer com o uso de segmentação? (Para pensar: Pode ocorrer a anomalia de Belady com um algoritmo ótimo?)**
+	É um comportamento contra-intuitivo em algoritmos de substituição, como FIFO, em que o aumento do número de quadros aumenta o número de page faults.
+	Algoritmos como o OPT e LRU não apresentam a anomalia.
+8. **Uma visão simplificada de estados dos threads é “Pronto”, “Em Execução” e “Bloqueado”, em que um thread está pronto e esperando para ser incluído no schedule, está sendo executado no processador, ou está bloqueado (por exemplo, está esperando por I/O). Isso é ilustrado na figura abaixo. Supondo que um thread esteja no estado Em Execução, responda às perguntas a seguir e explique sua resposta:**
+**a. O thread mudará de estado se incorrer em um erro de página? Se mudar, para que estado passará?**
+	_Vai ir para o bloqueado, pois ele espera o I/O do disco._
+b. **O thread mudará de estado se gerar uma omissão do TLB que seja resolvida na  tabela de páginas? Se mudar, para que estado passará?**
+_Não muda de estado._
+c. **O thread mudará de estado se uma referência de endereço for resolvida na tabela de páginas? Se mudar, para que estado passará?**
+	_Não muda de estado._
+9. **Suponha que você esteja monitorando a taxa segundo a qual o ponteiro do algoritmo do relógio se move. (O ponteiro indica a página candidata à substituição.) O que você pode dizer sobre o sistema se observar o comportamento a seguir:**
+a. **O ponteiro está se movendo rapidamente.**
+	_Se o ponteiro esta se movendo rapidamente, quer dizer que o sistema esta gerando vários page-faults._
+b. **O ponteiro está se movendo lentamente.**
+	_Pode ser que page-faults estão sendo gerados ou que a pagina marcada foi utilizada._
+
+## Lista Sistema de Arquivos
+1. **O que é um arquivo?**
+	_Arquivos são unidades logicas que armazenam informações criadas por processos._
+2. **Como arquivos podem ser organizados?**
+	_Arquivos podem ser estruturados em diferentes maneiras:
+	Sequencia de bytes, onde não há lógica na estrutura e tudo que o sistema vê são bytes. Oferecem muita flexibilidade e é usado pelo Windows e Linux._
+	_Sequencia de registros, onde os arquivos são vistos como registros de tamanho fixo, a ideia era indexar os arquivos, esta estrategia era usada em SOs antigos.
+	Arvores mantém registros em seus nodos, e podem ter tamanhos diferentes. Cada registro tem uma chave para busca do mesmo._
+3. **Descreva sobre os mé todos de acesso aos arquivos.**
+	 Temos duas formas, sequencial onde o SO precisa ler em ordem todos os arquivos até chegar ao alvo, e direto ou randômico, o acesso pode ser feito em qualquer ordem.
+4. **Quais são as vantagens da variante da alocação encadeada que usa uma FAT para encadear juntos os blocos de um arquivo?**
+	A FAT é uma tabela, armazenada no incio de cada partição, que guarda os endereços de cada bloco no disco. FAT usa uma lista encadeada, carrega na memória, sem necessidade de referenciar o disco, dando mais performance ao sistema e mais segurança no caso de um ponteiro perdido.
+5. **Qual a função das rotinas de E/S?**
+
+6. **Quais as diferentes formas de implementação de uma estrutura de diretório.**
+	Temos diretório de único nível, em que todos os arquivos do sistema se encontra no mesmo local. Diretório de dois níveis, onde temos um diretório de usuário e um de master que aponta . E por ultimo em arvore, que permite diversos sub-diretórios permitindo uma organização maior dos arquivos.
+7. **Descreva as vantagens e desvantagens das técnicas para gerência de espaços livres.** 
+	Mapa de bits mantém uma string de bits, em que cada bit representa se um bloco da memória esta livre ou não. É fácil de implementar, porém se o disco for muito grande o verto pode consumir muito espaço na memória. 
+	A lista encadeada, blocos livres são encadeados, não há problema de espaço na RAM pois não precisa de uma tabela de alocação, porem é mais lento para percorrer a lista, e se perde um espaço no bloco para armazenar o ponteiro.
+8. **O que é alocação contígua de blocos e quais benefícios a desfragmentação pode proporcionar quando esta técnica é utilizada? Dê um exemplo de desfragmentador para Windows. Obs: pesquise sobre o conceito de desfragmentação (não foi abordado diretamente no conteúdo da semana).**
+	_A alocação contiguá é a forma mais simples, blocos são alocados continuamente no disco. A desfragmentação periódica reorganiza arquivos a fim de existir um único bloco._
+9. **Descreva as vantagens e desvantagens das técnicas de alocação encadeada e indexada na gerência de alocação de espaço em disco.**
+	A alocacao encadeada não tem fragmentacao externa e não necessario definir o tamanho maximo do arquivos. Porém, não possui acesso direto quando acessar um bloco e se perde espaço com ponteiros.
+	A alocação indexada suporta acesso direto ao blocos e também não sofre de fragmentação externa, porem, um bloco inteiro é perdido para alocar o index do bloco do arquivo.
+10. **Quais os tipos de proteção de acesso a arquivos existentes e quais suas principais vantagens?**
+	 Podemos definir o tipo de acesso a um arquivo e a qual usuário, um arquivo pode ser lido, escrito e executado e podemos granularizar esses acessos a diferentes usuários, por exemplo, um usuário pode somente ler enquanto outro pode ler e escrever.
+11. **Um problema da alocação contígua é que o usuário deve pré -alocar espaço suficiente para cada arquivo. Se o arquivo crescer e ficar maior do que o espaço alocado para ele, devem ser tomadas medidas especiais. Uma solução para esse problema é definir uma estrutura de arquivo composta por uma área contígua inicial (de tamanho especificado). Se essa área for preenchida, o sistema operacional definirá automaticamente uma área de estouro que será encadeada à área contígua inicial. Se a área de estouro for preenchida, outra área de estouro será alocada. Compare essa implementação de um arquivo com as implementações-padrão contígua e encadeada.**
+	_Em uma implementação encadeada podemos contornar esse problema pois cada bloco pode ficar separado na memória, já que cada bloco contem um ponteiro para o próximo bloco do arquivo, assim, se o arquivo crescer em tamanho podemos somente continuar encadeando-o._
+12. **Qual vantagem de utilizar uma Lista Encadeada de Blocos em Disco para monitorar os blocos livres? Qual desvantagem (cite exemplo)?**
+	_Nessa implementação mantemos somente o endereço inicial do primeiro bloco livre e também não há problema de espaço na memoria principal pois não precisamos de uma tabela de alocação. Porém, requer mais tempo para achar blocos livres, pois a lista deve ser percorrida e também perdemos espaço no bloco para armazenar o endereço do próximo bloco._
+13. **Descreva estratégias de alocação de arquivos em disco.**
+	 _Alocação contiguá, estratégia mais simples, aloca arquivos em blocos contínuos no disco. Nessa estrategia a tabela de diretórios armazena somente o endereço inicial e a area alocada. Essa estratégia é simples e tem bom desempenho porem é suscetível a fragmentação de disco.
+	 Alocação encadeada, mantem uma lista encadeada dos blocos de um arquivo, onde a primeira "word" de cada bloco é usada como um ponteiro para o próximo. Essa implementação não tem fragmentação externa, porém não possui acesso direto ao bloco. Pode implementar a FAT, que armazena os ponteiros dos blocos, para melhorar o acesso dos arquivos.
+	 Alocação indexada, implementa um bloco de index que mantem ponteiros para todos os blocos de um arquivo, a tabela de diretório mantem somente o endereço do bloco de index. Nessa estratégia, temos acesso direto aos blocos e não sofremos de fragmentação externa, porem espaço é perdido na alocação de blocos de index._
+14. **Descreva o que é desfragmentação e cite alguma estratégia de como realizar uma desfragmentação.**
+	_A desfragmentação é o processo de mover os blocos utilizados do disco para mante-los contíguos, assim, também, mantendo o espaço livre contíguo, facilitando o acesso e alocação de arquivos. Podemos mover blocos de arquivos de diversas formas para alcançar a desfragmentação: movendo todos os blocos para um lado do disco ou tapando "buracos" com arquivos que comportem._
+15. **Qual o objetivo do MBR e como o disco é particionado?**
+	_A MBR (Master Boot Record) é responsável pela tarefa de boot do computador, ele possui a tabela de partição, com endereço inicial e final de cada partição.
+	O disco é geralmente particionado, com o MBR na primeira partição, a tabela de partições logo após e depois o resto das partições do sistema._
+16. **Explique sobre a implementação por Journaling.**
+	O Journaling é uma técnica implementada em sistemas de arquivos, que aumenta a robustez do mesmo. Ela funciona mantendo registros das acoes de tomadas no disco, para que se o mesmo falhe durante uma operação, podemos recuperar seu estado antes da falha.

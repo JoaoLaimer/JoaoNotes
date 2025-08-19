@@ -70,6 +70,10 @@ Disadvantages:
 
 Continuous allocation can be used efficiently with single write files (won't grow in size).
 
+It's used the First-Fit, Worst-Fit and Best-Fit strategies to choose where to allocated.
+
+This causes fragmentation on freed spaces, which can become a big problem, because, even though the disk has free spaces, their sizes are so small it can allocate a file.
+
 ### Linked Allocation
 Each file is kept like a linked list of blocks on disk.
 The first word of each block is used like a pointer to the next block, the rest of the block is used for data.
@@ -144,3 +148,38 @@ There is no space problem in the main memory, because it doesn't need a allocati
 It takes longer to find free blocks, because the list must be scrolled through.
 - Wastes more time with I/O
 - Loses a space next to the block to store the address to the next.
+
+Another alternative is a linked list divided in blocks.
+- Stores, in the first block, the addresses of n-1 free blocks.
+- Stores the pointer to the next block of freed addresses in the last position.
+- Doesn't need to load all linked lists to the main memory.
+
+- When a file is created, its blocks are remove from the block.
+- When a block is full, a new block is read from disk.
+- When a file is erased, the blocks are freed, their addresses are added to the pointer block in memory.
+- When a block is full, it's written to disk.
+
+Has a problem with the creation of temporary files, that are frequently created and removed.
+
+### Defragmentation of Continuous Allocation
+We can defrag a disk, just by moving blocks around so that all the free space is continuous.
+
+## Disk Quota
+The OS uses multiple users that need keep a single user from occupying all the disk. System quotas exists because of that.
+
+Besides, limiting the quantity of used space, we also have to limit the quantity of files (inodes).
+- A inode is a data structure that has information about a file or directory, for example, owner, group, access.
+
+Two kinds of limits: soft and hard.
+- Going over the soft limit, makes the OS alert the user, but the user can still use the OS and create more files.
+- Going over the hard limit, prevents the user from creating new files and using more space.
+
+## Implementing the File System
+- How files and directories are stored
+- How disk space is managed.
+- How to make it robust and reliable.
+Disc is split in one or more partitions, with independent file systems.
+Sector 0 of the disc is reserved for MBR - Master Boot Record, which is responsible for booting.
+MBR has the partition table, with the initial and final addresses of each partition.
+BIOS reads and executes the MBR.
+MBR is responsible for locating the active partition, reading the first block of the partition, called boot block and then executing it.

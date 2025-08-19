@@ -528,3 +528,63 @@ T4:  16 - 6 = 10 uT
 T5: 12 - 4 = 8 uT
 
 Considerações: todas as tarefas são orientadas a processamento; as trocas de contexto têm duração nula; em eventuais empates (idade, prioridade, duração, etc), valores maiores de prioridade indicam maior prioridade.3
+## Capítulo 14:
+1. **Explique a diferença entre endereços lógicos e endereços físicos e as razões que justificam o uso de endereços lógicos.**
+
+_Endereços físicos mapeiam todo o espaço físico da memória principal, correspondendo aos bytes diretos na memória, e os endereços lógicos mapeiam uma parte da memória onde um programa foi alocado, estes que então são traduzidos para endereços físicos quando referenciados. Os endereços lógicos melhoram o desempenho e desenvolvimento de programas, deixam o sistema mais seguro._
+
+2. **O que é uma MMU – Memory Management Unit?**
+
+_A MMU é um componente de hardware, geralmente integrada a CPU, que gerência referências a memória principal e traduz endereços virtuais para físicos. Para melhorar o desempenho de busca de páginas, a MMU implementa seu próprio cache, a TLB (Translation Lookaside Buffer)._
+
+3. **Seria possível e/ou viável implementar as conversões de endereços realizadas pela MMU em software, ao invés de usar um hardware dedicado? Por que?**
+_Sim seria possível, isso ocorre em maquinas virtuais, porém, não é recomendado. Um componente em hardware garante maior performance do sistema e segurança, pois se um componente do software falhar o sistema todo pode ficar comprometido._
+
+4. **Explique as principais formas de alocação de memória.**
+
+_Temos a alocação contiguá simples, em que a memória é dividida entre SO e programas do usuário, e permite somente um programa rodando na memória por vez.
+Particionada estática, onde a memória é particionada em espaços de tamanhos fixos que são definidos na inicialização do sistema, sendo necessário a reinicialização do mesmo para mudar os tamanhos da partição. Nessa estratégia temos duas técnicas, tamanhos fixos onde todas as partições tem o mesmo tamanho e tamanho variável, onde partições podem ter tamanhos diferentes.
+Particionada dinâmica, onde quando um processo é trazido da memória, o sistema aloca um tamanho que o comporta. Este é o único caso onde ocorre fragmentação externa diferente dos outros._
+
+5. **Por que os tamanhos de páginas e quadros são sempre potências de 2?**
+
+_Pois isso simplifica o trabalho da MMU, em traduzir endereços e a deixa mais eficiente pois as operações são feitas bit a bit._
+
+6. **Considerando a tabela de segmentos a seguir (com valores em decimal), calcule os endereços físicos correspondentes aos endereços lógicos 0:45, 1:100, 2:90, 3:1.900 e 4:200.**
+
+| Segmento | 0   | 1   | 2    | 3    | 4    |
+| -------- | --- | --- | ---- | ---- | ---- |
+| Base     | 44  | 200 | 0    | 2000 | 1200 |
+| Limite   | 810 | 200 | 1000 | 1000 | 410  |
+8. **Considere um sistema com endereços físicos e lógicos de 32 bits, que usa tabelas de páginas com três níveis. Cada nível de tabela de páginas usa 7 bits do endereço lógico, sendo os restantes usados para o offset. Cada entrada das tabelas de páginas ocupa 32 bits. Calcule, indicando seu raciocínio:**
+(a) O tamanho das páginas e quadros, em bytes.
+(b) O tamanho máximo de memória que um processo pode ter, em bytes e
+páginas.
+(c) O espaço ocupado pela tabela de páginas para um processo com apenas uma
+página de código, uma página de dados e uma página de pilha. As páginas
+de código e de dados se encontram no inicio do espaço de endereçamento
+lógico, enquanto a pilha se encontra no final do mesmo.
+(d) Idem, caso todas as páginas do processo estejam mapeadas na memória.
+
+9. **Explique o que é TLB, qual a sua finalidade e como é seu funcionamento**
+	_A TLB é a cache do MMU, onde ele armazena os endereços das páginas usadas recentemente, sem precisarmos acessar a memória principal, entregando maior desempenho ao sistema. Se uma referencia não estiver na TLB, ela pode estar na tabela de páginas, e se não estiver então será gerado um page-fault._
+
+10. **Sobre as afirmações a seguir, relativas á alocação por páginas, indique quais são incorretas, justificando sua resposta:**
+	a) Um endereço lógico com N bits é dividido em P bits para o número de página e N - P bits para o deslocamento em cada página.
+	_Correto._
+	b) As tabelas de páginas multiníveis permitem mais rapidez na conversão de endereços lógicos em físicos.
+	_O uso de tabelas multinível não permitem mais rapidez, porém reduzem o espaço ocupado na memória principal._
+	c) O bit de referência R associado a cada página é "ligado" pela MMU sempre que a página é acessada.
+	_Correto._
+	d) O cache TLB é usado para manter páginas frequentemente usadas na memória.
+	_Correto._
+	e) O bit de modificação M associada a cada página é "ligado" pelo núcleo sempre que um processo modificar o conteúdo da mesma.
+	_Ligado pela MMU._
+	f) O cache TLB deve ser esvaziado a cada troca de contexto entre processos.
+	_O TLB geralmente precisa ser esvaziado para garantir a correção das traduções para o novo processo, a menos que o hardware forneça suporte para identificadores de espaço de endereço (ASIDs)._
+	
+## Capitulo 16
+1. **Explique o que é fragmentação externa. Quais formas de alocação de memória estão livres desse problema?**
+	_A fragmentação externa ocorre quando há lacunas entre espaços ocupados na memória, se essas lacunas forem pequenas o espaço da efetivo da memória é reduzido. Alocações encadeadas e indexadas (para arquivos) não sofrem desse fenômeno, pois os blocos não precisam estar contíguos. Para virtualização de memória, a paginação não sofre desse fenômeno pois ela divide toda a memória em blocos de tamanhos fixos._
+2. **Explique o que é fragmentação interna. Quais formas de alocação de memória estão livres desse problema?**
+	_A fragmentação interna ocorre quando há espaços livres dentro de espaços ocupados para processos. Alocação contiguá (para arquivos) não sofre desse fenômeno. Segmentação, no contexto de memória virtual, não sofre de fragmentação interna, pois cada segmento tem tamanho necessário para cada parte do processo._

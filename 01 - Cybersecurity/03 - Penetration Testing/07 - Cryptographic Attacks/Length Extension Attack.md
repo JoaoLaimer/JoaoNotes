@@ -13,3 +13,22 @@ Many commonly used hash functions are vulnerable to length extension attacks, es
 - **SHA-1**: Like MD5, SHA-1 uses block-by-block processing and suffers from similar weaknesses. It has been phased out of most security-critical systems because of these vulnerabilities.
     
 - **SHA-256**: While stronger than MD5 and SHA-1, SHA-256 can still be exploited in a length extension attack if used without additional protections like HMAC (a key-based hashing method).
+
+#### How it works
+Merkle–Damgård hashes process messages in fixed-size blocks and carry over an **internal state** (the hash so far).
+When you get the hash of `secret || message`, you’re effectively seeing that internal state **after processing the first part of the input**.
+If you can **resume** hashing from that state, you can append extra data exactly as if you knew the secret, because the compression function doesn’t “rewind” to check the original input.
+Let’s say a vulnerable API works like this:
+`MAC = MD5(secret || message)`
+
+You know `message` and `MAC`, but not `secret`.
+You want to forge a valid MAC for:
+`message || padding || extra_data`
+Where `padding` is the exact padding MD5 would have added internally.
+
+**Attack process:**
+
+1. **Guess the secret length** — try common lengths (8, 12, 16 bytes, etc.).
+2. **Recreate the padding** — same as the hash algorithm does before finalization (e.g., a `0x80` byte, then zeros, then the length in bits at the end).
+3. **Resume the hash** — treat the known hash as the new “IV” (initial state) and feed in your `extra_data`.
+4. **Get the forged hash** — now you have a valid `MAC` for the extended message.
