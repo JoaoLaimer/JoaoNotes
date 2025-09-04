@@ -10,3 +10,5 @@ SSRF earned a spot in [OWASP's top 10 list](https://owasp.org/Top10/A10_2021-Ser
 Out-of-band communication is a channel used to receive responses indirectly from the target server. This approach is practical when the server's responses are not directly accessible to the attacker.
 ## Semi-Blind SSRF (Time-based)  
 Time-based SSRF is a variation of SSRF where the attacker leverages timing-related clues or delays to infer the success or failure of their malicious requests. By **observing how long it takes for the application to respond**, the attacker can make educated guesses about whether their SSRF attack was successful.
+
+

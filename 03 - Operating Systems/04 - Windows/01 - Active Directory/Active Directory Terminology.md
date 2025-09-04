@@ -1,5 +1,5 @@
 ### Object
-An object can be defined as ANY resource present within an Active Directory environment, such as OUs, printers, users, domain controllers, etc.
+An object can be defined as ANY resource present within an [[Active Directory ]]environment, such as OUs, printers, users, domain controllers, etc.
 ### Attributes
 Every object has an associated set of attributes. All attributes in AD have an associated LDAP name that can be used when performing LDAP queries, such as displayName for full name and given name for first name.
 ### Schema

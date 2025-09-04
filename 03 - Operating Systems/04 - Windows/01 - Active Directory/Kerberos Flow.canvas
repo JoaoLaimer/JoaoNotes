@@ -1,0 +1,25 @@
+{
+	"nodes":[
+		{"id":"d092509213c526b9","type":"text","text":"1. KRB_AS_REQ (request TGT)","x":-32,"y":-233,"width":250,"height":60},
+		{"id":"7865b19c6be0e643","type":"text","text":"KDC","x":380,"y":-233,"width":82,"height":60},
+		{"id":"3b47742a8faee6c7","type":"text","text":"4. KRB_TGS_REP (receive TGS)","x":-32,"y":160,"width":250,"height":60},
+		{"id":"824f328b7d7ee5ed","type":"text","text":"3. KRB_TGS_REQ (present TGT and request TGS)","x":-32,"y":0,"width":250,"height":107},
+		{"id":"cfa8afdb080d8e33","type":"text","text":"2. KRB_AS_REP (receive TGT)","x":-32,"y":-120,"width":250,"height":60},
+		{"id":"90ea18e1f0a08a9b","type":"text","text":"5. KRB_AP_REP (present TGS for service access)","x":-282,"y":260,"width":250,"height":100},
+		{"id":"325e6c6cd5875d9a","type":"text","text":"Database Server SPN","x":-282,"y":400,"width":250,"height":60},
+		{"id":"b1aac589b77e473f","type":"text","text":"User logs on.\n1. User password is converted to an NTLM hash, which encrypts the authentication ticket (TGT) request.\n2. The DC (KDC) checks the authentication service request (AS_REQ), checks user information and creates the Ticket-Granting Ticket (TGT). The TGT is delivered to the user (AS_TEP)\n3. The user presents the TGT to the DC when requesting the Ticket Granting Service (TGS) ticket for a specific service instance (TGS_REQ). If the TGT passes DC validation, its data is copied to create a TGS ticket.\n4. The TGS is encrypted with the NTLM password hash of the (service/computer) account in which the service instance is running, and is delivered to the user (TGS_REP)\n5. The user presents the TGS to the service and if valid, is able to connect to the service instance (AP_REQ).\n","x":-32,"y":241,"width":666,"height":399},
+		{"id":"980b6bed811bea6b","type":"text","text":"Client","x":-180,"y":-228,"width":100,"height":50}
+	],
+	"edges":[
+		{"id":"9e532fad35a4396b","fromNode":"980b6bed811bea6b","fromSide":"right","toNode":"d092509213c526b9","toSide":"left"},
+		{"id":"176789829989f3ba","fromNode":"d092509213c526b9","fromSide":"right","toNode":"7865b19c6be0e643","toSide":"left"},
+		{"id":"ea95130597968a85","fromNode":"7865b19c6be0e643","fromSide":"bottom","toNode":"cfa8afdb080d8e33","toSide":"right"},
+		{"id":"67eaf29271418999","fromNode":"cfa8afdb080d8e33","fromSide":"left","toNode":"980b6bed811bea6b","toSide":"bottom"},
+		{"id":"f401a922254408e5","fromNode":"980b6bed811bea6b","fromSide":"bottom","toNode":"824f328b7d7ee5ed","toSide":"left"},
+		{"id":"ef51e68ed2e36028","fromNode":"824f328b7d7ee5ed","fromSide":"right","toNode":"7865b19c6be0e643","toSide":"bottom"},
+		{"id":"9bc5910335bc2850","fromNode":"7865b19c6be0e643","fromSide":"right","toNode":"3b47742a8faee6c7","toSide":"right"},
+		{"id":"e0c25655b0f28889","fromNode":"3b47742a8faee6c7","fromSide":"left","toNode":"980b6bed811bea6b","toSide":"left"},
+		{"id":"f770d0cabc903757","fromNode":"90ea18e1f0a08a9b","fromSide":"bottom","toNode":"325e6c6cd5875d9a","toSide":"top"},
+		{"id":"61301da58c860281","fromNode":"980b6bed811bea6b","fromSide":"left","toNode":"90ea18e1f0a08a9b","toSide":"top"}
+	]
+}

@@ -7,7 +7,7 @@ You can search for the company on LinkedIn to find employee names, and from this
 Another source of information is the employee's Google calendars.
 The organization social media can also leak information, like post-it notes on the background of photos.
 
-Check the company's SlideShare or Pastebin accounts. [PasteHunter](https://github.com/kevthekermit/PasteHunter) is an automated tool to scan for publicly pasted data.
+Check the company's SlideShare or Pastebin accounts. [PasteHunter](https://github.com/kevthehermit/PasteHunter) is an automated tool to scan for publicly pasted data.
 
 Consult archive websites like the Wayback Machine, for old endpoints, directory listings, forgotten subdomains.
 

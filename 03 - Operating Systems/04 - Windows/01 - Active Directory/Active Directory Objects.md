@@ -1,4 +1,4 @@
-A object can be defined as any resource within an AD environment such as OUs, printers, users, domain controlles.
+A object can be defined as any resource within an [[Active Directory]] environment such as OUs, printers, users, domain controlles.
 
 ### Users
 Users are considered `leaf objects`,which means that they cannot contain any other objects within them. A user object is considered a security principal and has a security identifier (SID) and a global unique identifier (GUID). User objects have many possible [attributes](http://www.kouti.com/tables/userattributes.htm).

@@ -1,0 +1,12 @@
+A Virtual Private Network is created over a public network, usually the internet. 
+Instead of using a dedicated physical connection, a VPN uses virtual connections that are routed through the internet from the organization to the remote site. The first VPNs were strictly IP tunnels that did not include authentication or encryption of the data. For example, Generic Routing Encapsulation (GRE) is a tunneling protocol developed by Cisco that can encapsulate a wide variety of network layer protocol packet types inside IP tunnels. This creates a virtual point-to-point link to Cisco routers at remote points over an IP internetwork.
+
+A VPN is virtual in that it carries information within a private network, but that information is actually transported over a public network. A VPN is private in that the traffic is encrypted to keep the data confidential while it is transported across the public network.
+
+A VPN is a communications environment in which access is strictly controlled to permit peer connections within a defined community of interest. Confidentiality is achieved by encrypting the traffic within the VPN. Today, a secure implementation of VPN with encryption is what is generally equated with the concept of virtual private networking.
+
+In the simplest sense, a VPN connects two endpoints, such as a remote office to a central office, over a public network, to form a logical connection. The logical connections can be made at either Layer 2 or Layer 3. Common examples of Layer 3 VPNs are GRE, Multiprotocol Label Switching (MPLS), and IPsec. Layer 3 VPNs can be point-to-point site connections, such as GRE and IPsec, or they can establish any-to-any connectivity to many sites using MPLS.
+
+IPsec is a suite of protocols developed with the backing of the IETF to achieve secure services over IP packet-switched networks.
+
+IPsec services allow for authentication, integrity, access control, and confidentiality. With IPsec, the information exchanged between remote sites can be encrypted and verified. VPNs are commonly deployed in a site-to-site topology to securely connect central sites with remote locations. They are also deployed in a remote-access topology to provide secure remote access to external users travelling or working from home. Both remote-access and site-to-site VPNs can be deployed using IPsec.
