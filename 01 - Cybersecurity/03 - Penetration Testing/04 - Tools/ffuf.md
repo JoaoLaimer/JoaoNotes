@@ -30,3 +30,12 @@ Using the wordlist flag like so: `-w -`. You can use the stdin as a wordlist:
 It is possible that you can't find a sub-domain with direct subdomain enumeration (1st command) but that you can find it with vhost enumeration (2nd command).
 
 Vhost enumeration technique shouldn't be discounted as it may lead to discovering content that wasn't meant to be accessed externally.
+
+## Recursive Scanning
+When we scan recursively, it automatically starts another scan under any newly identified directories that may have on their pages until it has fuzzed the main website and all of its subdirectories.
+
+Some websites may have a big tree of sub-directories, like `/login/user/content/uploads/...etc`, and this will expand the scanning tree and may take a very long time to scan them all.
+
+```shell
+ffuf -w /opt/useful/seclists/Discovery/Web-Content/directory-list-2.3-small.txt:FUZZ -u http://SERVER_IP:PORT/FUZZ -recursion -recursion-depth 1 -e .php -v
+```

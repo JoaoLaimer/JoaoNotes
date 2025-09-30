@@ -8,7 +8,7 @@ Expressed as a percentage.
 ## Single Loss Expectancy (SLE)
 Monetary value expected to be lost in a single event.
 Calculated by: 
-$$VA \times EF = SLE$$
+$$AV \times EF = SLE$$
 ## Annualized Rate of Occurrence (ARO)
 Estimated frequency with which a threat is expected to occur within a year.
 ## Annualized Loss Expectancy (ALE)

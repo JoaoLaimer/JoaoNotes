@@ -68,3 +68,39 @@ Where the request_file is the saved HTTP post request and vulnerable_parameter i
 
 **Using POST based Method**
 `sqlmap -r req.txt -p <vulnerable_parameter> -D <database_name> --dump-all`
+
+
+# Attack Tuning
+In most cases, SQLMap should run out of the box with the provided target details. Nevertheless, there are options to fine-tune the SQLi injection attempts to help SQLMap in the detection phase. Every payload sent to the target consists of:
+- vector (e.g., `UNION ALL SELECT 1,2,VERSION()`): central part of the payload, carrying the useful SQL code to be executed at the target.
+- boundaries (e.g. `'<vector>-- -`): prefix and suffix formations, used for proper injection of the vector into the vulnerable SQL statement.
+
+## Prefix/Suffix
+```bash
+sqlmap -u "www.example.com/?q=test" --prefix="%'))" --suffix="-- -"
+```
+## Level/Risk
+For such demands, the options `--level` and `--risk` should be used:
+
+- The option `--level` (`1-5`, default `1`) extends both vectors and boundaries being used, based on their expectancy of success (i.e., the lower the expectancy, the higher the level).
+- The option `--risk` (`1-3`, default `1`) extends the used vector set based on their risk of causing problems at the target side (i.e., risk of database entry loss or denial-of-service).
+
+## Searching for Data
+
+When dealing with complex database structures with numerous tables and columns, we can search for databases, tables, and columns of interest, by using the `--search` option. This option enables us to search for identifier names by using the `LIKE` operator. For example, if we are looking for all of the table names containing the keyword `user`, we can run SQLMap as follows:
+```shell
+sqlmap -u "http://www.example.com/?id=1" --search -T user
+```
+## Checking for DBA Privileges
+
+To check whether we have DBA privileges with SQLMap, we can use the `--is-dba` option:
+```shell
+ sqlmap -u "http://www.example.com/case1.php?id=1" --is-dba
+```
+#### Reading Local Files
+
+Instead of manually injecting the above line through SQLi, SQLMap makes it relatively easy to read local files with the --file-read option:
+```shell
+sqlmap -u "http://www.example.com/?id=1" --file-read "/etc/passwd"
+```
+
