@@ -143,7 +143,7 @@ Interesting Parameters:
 - [ ] Brute force protection
 - [ ] Password reset vulnerabilities
 - [ ] Multi-factor authentication bypass
-### Business Logic Testing
+#### Business Logic Testing
 - [ ] Race conditions
 - [ ] Price manipulation
 - [ ] Privilege escalation
@@ -151,3 +151,15 @@ Interesting Parameters:
 - [ ] Rate limiting bypass
 - [ ] Payment processing flaws
 #### Vulnerability Testing Template:
+```
+Vulnerability: [TYPE]
+Location: [URL/PARAMETER]
+Method: [GET/POST/etc.]
+Payload: [PAYLOAD_USED]
+Response: [INTERESTING_RESPONSE]
+Impact: [BUSINESS_IMPACT]
+Reproducible: [Y/N]
+Test Results:
+✅ - Vulnerable
+❌ - Not vulnerable
+⚠ - Needs more testing
