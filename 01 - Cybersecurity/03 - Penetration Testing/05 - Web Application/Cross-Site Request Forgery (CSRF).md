@@ -51,3 +51,38 @@ In the context of an AJAX request, CSRF is like someone making your web browser 
 ## Same Origin Policy (SOP) and Cross-Origin Resource Sharing (CORS) Bypass
 
 [CORS and SOP](https://tryhackme.com/r/room/corsandsop) bypass to launch CSRF is like an attacker using a trick to make your web browser send requests to a different website than the one you're on. Under an appropriate CORS policy, certain requests could only be submitted by recognised origins. However, misconfigurations in CORS policies can allow attackers to circumvent these limitations if they rely on origins that the attacker can control or if credentials are included in cross-origin requests.
+
+
+## Hunting for CSRF
+First look for state-changing actions like, password changes, sending emails, deleting emails, etc.
+Look for lack of CSRF Protections, no CSRF Tokens or state tokens.
+Confirm the vulnerability, craft an HTML page, and make sure to save with the .html extension. 
+```html
+<html>
+	<form method="POST" action="https://email.example.com/password-change" id="csrf-form">
+		<input type="text" name="new_password" value="abc123">
+		<input type="submit" value="Submit">
+	</form>
+	<script>document.getElementById("csrf-form").submit();</script>
+</html>
+```
+Open the HTML page in the browser that is signed into your target site. Check if your password on the target has been changed to abc123. 
+
+### Bypassing CSRF Protecitons
+#### Exploit Clickjacking
+If the endpoint uses CSRF tokens but the page itself is vulnerable to click-jacking, you can exploit the clickjacking to achieve the same results as a CSRF. 
+#### Change the Request Method 
+#### Bypass CSRF Tokens Stored on the Server
+Check if site is validating the tokens. First try deleting it. Second try a blank CSRF parameter.
+#### Bypass Double-Submit Tokens 
+Sometimes the server only checks if they are equal.
+#### Bypass CSRF Referrer Header Check
+Host a site with the victim site as a subdomain:
+```
+Referer: example.com.attacker.com
+```
+Or as a pathname:
+```
+Referer: attacker.com/example.com
+```
+56

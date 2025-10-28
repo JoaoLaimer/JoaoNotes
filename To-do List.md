@@ -1,3 +1,7 @@
 - [ ] Learn Graphana
 - [ ] Learn Zabix
-
+- [ ] Complete Spring Boot Project
+- [ ] Pawn HackTheBox (in the educational sense (as in completing lots of modules))
+- [ ] Pawn TryHackMe (same as above)
+- [ ] Dip feet into bug bounty waters.
+- [ ] Do NetAcad Course.
