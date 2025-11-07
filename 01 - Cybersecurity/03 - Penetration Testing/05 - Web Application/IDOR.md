@@ -1,4 +1,4 @@
-w`Insecure Direct Object References (IDOR)` vulnerabilities are among the most common web vulnerabilities and can significantly impact the vulnerable web application. IDOR vulnerabilities occur when a web application exposes a direct reference to an object, like a file or a database resource, which the end-user can directly control to obtain access to other similar objects. If any user can access any resource due to the lack of a solid access control system, the system is considered to be vulnerable.
+`Insecure Direct Object References (IDOR)` vulnerabilities are among the most common web vulnerabilities and can significantly impact the vulnerable web application. IDOR vulnerabilities occur when a web application exposes a direct reference to an object, like a file or a database resource, which the end-user can directly control to obtain access to other similar objects. If any user can access any resource due to the lack of a solid access control system, the system is considered to be vulnerable.
 
 ## URL Parameters & APIs
 The very first step of exploiting IDOR vulnerabilities is identifying Direct Object References. Whenever we receive a specific file or resource, we should study the HTTP requests to look for URL parameters or APIs with an object reference (e.g. `?uid=1` or `?filename=file_1.pdf`). These are mostly found in URL parameters or APIs but may also be found in other HTTP headers, like cookies.
@@ -65,3 +65,29 @@ for i in {1..10}; do
         done
 done
 ```
+
+### Offer the Application an ID, Even if it Doesn't Ask for One
+```
+GET /api_v1/messages
+```
+Maybe a request like:
+```
+GET /api_v1/messages?user_id=ANOTHER_ID
+```
+Could display another user messages.
+
+### Keep an Eye Out for Blind IDORs
+Image that an endpoint allows users to email themselves a copy of a document.
+```
+POST /get_document
+
+doc_id=3001
+```
+
+This request will send a copy of document 3001 to the registered email of the current user. Changing the doc_id can maybe send another document the the registered email.
+
+### Change Request Method
+Maybe changing a request method can reveal an IDOR.
+### Change the Requested File Type
+Switching file type of the requested file sometimes leads the server to process the authorization differently. For example, application commonly store information in the JSON file. Try adding the .json extension to the end of the request URL and see what happens.
+###

@@ -62,3 +62,36 @@ By crafting specific search queries, known as Google Dorks, you can find informa
 - To find administrative panels: `site:example.com inurl:admin`
 - To unearth log files with passwords: `filetype:log "password" site:example.com`
 - To discover backup directories: `intitle:"index of" "backup" site:example.com`
+## Application Discovery & Enumeration
+#### Nmap - Web Discovery
+```shell-session
+$ nmap -p 80,443,8000,8080,8180,8888,10000 --open -oA web_discovery -iL scope_list
+```
+Two phenomenal tools that every tester should have in their arsenal are [EyeWitness](https://github.com/FortyNorthSecurity/EyeWitness) and [Aquatone](https://github.com/michenriksen/aquatone). Both of these tools can be fed raw Nmap XML scan output (Aquatone can also take Masscan XML; EyeWitness can take Nessus XML output) and be used to quickly inspect all hosts running web applications and take screenshots of each. The screenshots are then assembled into a report that we can work through in the web browser to assess the web attack surface.
+
+These screenshots can help us narrow down potentially 100s of hosts and build a more targeted list of applications that we should spend more time enumerating and attacking.
+Enumerating one of the hosts further using an Nmap service scan (`-sV`) against the default top 1,000 ports can tell us more about what is running on the webserver.
+## Using EyeWitness
+```shell-session
+$ eyewitness --web -x web_discovery.xml -d inlanefreight_eyewitness
+
+################################################################################
+#                                  EyeWitness                                  #
+################################################################################
+#           FortyNorth Security - https://www.fortynorthsecurity.com           #
+################################################################################
+```
+## Using Aquatone
+```shell-session
+$ cat web_discovery.xml | ./aquatone -nmap
+
+aquatone v1.7.0 started at 2021-09-07T22:31:03-04:00
+
+Targets    : 65
+Threads    : 6
+Ports      : 80, 443, 8000, 8080, 8443
+Output dir : .
+.
+.
+.
+```
