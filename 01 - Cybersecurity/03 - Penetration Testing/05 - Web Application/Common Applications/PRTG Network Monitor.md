@@ -1,0 +1,4 @@
+[PRTG Network Monitor](https://www.paessler.com/prtg) is agentless network monitor software. It can be used to monitor bandwidth usage, uptime and collect statistics from various hosts, including routers, switches, servers, and more. The first version of PRTG was released in 2003. In 2015 a free version of PRTG was released, restricted to 100 sensors that can be used to monitor up to 20 hosts.
+
+## Discovery/Footprinting/Enumeration
+The default credentials `prtgadmin:prtgadmin` they are typically pre-filled on the login page, and we often find them unchanged. Vulnerability scanners such as Nessus also have [plugins](https://www.tenable.com/plugins/nessus/51874) that detect the presence of PRTG.
