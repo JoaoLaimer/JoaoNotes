@@ -107,7 +107,7 @@ A ajuda contextual permite que você encontre rapidamente respostas:
 - Quais comandos estão disponíveis em cada modo?
 - Quais comandos começam com carácter ou grupo de carácter específico?
 - Quais argumentos e palavras-chaves estão disponíveis para comandos específicos?
-Para acessar a ajuda sensível ao contexto, basta inserir um ponto de interrogação,**?**, na CLI.
+Para acessar a ajuda sensível ao contexto, basta inserir um ponto de interrogação,`?`na CLI.
 
 A verificação da sintaxe de comandos verifica se um comando válido foi inserido pelo usuário.
 
