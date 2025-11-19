@@ -4,7 +4,7 @@ Todos os dispositivos finais e de rede exigem um sistema operacional (SO).
 - **Shell** - A interface de usuário que permite que os usuários solicitem tarefas ao computador. CLI ou GUI
 - **Kernel** - Comunica-se entre o hardware e software e gerencia recursos de hardware.
 - **Hardware** - Parte física.  
-A CLI requer muito pouca sobrecarga para operar. No entanto, exige que o usu�rio tenha conhecimento da estrutura de comando subjacente que controla o sistema.
+A CLI requer muito pouca sobrecarga para operar. No entanto, exige que o usuário tenha conhecimento da estrutura de comando subjacente que controla o sistema.
 ### 2.1.2 GUI 
 Graphic User Interface como Windows, macOS, Linux KDE, Apple iOS ou Android permite que o usuário interaja com o sistema usando um ambiente de ícones gráficos, menus e janelas.
 As GUIs também podem falhar, congelar ou simplesmente não funcionar como especificado. Por esses motivos, os dispositivos de rede geralmente são acessados por meio de uma CLI.
