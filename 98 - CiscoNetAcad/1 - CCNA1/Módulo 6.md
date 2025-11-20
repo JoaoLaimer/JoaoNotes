@@ -137,3 +137,19 @@ O endereço físico é um endereço exclusivo do dispositivo específico. Um dis
 O endereço da camada de enlace de dados é usado apenas para entrega local.
 
 ### 6.3.4 Quadros de LAN e WAN
+Protocolos Ethernet são usados por LANs com fio. As comunicações sem fio se enquadram nos protocolos WLAN (IEEE 802.11). Esses protocolos foram projetados para redes multiacesso.
+Alguns dos protocolos WAN comuns ao longo dos anos incluíram:
+
+- Protocolo ponto a ponto (PPP);
+- Controle de Enlace de Dados de Alto Nível (HDLC);
+- Frame Relay;
+- Modo de Transferência Assíncrona (ATM);
+- X.25;
+Esses protocolos de Camada 2 agora estão sendo substituídos na WAN por Ethernet.
+Os protocolos da camada de enlace de dados incluem:
+
+- Ethernet;
+- 802.11 sem fio;
+- Protocolo ponto a ponto (PPP);
+- Controle de Enlace de Dados de Alto Nível (HDLC);
+- Frame Relay.
