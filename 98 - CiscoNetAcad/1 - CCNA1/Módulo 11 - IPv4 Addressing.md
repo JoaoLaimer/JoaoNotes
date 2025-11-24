@@ -65,7 +65,7 @@ A device that is not directly connected to the destination network forwards an I
 
 **Note:** Because of security concerns and prior abuse from malicious users, directed broadcasts are turned off by default starting with Cisco IOS Release 12.0 with the global configuration command **no ip directed-broadcasts**.
 
-## 1.2.3 Multicast
+## 11.2.3 Multicast
 Multicast transmission reduces traffic by allowing a host to send a single packet to a selected set of hosts that subscribe to a multicast group.
 A multicast packet is a packet with a destination IP address that is a multicast address. IPv4 has reserved the 224.0.0.0 to 239.255.255.255 addresses as a multicast range.
 Hosts that receive particular multicast packets are called multicast clients.
@@ -73,3 +73,96 @@ Each multicast group is represented by a single IPv4 multicast destination addre
 
 Routing protocols such as OSPF use multicast transmissions. For example, routers enabled with OSPF communicate with each other using the reserved OSPF multicast address 224.0.0.5. Only devices enabled with OSPF will process these packets with 224.0.0.5 as the destination IPv4 address. All other devices will ignore these packets.
 
+## 11.3 Types of IPv4 Addresses
+### 11.3.1 Public and Private IPv4 Addresses
+Public IPv4 addresses are addresses which are globally routed between internet service provider (ISP) routers. However, not all available IPv4 addresses can be used on the internet. There are blocks of addresses called private addresses that are used by most organizations to assign IPv4 addresses to internal hosts.
+
+In the mid-1990s, with the introduction of the World Wide Web (WWW), private IPv4 addresses were introduced because of the depletion of IPv4 address space. Private IPv4 addresses are not unique and can be used internally within any network.
+**Private Addresses Block**
+
+| Network Address and Prefix | RFC 1918 Private Address Range |
+| -------------------------- | ------------------------------ |
+| 10.0.0.0/8                 | 10.0.0.0 - 10.255.255.255      |
+| 172.16.0.0/12              | 172.16.0.0 - 172.31..255.255   |
+| 192.168.0.0/16             | 192.168.0.0 - 192.168.255.255  |
+**Note:** Private addresses are defined in RFC 1918 and sometimes referred to as RFC 1918 address space.
+### 11.3.2 Routing to the Internet
+Most internal networks, from large enterprises to home networks, use private IPv4 addresses for addressing all internal devices (intranet) including hosts and routers. However, private addresses are not globally routable.
+
+**Private IPv4 Addresses and Network Address Translation (NAT)**
+NAT is used to translate between private IPv4 and public IPv4 addresses. This is usually done on the router that connects the internal network to the ISP network. Private IPv4 addresses in the organization’s intranet will be translated to public IPv4 addresses before routing to the internet.
+**Note:** Although, a device with a private IPv4 address is not directly accessible from another device across the internet, the IETF does not consider private IPv4 addresses or NAT as effective security measures.
+
+Organizations that have resources available to the internet, such as a web server, will also have devices that have public IPv4 addresses. This part of the network is known as the DMZ (demilitarized zone). The router not only performs routing, it also performs NAT and acts as a firewall for security.
+
+**Note:** Private IPv4 addresses are commonly used for educational purposes instead of using a public IPv4 address that most likely belongs to an organization.
+
+### 11.3.4 Special Use IPv4 Addresses
+**Loopback addresses**
+Loopback addresses (127.0.0.0 /8 or 127.0.0.1 to 127.255.255.254) are more commonly identified as only 127.0.0.1, these are special addresses used by a host to direct traffic to itself. For example, it can be used on a host to test if the TCP/IP configuration is operational.
+
+**Link-Local addresses**
+Link-local addresses (169.254.0.0 /16 or 169.254.0.1 to 169.254.255.254) are more commonly known as the Automatic Private IP Addressing (APIPA) addresses or self-assigned addresses. They are used by a Windows DHCP client to self-configure in the event that there are no DHCP servers available. Link-local addresses can be used in a peer-to-peer connection but are not commonly used for this purpose.
+
+### 11.3.5 Legacy Classful Addressing
+In 1981, IPv4 addresses were assigned using classful addressing as defined in RFC 790 ([https://tools.ietf.org/html/rfc790](https://tools.ietf.org/html/rfc790)), Assigned Numbers. Customers were allocated a network address based on one of three classes, A, B, or C. The RFC divided the unicast ranges into specific classes as follows:
+- **Class A (0.0.0.0/8 to 127.0.0.0/8)** - Designed to support extremely large networks with more than 16 million host addresses. Class A used a fixed /8 prefix with the first octet to indicate the network address and the remaining three octets for host addresses (more than 16 million host addresses per network).
+- **Class B (128.0.0.0 /16 - 191.255.0.0 /16)** - Designed to support the needs of moderate to large size networks with up to approximately 65,000 host addresses. Class B used a fixed /16 prefix with the two high-order octets to indicate the network address and the remaining two octets for host addresses (more than 65,000 host addresses per network).
+- **Class C (192.0.0.0 /24 - 223.255.255.0 /24)** - Designed to support small networks with a maximum of 254 hosts. Class C used a fixed /24 prefix with the first three octets to indicate the network and the remaining octet for the host addresses (only 254 host addresses per network).
+**Note:** There is also a Class D multicast block consisting of 224.0.0.0 to 239.0.0.0 and a Class E experimental address block consisting of 240.0.0.0 - 255.0.0.0.
+
+At the time, with a limited number of computers using the internet, classful addressing was an effective means to allocate addresses. Class A networks accounted for 50% of the IPv4 networks. This caused most of the available IPv4 addresses to go unused.
+
+In the mid-1990s, with the introduction of the World Wide Web (WWW), classful addressing was deprecated to more efficiently allocate the limited IPv4 address space. Classful address allocation was replaced with classless addressing, which is used today.
+
+### 11.3.6 Assignment of IP Addresses
+Public IPv4 addresses are addresses which are globally routed over the internet. Public IPv4 addresses must be unique.
+
+Both IPv4 and IPv6 addresses are managed by the Internet Assigned Numbers Authority (IANA). The IANA manages and allocates blocks of IP addresses to the Regional Internet Registries (RIRs). 
+- **AfriNIC** (African Network Information Centre) - Africa Region
+- **APNIC** (Asia Pacific Network Information Centre) - Asia/Pacific Region
+- **ARIN** (American Registry for Internet Numbers) - North America Region
+- **LACNIC** (Regional Latin-American and Caribbean IP Address Registry) - Latin America and some Caribbean Islands
+- **RIPE NCC** (Réseaux IP Européens Network Coordination Centre) - Europe, the Middle East, and Central Asia
+
+## 11.4 Network Segmentation
+### 11.4.1 Broadcast Domains and Segmentation
+
+Routers do not propagate broadcasts. When a router receives a broadcast, it does not forward it out other interfaces. For instance, when R1 receives a broadcast on its Gigabit Ethernet 0/0 interface, it does not forward out another interface.
+
+Therefore, each router interface connects to a broadcast domain and broadcasts are only propagated within that specific broadcast domain.
+
+### 11.4.2 Problems with Large Broadcast Domains
+A problem with a large broadcast domain is that these hosts can generate excessive broadcasts and negatively affect the network. This results in slow network operations due to the significant amount of traffic it can cause, and slow device operations because a device must accept and process each broadcast packet.
+
+The solution is to reduce the size of the network to create smaller broadcast domains in a process called subnetting. These smaller network spaces are called subnets.
+
+**Note:** The terms subnet and network are often used interchangeably. Most networks are a subnet of some larger address block.
+
+### 11.4.3 Reasons for Segmenting Networks
+Subnetting reduces overall network traffic and improves network performance. It also enables an administrator to implement security policies such as which subnets are allowed or not allowed to communicate together. Another reason is that it reduces the number of devices affected by abnormal broadcast traffic due to misconfigurations, hardware/software problems, or malicious intent.
+- **Subnetting by Location**
+- **Subnetting by Group or Function**
+- **Subnetting by Device Type**
+
+## 11.5 Subnet a IPv4 Network
+### 11.5.1 Subnet on an Octet Boundary
+Networks are most easily subnetted at the octet boundary of /8, /16, and /24.
+
+| Prefix Lenght | Subnet Mask   | Subnet Mask in Binary (n = network, h = host) | # of Hosts |
+| ------------- | ------------- | --------------------------------------------- | ---------- |
+| /8            | 255.0.0.0     | nnnnnnnn.hhhhhhhh.hhhhhhhh.hhhhhhhh           | 16,777,214 |
+| /16           | 255.255.0.0   | nnnnnnnn.nnnnnnnn.hhhhhhhh.hhhhhhhh           | 65,534     |
+| /24           | 255.255.255.0 | nnnnnnnn.nnnnnnnn.nnnnnnnn.hhhhhhhh           | 254        |
+### 11.5.2 Subnet within an Octet Boundary
+**Subnet a /24 Network**
+
+| Prefix Lenght | Subnet Mask     | Subnet Mask in Binary (n = network, h = host) | # of subnets | # of hosts |
+| ------------- | --------------- | --------------------------------------------- | ------------ | ---------- |
+| /25           | 255.255.255.128 | nnnnnnnn.nnnnnnnn.nnnnnnnn.nhhhhhhh           | 2            | 126        |
+| /26           | 255.255.255.192 | nnnnnnnn.nnnnnnnn.nnnnnnnn.nnhhhhhh           | 4            | 62         |
+| /27           | 255.255.255.224 | nnnnnnnn.nnnnnnnn.nnnnnnnn.nnnhhhhh           | 8            | 30         |
+| /28           | 255.255.255.240 | nnnnnnnn.nnnnnnnn.nnnnnnnn.nnnnhhhh           | 16           | 14         |
+| /29           | 255.255.255.248 | nnnnnnnn.nnnnnnnn.nnnnnnnn.nnnnnhhh           | 32           | 6          |
+| /30           | 255.255.255.252 | nnnnnnnn.nnnnnnnn.nnnnnnnn.nnnnnnhh           | 64           | 2          |
+For each bit borrowed in the fourth octet, the number of subnetworks available is doubled, while reducing the number of host addresses per subnet.
