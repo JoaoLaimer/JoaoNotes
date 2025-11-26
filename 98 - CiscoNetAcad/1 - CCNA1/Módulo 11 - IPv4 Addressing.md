@@ -166,3 +166,60 @@ Networks are most easily subnetted at the octet boundary of /8, /16, and /24.
 | /29           | 255.255.255.248 | nnnnnnnn.nnnnnnnn.nnnnnnnn.nnnnnhhh           | 32           | 6          |
 | /30           | 255.255.255.252 | nnnnnnnn.nnnnnnnn.nnnnnnnn.nnnnnnhh           | 64           | 2          |
 For each bit borrowed in the fourth octet, the number of subnetworks available is doubled, while reducing the number of host addresses per subnet.
+## 11.6 Subnet a Slash 16 and Slash 8 Prefix
+### 11.6.1 Create Subnets with a Slash 16 prefix
+**Subnet a /16 Network**
+
+| Prefix Lenght | Subnet Mask   | Network Address ( n = network, h = host) | # of subnets | # of hosts |
+| ------------- | ------------- | ---------------------------------------- | ------------ | ---------- |
+| /17           | 255.255.128.0 | nnnnnnnn.nnnnnnnn.nhhhhhhh.hhhhhhhh      | 2            | 32766      |
+| /18           | 255.255.192.0 | nnnnnnnn.nnnnnnnn.nnhhhhhh.hhhhhhhh      | 4            | 16382      |
+| /19           | 255.255.224.0 | nnnnnnnn.nnnnnnnn.nnnhhhhh.hhhhhhhh      | 8            | 8190       |
+| /20           | 255.255.240.0 | nnnnnnnn.nnnnnnnn.nnnnhhhh.hhhhhhhh      | 16           | 4094       |
+| /21           | 255.255.248.0 | nnnnnnnn.nnnnnnnn.nnnnnhhh.hhhhhhhh      | 32           | 2046       |
+| /22           | 255.255.252.0 | nnnnnnnn.nnnnnnnn.nnnnnnhh.hhhhhhhh      | 64           | 1022       |
+| /23           | 255.255.254.0 | nnnnnnnn.nnnnnnnn.nnnnnnnh.hhhhhhhh      | 128          | 510        |
+### 11.6.2 Create 100 Subnets with a Slash 16 prefix
+Consider a large enterprise that requires at least 100 subnets and has chosen the private address 172.16.0.0/16 as its internal network address.
+When borrowing bits from a /16 address, start borrowing bits in the third octet, going from left to right. Borrow a single bit at a time until the number of bits necessary to create 100 subnets is reached.
+To satisfy the requirement of 100 subnets for the enterprise, 7 bits (i.e., 27 = 128 subnets) would need to be borrowed (for a total of 128 subnets).
+In this example, when 7 bits are borrowed, the mask is extended 7 bits into the third octet. In decimal, the mask is represented as 255.255.254.0, or a /23 prefix, because the third octet is 11111110 in binary and the fourth octet is 00000000 in binary.
+
+## 1.7 Subnet to Meet Requirements
+### 11.7.1 Subnet Private versus Public IPv4 Address Space
+Because these devices need to be publicly accessible from the internet, the devices in the DMZ require public IPv4 addresses. The depletion of public IPv4 address space became an issue beginning in the mid-1990s. Since 2011, IANA and four out of five RIRs have run out of IPv4 address space. Although organizations are making the transition to IPv6, the remaining IPv4 address space remains severely limited. This means an organization must maximize its own limited number of public IPv4 addresses. This requires the network administrator to subnet their public address space into subnets with different subnet masks, in order to minimize the number of unused host addresses per subnet. This is known as Variable Subnet Length Masking (VLSM).
+
+### 11.7.2 Minimize Unused Host IPv4 Addresses and Maximize Subnets
+To minimize the number of unused host IPv4 addresses and maximize the number of available subnets, there are two considerations when planning subnets: the number of host addresses required for each network and the number of individual subnets needed.
+The number of host addresses required in the largest subnet will determine how many bits must be left in the host portion.
+Network administrators must devise the network addressing scheme to accommodate the maximum number of hosts for each network and the number of subnets. The addressing scheme should allow for growth in both the number of host addresses per subnet and the total number of subnets.
+
+## 11.8 VLSM
+### 11.8.3 IPv4 Address Conservation
+Because of the depletion of public IPv4 address space, making the most out of the available host addresses is a primary concern when subnetting IPv4 networks.
+Using traditional subnetting, the same number of addresses is allocated for each subnet. If all the subnets have the same requirements for the number of hosts, or if conserving IPv4 address space is not an issue, these fixed-size address blocks would be efficient. Typically, with public IPv4 addresses, that is not the case.
+The variable-length subnet mask (VLSM) was developed to avoid wasting addresses by enabling us to subnet a subnet.
+
+### 11.8.4 VLSM
+VLSM is just subnetting a subnet.
+**Note:** When using VLSM, always begin by satisfying the host requirements of the largest subnet. Continue subnetting until the host requirements of the smallest subnet are satisfied.
+
+## 11.9 Structured Design
+### 11.9.1 IPv4 Network Address Planning
+Before you start subnetting, you should develop an IPv4 addressing scheme for your entire network. You will need to know how many subnets you need, how many hosts a particular subnet requires, what devices are part of the subnet, which parts of your network use private addresses, and which use public, and many other determining factors. A good addressing scheme allows for growth. A good addressing scheme is also the sign of a good network administrator.
+
+Performing a network requirement study is the starting point. This means looking at the entire network, both the intranet and the DMZ, and determining how each area will be segmented. The address plan includes determining where address conservation is needed (usually within the DMZ), and where there is more flexibility (usually within the intranet).
+
+Where address conservation is required, the plan should determine how many subnets are needed and how many hosts per subnet. As discussed earlier, this is usually required for public IPv4 address space within the DMZ. This will most likely include using VLSM.
+
+Within the corporate intranet, address conservation is usually less of an issue This is largely due to using private IPv4 addressing, including 10.0.0.0/8, with over 16 million host IPv4 addresses.
+
+### 11.9.2 Device Address Assignment
+Within a network, there are different types of devices that require addresses:
+
+- **End user clients** - Most networks allocate IPv4 addresses to client devices dynamically, using Dynamic Host Configuration Protocol (DHCP). This reduces the burden on network support staff and virtually eliminates entry errors. With DHCP, addresses are only leased for a period of time, and can be reused when the lease expires. This is an important feature for networks that support transient users and wireless devices. Changing the subnetting scheme means that the DHCP server needs to be reconfigured, and the clients must renew their IPv4 addresses. IPv6 clients can obtain address information using DHCPv6 or SLAAC.
+- **Servers and peripherals** - These should have a predictable static IP address. Use a consistent numbering system for these devices.
+- **Servers that are accessible from the internet** - Servers that need to be publicly available on the internet must have a public IPv4 address, most often accessed using NAT. In some organizations, internal servers (not publicly available) must be made available to the remote users. In most cases, these servers are assigned private addresses internally, and the user is required to create a virtual private network (VPN) connection to access the server. This has the same effect as if the user is accessing the server from a host within the intranet.
+- **Intermediary devices** - These devices are assigned addresses for network management, monitoring, and security. Because we must know how to communicate with intermediary devices, they should have predictable, statically assigned addresses.
+- **Gateway** - Routers and firewall devices have an IP address assigned to each interface which serves as the gateway for the hosts in that network. Typically, the router interface uses either the lowest or highest address in the network.
+When developing an IP addressing scheme, it is generally recommended that you have a set pattern of how addresses are allocated to each type of device. This benefits administrators when adding and removing devices, filtering traffic based on IP, as well as simplifying documentation.

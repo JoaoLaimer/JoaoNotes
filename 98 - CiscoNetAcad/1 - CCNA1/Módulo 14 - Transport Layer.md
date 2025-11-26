@@ -94,3 +94,133 @@ A TCP segment adds 20 bytes (i.e., 160 bits) of overhead when encapsulating the 
 - SSH
 
 ### 14.3 UDP Overview
+### 14.3.1 UDP Features
+UDP features include the following:
+- Data is reconstructed in the order that it is received.
+- Any segments that are lost are not resent.
+- There is no session establishment.
+- The sending is not informed about resource availability.
+### 14.3.2 UDP Header
+UDP is a stateless protocol. If reliability is required when using UDP as the transport protocol, it must be handled by the application.
+The blocks of communication in UDP are called datagrams, or segments. These datagrams are sent as best effort by the transport layer protocol.
+The UDP header is far simpler than the TCP header because it only has four fields and requires 8 bytes (i.e., 64 bits). The figure shows the fields in a UDP header.
+![[Pasted image 20251126171631.png]]
+### 14.3.3 UDP Header Fields
+
+| UDP Header Field  | Description                                                                 |
+| ----------------- | --------------------------------------------------------------------------- |
+| Source Port       | A 16-bit field used to identify the source application by port number.      |
+| Destinantion Port | A 16-bit field used to identify the destination application by port number. |
+| Lenght            | A 16-bit field that indicates the length of the UDP datagram header.        |
+| Checksum          | A 16-bit field used for error checking of the datagram header and data.     |
+
+### 14.3.4 Applications that use UDP
+There are three types of applications that are best suited for UDP:
+- **Live video and multimedia applications** - These applications can tolerate some data loss, but require little or no delay. Examples include VoIP and live streaming video.
+- **Simple request and reply applications** - Applications with simple transactions where a host sends a request and may or may not receive a reply. Examples include DNS and DHCP.
+- **Applications that handle reliability themselves** - Unidirectional communications where flow control, error detection, acknowledgments, and error recovery is not required, or can be handled by the application. Examples include SNMP and TFTP.
+- DHCP
+- DNS
+- SNMP
+- TFTP
+- VoIP
+- Video
+Although DNS and SNMP use UDP by default, both can also use TCP. DNS will use TCP if the DNS request or DNS response is more than 512 bytes, such as when a DNS response includes many name resolutions. Similarly, under some situations the network administrator may want to configure SNMP to use TCP.
+
+## 14.4 Port Numbers
+The TCP and UDP header fields identify a source and destination application port number.
+The source port number is associated with the originating application on the local host whereas the destination port number is associated with the destination application on the remote host.
+
+### 14.4.2 Socket Pairs
+The source and destination ports are placed within the segment. The segments are then encapsulated within an IP packet. The IP packet contains the IP address of the source and destination. The combination of the source IP address and source port number, or the destination IP address and destination port number is known as a socket.
+
+The socket is used to identify the server and service being requested by the client. A client socket might look like this, with 1099 representing the source port number: 192.168.1.5:1099
+
+Sockets enable multiple processes, running on a client, to distinguish themselves from each other, and multiple connections to a server process to be distinguished from each other.
+
+### 14.4.3 Port Number Groups
+The Internet Assigned Numbers Authority (IANA) is the standards organization responsible for assigning various addressing standards, including the 16-bit port numbers. The 16 bits used to identify the source and destination port numbers provides a range of ports from 0 through 65535.
+
+| Port Group                   | Number Range   | Description                                                                                                                                                                                                                  |
+| ---------------------------- | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Well-Known Ports             | 0 to 1023      | Reserved for common or popular services and applications. Enables clients to easily identify the associated service required.                                                                                                |
+| Registered Ports             | 1024 to 49151  | Ports assigned by IANA to a requesting entity to use. These processes are primarily individual applications that a user has chosen to install,  rather than common applications that would receive a Well-Known Port number. |
+| Private and/or Dynamic Ports | 49152 to 65535 | Also known as ephemeral ports. Client OS usually assign port numbers dynamically when a connection to a service is initiated. Used to identify the client application during communication.                                  |
+**Note:** Some client operating systems may use registered port numbers instead of dynamic port numbers for assigning source ports.
+
+The table displays some common well-known port numbers and their associated applications.
+
+| Port Number | Protocol | Application                                         |
+| ----------- | -------- | --------------------------------------------------- |
+| 20          | TCP      | File Transfer Protocol (FTP) - Data                 |
+| 21          | TCP      | File Transfer Protocol (FTP) - Control              |
+| 22          | TCP      | Secure Shell (SSH)                                  |
+| 23          | TCP      | Telnet                                              |
+| 25          | TCP      | Simple Mail Transfer Protocol (SMTP)                |
+| 53          | UDP, TCP | Domain Name System (DNS)                            |
+| 67          | UDP      | Dynamic Host Configuration Protocol (DHCP) - Server |
+| 68          | UDP      | DHCP - Client                                       |
+| 69          | UDP      | Trivial File Transfer Protocol (TFTP)               |
+| 80          | TCP      | Hypertext Transfer Protocol (HTTP)                  |
+| 110         | TCP      | Post Office Protocol Version 3 (POP3)               |
+| 143         | TCP      | Internet Message Access Protocol (IMAP)             |
+| 161         | UDP      | Simple Network Management Protocol (SNMP)           |
+| 443         | TCP      | Hypertext Transfer Protocol Secure (HTTPS)          |
+### 14.4.4 The netstat Command
+Unexplained TCP connections can pose a major security threat. They can indicate that something or someone is connected to the local host. Sometimes it is necessary to know which active TCP connections are open and running on a networked host. Netstat is an important network utility that can be used to verify those connections.
+
+By default, the **netstat** command will attempt to resolve IP addresses to domain names and port numbers to well-known applications. The **-n** option can be used to display IP addresses and port numbers in their numerical form.
+
+## 14.5 TCP Communication Process
+### 14.5.1 TCP Server Processes
+An individual server cannot have two services assigned to the same port number within the same transport layer services.
+An active server application assigned to a specific port is considered open, which means that the transport layer accepts, and processes segments addressed to that port. Any incoming client request addressed to the correct socket is accepted, and the data is passed to the server application. There can be many ports open simultaneously on a server, one for each active server application.
+
+### 14.5.2 TCP Connection Establishment
+The host client establishes the connection with the server using the three-way handshake process.
+**Step 1. SYN**
+	The initiating client requests a client-to-server communication session with the server.
+**Step 2. ACK and SYN**
+	The server acknowledges the client-to-server communication session and requests a server-to-client communication session.
+**Step 3. ACK**
+	The initiating client acknowledges the server-to-client communication session.
+### 14.5.3 Session Termination
+To terminate a single conversation supported by TCP, four exchanges are needed to end both sessions. Either the client or the server can initiate the termination.
+
+**Step 1. FIN**
+	When the client has no more data to send in the stream, it sends a segment with the FIN flag set.
+**Step 2. ACK**
+	The server sends an ACK to acknowledge the receipt of the FIN to terminate the session from client to server.
+**Step 3. FIN**
+	The server sends a FIN to the client to terminate the server-to-client session.
+**Step 4. ACK**
+	The client responds with an ACK to acknowledge the FIN from the server.
+
+### 14.5.4 TCP Three-way Handshake Analysis
+TCP is a full-duplex protocol, where each connection represents two one-way communication sessions. To establish the connection, the hosts perform a three-way handshake.
+
+These are the functions of the three-way handshake:
+- It establishes that the destination device is present on the network.
+- It verifies that the destination device has an active service and is accepting requests on the destination port number that the initiating client intends to use.
+- It informs the destination device that the source client intends to establish a communication session on that port number.
+
+After the communication is completed the sessions are closed, and the connection is terminated. The connection and session mechanisms enable TCP reliability function.
+
+The six bits in the Control Bits field of the TCP segment header are also known as flags. A flag is a bit that is set to either on or off.
+
+The six control bits flags are as follows:
+- **URG** - Urgent pointer field significant
+- **ACK** - Acknowledgment flag used in connection establishment and session termination
+- **PSH** - Push function
+- **RST** - Reset the connection when an error or timeout occurs
+- **SYN** - Synchronize sequence numbers used in connection establishment
+- **FIN** - No more data from sender and used in session termination
+
+## 14.6 Reliability and Flow Control
+### 14.6.1 TCP Reliability - Guaranteed and Ordered Delivery
+During session setup, an initial sequence number (ISN) is set. This ISN represents the starting value of the bytes that are transmitted to the receiving application. As data is transmitted during the session, the sequence number is incremented by the number of bytes that have been transmitted. This data byte tracking enables each segment to be uniquely identified and acknowledged. Missing segments can then be identified.
+The ISN does not begin at one but is effectively a random number.
+
+**TCP Segments Are Reordered at the Destination**
+
+The receiving TCP process places the data from a segment into a receiving buffer. Segments are then placed in the proper sequence order and passed to the application layer when reassembled. Any segments that arrive with sequence numbers that are out of order are held for later processing. Then, when the segments with the missing bytes arrive, these segments are processed in order.
