@@ -9,7 +9,7 @@ The transport layer includes two protocols:
 - User Datagram Protocol (UDP)
 
 ### 14.1.2 Transport Layer Responsibilities
-The transport layer has many resposibilities:
+The transport layer has many responsibilities:
 - **Tracking Individual Conversations**: Each set of data flowing between a source application and a destination application is known as a conversation and is tracked separately. It is the responsibility of the transport layer to maintain and track these multiple conversations. Most networks have a limitation on the amount of data that can be included in a single packet. Therefore, data must be divided into manageable pieces.
 - **Segmenting Data and Reassembling Segments**: It is the transport layer responsibility to divide the application data into appropriately sized blocks. The transport layer divides the data into smaller blocks (i.e., segments or datagrams) that are easier to manage and transport.
 - **Add Header Information**: The transport layer protocol also adds header information containing binary data organized into several fields to each block of data. It is the values in these fields that enable various transport layer protocols to perform different functions in managing data communication. The transport layer ensures that even with multiple application running on a device, all applications receive the correct data.
@@ -224,3 +224,54 @@ The ISN does not begin at one but is effectively a random number.
 **TCP Segments Are Reordered at the Destination**
 
 The receiving TCP process places the data from a segment into a receiving buffer. Segments are then placed in the proper sequence order and passed to the application layer when reassembled. Any segments that arrive with sequence numbers that are out of order are held for later processing. Then, when the segments with the missing bytes arrive, these segments are processed in order.
+
+### 14.6.3 TCP Reliability - Data Loss and Retransmission
+The sequence (SEQ) number and acknowledgement (ACK) number are used together to confirm receipt of the bytes of data contained in the transmitted segments.
+The SEQ number identifies the first byte of data in the segment being transmitted. TCP uses the ACK number sent back to the source to indicate the next byte that the receiver expects to receive. This is called expectational acknowledgement.
+Prior to later enhancements, TCP could only acknowlege the next byte expected.
+
+Today hosts employ an option TCP feature called selective acknowledgment (SACK), negotiated during the three-way handshake. If both hosts support SACK, the receiver can explicitly acknowledge which segments (bytes) were received including any discontinuous segments.
+### 14.6.5 TCP Flow Control - Window Size and Acknowledgments
+TCP also provides mechanisms for flow control. Flow control is the amount of data that the destination can receive and process reliably. Flow control helps maintain the reliability of TCP transmission by adjusting the rate of data flow between source and destination for a given session. To accomplish this, the TCP header includes a 16-bit field called the window size
+The window size determines the number of bytes that can be sent before expecting an acknowledgment. The acknowledgment number is the number of the next expected byte.
+
+The initial window size is agreed upon when the TCP session is established during the three-way handshake. The source device must limit the number of bytes sent to the destination device based on the window size of the destination.
+
+A destination sending acknowledgments as it processes bytes received, and the continual adjustment of the source send window, is known as sliding windows.
+
+**Note:** Devices today use the sliding windows protocol. The receiver typically sends an acknowledgment after every two segments it receives. The number of segments received before being acknowledged may vary. The advantage of sliding windows is that it allows the sender to continuously transmit segments, as long as the receiver is acknowledging previous segments. 
+
+### 14.6.6 TCP Flow Control - Maximum Segment Size (MSS)
+The MSS is part of the options field in the TCP header that specifies the largest amount of data, in bytes, that a device can receive in a single TCP segment. The MSS size does not include the TCP header. The MSS is typically included during the three-way handshake.
+
+A common MSS is 1,460 bytes when using IPv4. A host determines the value of its MSS field by subtracting the IP and TCP headers from the Ethernet maximum transmission unit (MTU). On an Ethernet interface, the default MTU is 1500 bytes. Subtracting the IPv4 header of 20 bytes and the TCP header of 20 bytes, the default MSS size will be 1460 bytes.
+
+### 14.6.7 TCP Flow Control - Congestion Avoidance
+When congestion occurs on a network, it results in packets being discarded by the overloaded router. When packets containing TCP segments do not reach their destination, they are left unacknowledged. By determining the rate at which TCP segments are sent but not acknowledged, the source can assume a certain level of network congestion.
+Whenever there is congestion, retransmission of lost TCP segments from the source will occur. If the retransmission is not properly controlled, the additional retransmission of the TCP segments can make the congestion even worse.
+
+## 14.7 UDP Communication
+### 14.7.1 UDP Low Overhead versus Reliability
+UDP does not establish a connection. UDP provides low overhead data transport because it has a small datagram header and no network management traffic.
+### 14.7.2 UDP Datagram Reassembly
+UDP simply reassembles the data in the order that it was received and forwards it to the application. If the data sequence is important to the application, the application must identify the proper sequence and determine how the data should be processed.
+
+### 14.7.3 UDP Server Processes and Requests
+Like TCP-based applications, UDP-based server applications are assigned well-known or registered port numbers, as shown in the figure. When these applications or processes are running on a server, they accept the data matched with the assigned port number. When UDP receives a datagram destined for one of these ports, it forwards the application data to the appropriate application based on its port number.
+
+### 14.7.4 UDP Client Processes
+**Clients Sending UDP Requests**
+
+Client 1 is sending a DNS request while Client 2 is requesting RADIUS authentication services of the same server.
+
+**UDP Request Destination Ports**
+Client 1 is sending a DNS request using the well-known destination port 53 while Client 2 is requesting RADIUS authentication services using the registered destination port 1812.
+
+**UDP Request Source Ports**
+The requests of the clients dynamically generate source port numbers. In this case, Client 1 is using source port 49152 and Client 2 is using source port 51152.
+
+**UDP Response Destination**
+When the server responds to the client requests, it reverses the destination and source ports of the initial request. In the Server response to the DNS request is now destination port 49152 and the RADIUS authentication response is now destination port 51152.
+
+**UDP Response Source Ports**
+The source ports in the server response are the original destination ports in the initial requests.
