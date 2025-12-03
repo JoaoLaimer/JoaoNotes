@@ -20,3 +20,32 @@ Since a large portion of thick client applications are downloaded from the inter
 - SQL Injection.
 - Insecure Storage.
 - Session Management.
+## Penetration Testing Steps
+
+#### Information Gathering
+
+In this step, penetration testers have to identify the application architecture, the programming languages and frameworks that have been used, and understand how the application and the infrastructure work.
+- [CFF Explorer](https://ntcore.com/?page_id=388)
+- [Detect It Easy](https://github.com/horsicq/Detect-It-Easy)
+- [Process Monitor](https://learn.microsoft.com/en-us/sysinternals/downloads/procmon) 
+- [Strings](https://learn.microsoft.com/en-us/sysinternals/downloads/strings)
+#### Client Side attacks
+Sensitive information like usernames and passwords, tokens, or strings for communication with other services, might be stored in the application's local files. Hardcoded credentials and other sensitive information can also be found in the application's source code, thus Static Analysis is a necessary step while testing the application. Using the proper tools, we can reverse-engineer and examine .NET and Java applications including EXE, DLL, JAR, CLASS, WAR, and other file formats. Dynamic analysis should also be performed in this step, as thick client applications store sensitive information in the memory as well.
+- [Ghidra](https://www.ghidra-sre.org/)
+- [IDA](https://hex-rays.com/ida-pro/)
+- [OllyDbg](http://www.ollydbg.de/)
+- [Radare2](https://www.radare.org/r/index.html)
+- [dnSpy](https://github.com/dnSpy/dnSpy)
+- [x64dbg](https://x64dbg.com/)
+- [JADX](https://github.com/skylot/jadx)
+- [Frida](https://frida.re/)
+#### Network Side Attacks
+If the application is communicating with a local or remote server, network traffic analysis will help us capture sensitive information that might be transferred through HTTP/HTTPS or TCP/UDP connection, and give us a better understanding of how that application is working. Penetration testers that are performing traffic analysis on thick client applications should be familiar with tools like:
+- [Wireshark](https://www.wireshark.org/)
+- [tcpdump](https://www.tcpdump.org/)
+- [TCPView](https://learn.microsoft.com/en-us/sysinternals/downloads/tcpview)
+- [Burp Suite](https://portswigger.net/burp)
+#### Server Side Attacks
+
+Server-side attacks in thick client applications are similar to web application attacks, and penetration testers should pay attention to the most common ones including most of the OWASP Top Ten.
+
