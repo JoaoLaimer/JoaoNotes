@@ -1,6 +1,6 @@
 ## Footprinting & Discovery
 The only way to footprint the GitLab version number in use is by browsing to the `/help` page when logged in.
-f we cannot register an account, we may have to try a low-risk exploit such as [this](https://www.exploit-db.com/exploits/49821).
+If we cannot register an account, we may have to try a low-risk exploit such as [this](https://www.exploit-db.com/exploits/49821).
 ## Enumeration
 There's not much we can do against GitLab without knowing the version number or being logged in. The first thing we should try is browsing to `/explore` and see if there are any public projects that may contain something interesting.
 ## Attacking GitLab
