@@ -64,3 +64,44 @@ You can check ARP entries using the command **`arp -a`** in the command prompt. 
 To clear the ARP cache and prevent the attack, issue the command `arp -d`.
 ## Preventing Remote Access to Machine
 We must disable remote access (if not required) by going to `settings > Remote Desktop`.
+# Application Management
+## Trusted Application Store
+We can access Microsoft Application Store by typing `ms-windows-store:` in the Run dialogue.
+## Safe App Installation
+Only allow installation of applications from the Microsoft Store on your computer.  
+Go to `Setting > Select Apps and Features` and then select `The Microsoft Store only`.
+## Malware Removal through Windows Defender Anti Virus
+Windows Defender primarily offers four main functionalities:
+- **Real-time protection** - Enables periodic scanning of the computer.
+- **Browser integration** - Enables safe browsing by scanning all downloaded files, etc.
+- **Application Guard** - Allows complete web session sandboxing to block malicious websites or sessions to make changes in the computer.
+- **Controlled Folder Access** - Protect memory areas and folders from unwanted applications.
+## Microsoft Office Harnening
+The best practices [Microsoft Attack Surface Reduction Rules](https://docs.microsoft.com/en-us/microsoft-365/security/defender-endpoint/attack-surface-reduction-rules-reference?view=o365-worldwide) for hardening Microsoft Office.
+## AppLocker
+AppLocker is a recently introduced feature that allows users to block specific executables, scripts, and installers from execution through a set of rules.
+## Browser (MS Edge)
+### Protecting the Browser through Microsoft Smart Screen
+Microsoft SmartScreen helps to protect you from phishing/malware sites and software when using Microsoft Edge. It helps to make informed decisions for downloads and lets you browse safely in Microsoft Edge by:  
+- Displaying an alert if you are visiting any suspicious web pages.
+- Vetting downloads by checking their hash, signature etc against a malicious software database.  
+- Protecting against phishing and malicious sites by checking visited websites against a threat intelligence database.
+
+To turn on the Smart Screen, go to `Settings > Windows Security > App and Browser Control > Reputation-based Protection`. Scroll down and turn on the `SmartScreen option`.
+Open Microsoft Edge, go to Settings and then click “**Privacy, Search and Services**” - Set "**Tracking prevention**" to **Strict** to avoid tracking through ads, cookies etc.
+
+# Storage Management
+## Data Encryption Through BitLocker
+Go to `Start > Control Panel > System and Security > BitLocker Drive Encryption`. You can easily see if the option to BitLocker Drive Encryption is enabled or not. A trusted Platform Module chip TPM is one of the basic requirements to support BitLocker device encryption. Keeping the BitLocker recovery key in a secure place (preferably not on the same computer) is imperative. You can read more about BitLocker Recovery [here](https://support.microsoft.com/en-us/windows/finding-your-bitlocker-recovery-key-in-windows-6b71ad27-0b89-ea08-f143-056f5ab347d6).
+## Windows Sandbox
+To run applications safely, we can use a temporary, isolated, lightweight desktop environment called Windows Sandbox. We can install software inside this safe environment, and this software will not be a part of our host machine, it will remain sandboxed, The steps for enabling the Sandbox feature are as below:
+`Click Start > Search for 'Windows Features' and turn it on > Select Sandbox > Click OK to restart` 
+**Windows Secure Boot**  
+
+﻿Secure boot – an advanced security standard - checks that your system is running on trusted hardware and firmware before booting, which ensures that your system boots up safely while preventing unauthorised software access from taking control of your PC, like malware.
+﻿You can check the status of the secure boot by following: `msinfo32`
+## Enable File Backups
+Creating file backups is the best option to avoid disasters like malware attacks or hardware failure. You can enable the file backup option through  `Settings > Update and Security > Backup`.
+# Updating Windows
+You can see a list of Windows vulnerabilities by following [this](https://www.cvedetails.com/vulnerability-list/vendor_id-26/product_id-32238/Microsoft-Windows-10.html) link. The most critical part of hardening computers is enabling the Windows auto-updates.  
+`Click Start > Settings > Update & Security > Window Updates.`
