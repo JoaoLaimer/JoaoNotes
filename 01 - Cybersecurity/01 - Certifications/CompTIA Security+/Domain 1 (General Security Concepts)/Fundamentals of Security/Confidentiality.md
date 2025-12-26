@@ -16,8 +16,7 @@ Keeping information secret and safe from prying eyes.
 Process of converting data into code to prevent unauthorized access.
 
 ### Access Controls
-Ensure only authorized personnel can access certain types of data.
-
+Ensure only authorized personnel can access certain types of data. Identification, [[Authentication]], and [[Authorization]] are the three core identity and access management activities.
 ### Data Masking
 Method that involves obscuring data within a database to make it inaccessible for unauthorized users while retaining the real data's authenticity and use for authorized users.
 
@@ -28,3 +27,4 @@ Used to ensure confidentiality for physical types of data and for digital inform
 Conducting regular training on the security awareness best practices that employees can use to secure  organization's sensitive data.
 
 ### CONFIDENTIALITY <-> ENCRYPTION
+

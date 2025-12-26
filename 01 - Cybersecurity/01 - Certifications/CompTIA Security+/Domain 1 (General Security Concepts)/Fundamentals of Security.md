@@ -1,5 +1,5 @@
 # CIA Information Triad
-
+The CIA Triad is the foundation of everything we do in cybersecurity. It's one of the essential concepts listed in the Security+ exam objectives, and you should be very familiar with it when you take the exam. Try to relate each concept with one or three goal of confidentiality, integrity ans availability.
 **[[Confidentiality]]**: Ensures that information is only accessible to those with the appropriate authorization.
 
 **[[Integrity]]**: Ensures that data remains accurate and unaltered unless modification is required.

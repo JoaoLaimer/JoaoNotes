@@ -1,5 +1,19 @@
 Nmap was created by Gordon Lyon (Fyodor), a network security expert and open source programmer. It was released in 1997. Nmap, short for Network Mapper, is free, open-source software released under GPL license. Nmap is an industry-standard tool for mapping networks, identifying live hosts, and discovering running services. Nmap’s scripting engine can further extend its functionality, from fingerprinting services to exploiting vulnerabilities.
 
+## Host Discovery
+The '-sn' flag disables port scanning.
+
+### Scan IP List
+You can use a file with an IP list with the hosts you need to test.
+Flag: `-iL`
+
+### Scan IP Range
+An range of IPs can be scanned using this notation:
+```bash
+$ nmap -sn 10.129.2.18-20
+```
+Where nmap is going to scan the .18, .19 and .20 IPs.
+
 **Nmap Host Discovery Using ARP**
 When a privileged user tries to scan targets on a local network (Ethernet), Nmap uses ARP Requests. When a privileged user tries to scan targets outside the local network, Nmap uses ICMP echo requests, TCP ACK to port 80, TCP SYN to port 443, and ICMP timestamp requests.  When an unprivileged user tries to scan targets outside the local network, Nmap uses TCP 3-way handshake by sending SYN packets to ports 80 and 443.
 
@@ -18,6 +32,10 @@ ICMP Timestamp: `-PP`
 Nmap uses address mask queries (ICMP Type 17) and checks whether it gets an address mask reply (ICMP Type 18).
 
 ICMP Address Mask: `-PM`
+
+We can use the flag `--packet-trace`, to show all packets sent and received.
+We can use the flag `--reason` to determine why a host is alive.
+We can use the flag `--disable-arp-ping` to disable ARP pings.
 
 **Nmap Host Discovery Using TCP and UDP**
 We can send a packet with the SYN (Synchronize) flag set to a TCP port, 80 by default, and wait for a response. An open port should reply with a SYN/ACK (Acknowledge); a closed port would result in an RST (Reset).
@@ -185,13 +203,20 @@ You can also specify the script by name using `--script "SCRIPT-NAME"` or a patt
 
 # Outputs
 
-| `-oN` | save output in normal format                    |
-| ----- | ----------------------------------------------- |
-| `-oG` | save output in grepable format                  |
-| `-oX` | save output in XML format                       |
-| `-oA` | save output in normal, XML and Grepable formats |
+| Flag  | Description                                      |
+| ----- | ------------------------------------------------ |
+| `-oN` | Save output in normal format (.nmap)             |
+| `-oG` | Save output in grepable format (.gnmap)          |
+| `-oX` | Save output in XML format (.xml)                 |
+| `-oA` | Ssave output in normal, XML and Grepable formats |
+To convert stored results to XML format to HTML, we can use the tool `xsltproc`:
+```bash
+$ xsltproc target.xml -o target.html
+```
 
 # Extra 
 
 | `-A`  | equivalent to `-sV -O -sC --traceroute`         |
 | ----- | ----------------------------------------------- |
+Press SPACE to view status during the scan or set the flag `--stats-every=<num><s|m>.`
+
