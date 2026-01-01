@@ -9,5 +9,5 @@ Overall management of the organization's IT infrastructure, policies, [[Procedur
 Adherence to laws, regulation, [[Standards]], and [[Policies]] that apply to the operations of the organization.
 - **Legal obligation**: [[Non-compliance Consequences]] can lead to legal penalties including fines and sanctions.
 - **Trust and Reputations**: Compliance can enhance organization's reputation and foster trust among customers and partners.
-- **[[Data Protection]]**: Compliance can help prevent data breaches and protect the privacy of customers' and employees' data.
+- **[[Data Protection (Index)]]**: Compliance can help prevent data breaches and protect the privacy of customers' and employees' data.
 - **Business Continuity**: Compliance can help and organization continue operating despite a disaster or disruption.
