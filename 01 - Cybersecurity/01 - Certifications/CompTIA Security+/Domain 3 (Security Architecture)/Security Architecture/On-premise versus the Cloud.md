@@ -34,3 +34,6 @@ Businesses might not be able to apply patches due to compatibility issues.
 Customers don't have to worry about power consumption.
 ## Compute 
 Amount of computation resources that a customer can use.
+
+> Multi-tenancy is a concern in share cloud environments where resources are shared among different clients.
+

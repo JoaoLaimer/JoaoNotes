@@ -14,7 +14,8 @@ LDAP is also used to in authentication and server as a central repository for us
 ## Open Authorization (OAuth)
 Open standard for token-based authentication and authorization that allows an individual's account information to be used by third-party services without exposing the user's password.
 OAuth protocol is commonly used for authentication and authorization in RESTful APIs.
-The client app  or service registers with the authorization server, provides a redirect URL, and gets an ID and secret.
+The client app or service registers with the authorization server, provides a redirect URL, and gets an ID and secret.
+> Implementing a central OAuth authorization server to handle user authentication and issue access tokens to third-party applications is the most effective way to implement OAuth.
 ## Security Assertion Markup Language (SAML)
 A standard for logging users into applications based on their sessions in another context.
 SAML allows services to separate from identity providers and removes the need for direct user authentication.

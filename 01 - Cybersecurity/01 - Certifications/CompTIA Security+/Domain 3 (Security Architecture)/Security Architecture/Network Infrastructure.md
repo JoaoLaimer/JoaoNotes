@@ -6,3 +6,5 @@ Physical separation is one the most secure methods of security but it is still v
 Creates boundaries within a network, restricting access to certain areas.
 - VLANs
 - Firewalls
+## Implicit Trust Zones
+mplicit trust zones are areas within a network where communication is allowed without exhaustive security checks.

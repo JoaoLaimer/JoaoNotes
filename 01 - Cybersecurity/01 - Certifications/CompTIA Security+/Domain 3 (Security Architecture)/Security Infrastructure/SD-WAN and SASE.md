@@ -5,6 +5,7 @@ Visualized approach to managing and optimizing wide area network connections to 
 - Microwave Link
 - Broadband Internet
 SD-WAN employs a centralized control function to securely and intelligently route traffic across the wide area network (WAN).
+> SD-WAN can be used on both on-premise and cloud resources.
 ## Secure Access Service Edge (SASE)
 Used to consolidate numerous networking and security functions into a single cloud-native service to ensure that secure and access for end-users can be achieved.
 - Firewalls

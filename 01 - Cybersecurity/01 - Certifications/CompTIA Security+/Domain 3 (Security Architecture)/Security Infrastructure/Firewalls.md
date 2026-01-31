@@ -5,11 +5,11 @@ Acts as a security barrier between external untrusted networks and internal trus
 Install a firewall in a network to set up a screened subnet.
 
 A firewall with in-depth inspection may slow down the device due to the time taken for each packet to pass through all the rules
-## Packet Filtering Firewall (Layer 4)
+## Packet Filtering Firewall (Layer 4) (Stateless)
 Checks packet headers for traffic allowance based on IP addresses and port numbers.
 Cannot prevent certain attacks due to limited inspection capabilities in the packet header.
 ## Stateful Firewall 
-Monitors all inbound and outbound network connections and requests.
+Monitors all inbound and outbound network connections and requests. Keeps tracks of conversations.
 ## Proxy Firewall
 Acts as an intermediary between internal and external connections, making connection on behalf of other endpoints.
 - **Circuit Level**: Like a SOCKS firewall, operates at the Layer 5 of the OSI model.
@@ -22,6 +22,8 @@ Aims to address the limitations of traditional firewalls by being more aware of 
 - Operates fast with minimal network performance impact.
 - Offers full-stack traffic visibility.
 - Integrates with various security products.
+- Application awareness.
+- User identity tracking
 Organization become reliant on a single vendor due to firewall configurations tailored to their product line.
 
 ## Unified Threat Management Firewall (UTM)

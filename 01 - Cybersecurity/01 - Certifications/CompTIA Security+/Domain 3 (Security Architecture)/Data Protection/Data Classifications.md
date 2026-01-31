@@ -12,7 +12,8 @@ Contains data that should only be used within the organization.
 Contains items such as trade secrets, intellectual property data, and source code that affect the business if disclosed.
 ### Critical Data
 Contains valuable information.
-
+## Regulated Data
+Contains data that adheres to specific compliance standards due to its sensitive nature.
 # Government Classification
 ### Unclassified Data
 Data that can be released to the public or under the Freedom of Information Act.

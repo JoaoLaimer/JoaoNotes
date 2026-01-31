@@ -13,6 +13,7 @@ Involves identifying and counting assets, especially in large organizations or d
 - Detects unauthorized devices
 - Informs software update decisions
 - Addresses security vulnerabilities
+- Assign unique identifiers, access controls and attributes to each asset.
 ## Mobile Device Management (MDM)
 Lets organizations securely oversee employee devices, ensuring policy enforcement, software consistency, and data protection.
 MDM's centralization boosts security by ensuring all devices comply with the latest standards and protocols.

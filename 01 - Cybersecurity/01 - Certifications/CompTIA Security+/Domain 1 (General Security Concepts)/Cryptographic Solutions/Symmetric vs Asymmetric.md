@@ -1,7 +1,7 @@
 ## Symmetric Algorithm (Private Key)
 Encryption algorithm in which both the sender and the receiver must know the same shared secret using a privately held key.
 ## Asymmetric Algorithm (Public Key)
-Encryption algorithm where different keys are used to encrypt and decrypt the data.
+Encryption algorithm where different keys are used to encrypt and decrypt the data. Doesn't require the exchanging of a key.
 ## Hybrid Implementation
 Utilizes asymmetric encryption to securely transfer a private key that can then be used with symmetric encryption.
 ## Stream Cipher

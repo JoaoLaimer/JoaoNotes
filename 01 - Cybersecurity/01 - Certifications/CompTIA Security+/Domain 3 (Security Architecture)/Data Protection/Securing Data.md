@@ -7,7 +7,7 @@ Technique that converts data into a fixed size of numerical or alphanumeric char
 ## Masking
 Involves replacing some or all of the data in a field with a placeholder, such as "x", to conceal the original content.
 ## Tokenization
-Replaces sensitive information with non-sensitive substitutes, known as tokens.
+Replaces sensitive information with non-sensitive substitutes, known as tokens. The original data can be retrieved if needed.
 ## Obfuscation
 Involves making data unclear or unintelligible, making it difficult for unauthorized users to understand.
 ## Segmentation

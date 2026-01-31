@@ -1,4 +1,5 @@
 Enables efficient network configurations to improve performance and monitoring.
+Focuses on centralizing network control through software.
 ## Data Plane
 Also called the forwarding plane that is responsible for handling packets and makes decisions based on protocols.
 ## Control Plane

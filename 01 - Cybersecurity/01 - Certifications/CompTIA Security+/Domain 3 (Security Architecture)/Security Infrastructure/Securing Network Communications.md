@@ -56,3 +56,11 @@ Offers connectionless data integrity and data origin authentication for IP datag
 Employed for providing authentication, integrity, replay protection, and data confidentiality by encrypting the packet's payload.
 
 In tunneling mode, employ both the authentication header and the encapsulated security payload.
+### Protocols
+- **IPsec (Internet Protocol Security):** A suite of protocols used for securing IP traffic, providing authentication and encryption at the network layer. It is often used in Site-to-Site VPNs.
+- **OpenVPN:** An open-source, versatile protocol that uses the OpenSSL library for encryption, offering high security and compatibility. Commonly uses UDP port 1194.
+- **WireGuard:** A modern, high-performance VPN protocol known for being lightweight and fast while utilizing state-of-the-art cryptography. Uses UDP port 51820 by default.
+- **SSTP (Secure Socket Tunneling Protocol):** A Microsoft-developed protocol that uses SSL/TLS (Port 443) to encapsulate traffic, allowing it to bypass most firewalls.
+- **IKEv2 (Internet Key Exchange v2)**: Often paired with IPsec, this protocol is excellent for mobile devices due to its ability to reconnect quickly when switching between networks. Primarily uses UDP port 1701.
+- **L2TP/IPsec (Layer 2 Tunneling Protocol):** Creates the tunnel (L2TP) and relies on IPsec for encryption.
+- **PPTP (Point-to-Point Tunneling Protocol):** An older, less secure protocol. It is rarely used now due to known vulnerabilities, but it is still important to know for legacy compatibility

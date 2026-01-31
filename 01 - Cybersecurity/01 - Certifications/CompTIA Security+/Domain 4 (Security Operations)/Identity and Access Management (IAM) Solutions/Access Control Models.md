@@ -8,11 +8,13 @@ Assign users to roles and uses these roles to grant permissions to resources.
 Role-based access control enforces minimum privileges.
 ## Rule-Based Access Control (RBAC)
 Enables administrators to apply security policies to all users.
+> Remember: conditionality. 
 ## Attribute-based Access Control (ABAC)
 Uses object characteristics for access control decisions.
 **User Attributes**: User's name, role, organization, ID, or security clearance level.
 **Environment Attributes**: Time of access, data location, and current organization's threat level.
 **Resource Attributes**: File creation date, resource owner, file name, and data sensitivity.
+> It evaluates multiple attributes from a single object.
 ## Time of Day Restrictions
 Controls restrict resource access based on request times.
 ## Principle of Least Privilege
@@ -21,3 +23,7 @@ Least privilege reduces the risk of an account being misused if compromised by a
 Least privilege requires continually reviewing user permissions to prevent permission creep.
 ## Permission or Authorization Creep
 Occurs when a user gains excessive rights during their career progression in the company.
+## Just-in-Time Permissions
+By granting access only when it's specifically needed and for a short duration, just-in-time permissions minimize the exposure of critical systems.
+## Ephemeral credentials
+Ephemeral credentials are temporary and designed for short-lived purposes, thus reducing the risk of those credentials being misused or compromised.

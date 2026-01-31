@@ -29,7 +29,7 @@ Information is subject to the laws and governance structures within the nation w
 - Geographic restriction
 - Encryption and hashing
 - Masking
-- Tokenization, Ossification and Segmentation
+- Tokenization, Obsification and Segmentation
 - Permission Restriction
 ### [[Data Loss Prevention]]
 Or DLP, is a strategy for ensuring sensitive or critical information does not leave an organization.

@@ -1,6 +1,11 @@
 The process of creating duplicate copies of digital information to protect against data loss, corruption, or unavailability.
 Never keep all the data on a single device or server.
-
+## Incremental Backups
+Capture all the changes made since the last backup.
+## Continuous Backups
+Allow near-instantaneous backup of changed data, ensuring minimal data loss during failures.
+## Differential Backups
+Save data changed since the last full backup.
 ## Onsite or Offsite Backup
 Where the backups of the data are physically being stored.
 It's important to remember that the backed up data might be vulnerable to destruction.
@@ -27,7 +32,7 @@ Used to regain access to the data in the event of a data loss or a system failur
 - Documentation and reporting
 - Notification
 ## Replication
-Making real-time, or near-real-time, copies of the data.
+Making **real-time, or near-real-time**, copies of the data.
 ## Journaling
 Maintaining a meticulous record of every change made to an organization's data over time.
 - Selecting the appropriate data tracking ganularity.

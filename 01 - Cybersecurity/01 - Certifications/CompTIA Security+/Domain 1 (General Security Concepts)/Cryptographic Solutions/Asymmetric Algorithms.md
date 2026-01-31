@@ -1,8 +1,10 @@
-Does not require a shared secret key, often referred as public key cryptography since their key is considered to be freely and openly available to the public.
+Does not require a shared secret key, often referred as public key cryptography since their key is considered to be 
+freely and openly available to the public. 
 - Confidentiality
 - Integrity
 - Authentication
 - Non-repudiation
+> Does not require the exchange of a key, but it is used to exchange a symmetric key.
 ### Digital Signature
 A hash digest of a message encrypted with the sender's private key to let the recipient know the document was created and sent by the person claiming to have sent it.
 ## Diffie-Hellman (DH)
@@ -20,3 +22,6 @@ ECC version of the Diffie-Hellman key exchange protocol.
 Uses a different key for each portion of the key establishment process inside the Diffie-Hellman key exchange.
 #### Eliptic Curve Digital Signature Algorithm (ECDSA)
 Used as public key encryption algorithm by the US Government in their digital signatures.
+## Trapdoor Function
+Is the concept of the easy encryption using a public key, but reversing the process (decryption) without the private key is challenging.
+RSA's and ECC principle is that certain mathematical operations are easy to perform, but their inverse operations are difficult without specific knowledge.

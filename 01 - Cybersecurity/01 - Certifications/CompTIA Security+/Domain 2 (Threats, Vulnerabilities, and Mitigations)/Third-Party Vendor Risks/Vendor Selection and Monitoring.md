@@ -5,6 +5,7 @@ Rigorous evaluation that goes beyond surface-level credentials.
 - Operational History
 - Client Testimonials
 - On-the-ground Practices
+> To ensure that the vendor's practices align with the organization's requirements. Due Diligence doesn't mean choosing the best possible.
 ## Conflict of Interest
 Arises when personal or financial relationships could potentially cloud the judgment of individuals involved in vendor selection.
 

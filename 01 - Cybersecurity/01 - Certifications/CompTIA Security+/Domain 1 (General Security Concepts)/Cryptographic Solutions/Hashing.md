@@ -1,5 +1,7 @@
 One-way cryptographic function that takes an input and produces a unique message digest as its output.
 The hash digest is always the same length regardless of how long the input is.
+## Key Streching
+Hashing technique that strengthens weak or small keys, applying the hashing function repeatedly on the information, turning the cracking process slower for each try.
 ## MD5
 Creates a 128-bit hash value that is unique to the input file.
 ## Secure Hash Algorithm

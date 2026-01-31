@@ -1,5 +1,6 @@
 ## Boards
 A board of directors is a group of individuals elected by shareholders to oversee the management of an organization.
+- Governance Board
 ## Committees
 Subgroup of a board of directors, each with a specific focus.
 ## Government Entities

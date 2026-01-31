@@ -220,3 +220,20 @@ $ xsltproc target.xml -o target.html
 | ----- | ----------------------------------------------- |
 Press SPACE to view status during the scan or set the flag `--stats-every=<num><s|m>.`
 
+### Scans Table
+
+| Flags | Description      |
+| ----- | ---------------- |
+| `-sS` | Stealth Scan     |
+| `-sV` | Service Scan     |
+| `-sT` | TCP Scan         |
+| `-sF` | FIN Scan         |
+| `-sU` | UDP Scan         |
+| `-sN` | NULL Scan        |
+| `-sX` | XMAS Scan        |
+| `-sA` | ACK Scan         |
+| `-sW` | Window Scan      |
+| `-sM` | Maimon Scan      |
+| `-sY` | SCTP Init Scan   |
+| `-sZ` | COOKIE-ECHO Scan |
+| `-sO` | IP Protocol Scan |

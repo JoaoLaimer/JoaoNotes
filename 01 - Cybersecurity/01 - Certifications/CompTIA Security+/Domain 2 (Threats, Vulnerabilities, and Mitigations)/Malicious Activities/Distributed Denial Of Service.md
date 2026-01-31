@@ -13,9 +13,12 @@ A large number of processes is created to use up a computer's available processi
 Not a worm.
 ## Distributed Denial of Service (DDoS)
 More machines are used to launch an attack simultaneously against a single server to create denial of service condition.
+### Reflected DDoS
+The attacker sends requests to multiple third-party servers using a forged source IP address, which is the victim's IP.
+### Amplified DDoS
+Also involves the use of forged IP addresses, it typically relies on a smaller set of servers to send an amplified amount of traffic to the victim.
 ## DNS Amplification Attack
 Specialized DDoS that allows an attacker to initiate DNS request from a spoof IP address to flood the website.
-
 ## Blackhole/Sinkhole
 Redirecting attacking IP addresses to a non-existent server through a null interface.
 ## Intrusion Prevention

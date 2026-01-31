@@ -27,7 +27,7 @@ The root is usually a trusted third-party provider like:
 Trusted third party who is going to issue these digital certificates.
 ## Registration Authority
 Requests identifying information from the user and forwards that certificate request up to the certificate authority to create the digital certificate.
-## Certificate Signing Request
+## Certificate Signing Request (CSR)
 A block of encoded text that contains information about the entity requesting the certificate.
 ## Certificate Revocation List
 Server as an online list of digital certificates that the certificate authority has already revoked.

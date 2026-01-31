@@ -9,7 +9,7 @@ Process of creating new user accounts, assigning them appropriate permissions, a
 ## Deprovisioning
 Process of removing an individual's access rights when the rights are no longer required.
 ## Identity Proofing
-Process of verifying the identity of a user before the account is created.
+Process of verifying the identity of a user before the account is created, through various verification methods
 ## Interoperability
 The ability of different systems, devices, and applications to work together and share information.
 ## Attestation

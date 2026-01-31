@@ -5,6 +5,7 @@ Identify:
 - Generic greeting
 - Spelling and grammar mistakes
 - Spoofed email addresses
+> A phishing campaign can be used to educate users.
 # Recognizing Phishing Attacks
 ## Urgency
 Phishing email induce urgency by pushing recipients to take immediate action.

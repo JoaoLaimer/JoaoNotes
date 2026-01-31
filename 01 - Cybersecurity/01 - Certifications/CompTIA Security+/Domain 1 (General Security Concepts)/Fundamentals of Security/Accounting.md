@@ -17,8 +17,6 @@ Uses detailed accounting and event logs that can help cybersecurity experts unde
 Organizations can optimize system performance and minimize costs by tracking resource utilization and allocation decisions.
 ### User Accountability
 Thorough accounting system ensures users' actions are monitored and logged, deterring potential misuse and promoting adherence to the organization's policies.
-
-
 ## Tools Used
 #### Syslog Servers
 Used to aggregate logs from various network devices and systems so that system administrators can analyze them to detect patterns or anomalies in the organization's systems.

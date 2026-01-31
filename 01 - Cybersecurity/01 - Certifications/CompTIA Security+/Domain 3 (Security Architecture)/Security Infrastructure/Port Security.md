@@ -28,3 +28,5 @@ Variants:
 - **PEAP**: Supports mutual authentication by using certificates and the Microsoft Active Directory databases for it to authenticate a password from the client.
 - **EAP-LEAP**: Only works on Cisco-based devices.
 
+## Wiretapping
+Wiretapping, in the context of a wired network, refers to the act of connecting directly to the network's physical infrastructure (cables) to monitor and capture data traffic. It is a direct method to eavesdrop on communications.

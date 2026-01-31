@@ -7,6 +7,8 @@ Ensures data processing in real-time and is crucial for time-sensitive applicati
 - Software Bugs
 - Security Vulnerabilities
 - Outdated Systems
+> RTOSs prioritize performance, sometimes at the expense of security features like buffer overflow protections, potentially leaving the system susceptible to certain attacks.
+
 ## Securing Embedded Systems
 ### Network Segmentation
 Divides a network into multiple segments or subnets, limiting potential damage in case of a breach.

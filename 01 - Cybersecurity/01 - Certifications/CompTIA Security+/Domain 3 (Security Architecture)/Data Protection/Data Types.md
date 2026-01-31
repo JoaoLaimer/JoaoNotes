@@ -15,6 +15,8 @@ Includes any data related to legal proceedings, contracts, or regulatory complia
 ## Financial Information
 Includes data related to an organization's financial transactions, such as sales records, invoices, taxes, documents, and bank statements.
 - PCI DSS
+- Know Your Customer (KYS)
+- Anti-Money Laundering (AML)
 ## Human-readable data
 Information that can be understood by humans without the need for a machine or software.
 ## Non-human Readable Data
