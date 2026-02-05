@@ -1,4 +1,4 @@
-## Log Aggregation
+##Log Aggregation
 Process of collecting and consolidating log data from various sources into a centralized location.
 Consolidated log data provides insight's about system performance.
 - Detect security incidents

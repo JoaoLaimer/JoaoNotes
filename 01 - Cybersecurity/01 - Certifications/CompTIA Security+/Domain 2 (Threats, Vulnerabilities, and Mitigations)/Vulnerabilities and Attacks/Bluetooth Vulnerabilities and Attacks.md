@@ -1,16 +1,15 @@
 ## Bluetooth
 Wireless technology standard used for exchanging data between fixed and mobile devices over short distances without the need for an Internet connection.
 ## Insecure Device Pairing
-Occurs when Bluettoth devices establish a connection without proper authentication.
+Occurs when Bluetooth devices establish a connection without proper authentication.
 ## Device Spoofing 
 Occurs when a attacker impersonates a device to trick a user into connecting
 ## On-Path Attack
 Exploits Bluetooth protocol vulnerabilities to intercept and alter communications between devices without wither party being aware.
-
 ## Bluejacking
 Attacker send unsolicited messages to a Bluetooth-enabled device.
 ## Bluesnarfing
-Involves unauthorized access to a device thought its Bluetooth connection to steal information like contacts, call logs and text messages.
+Involves unauthorized access to a device through its Bluetooth connection to steal information like contacts, call logs and text messages.
 ## Bluebugging
 When attackers take control of a device Bluetooth function an potentially use the device to make calls, send text messages, or access the Internet.
 ## Bluesmack

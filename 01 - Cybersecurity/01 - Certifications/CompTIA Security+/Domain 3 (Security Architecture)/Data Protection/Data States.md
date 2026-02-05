@@ -14,6 +14,7 @@ Refers to data actively moving from one location to another, such as across the 
 - **Secure Sockets Layer (SSL) / Transport Layer Security (TLS)**: Cryptographic protocols designed to provide secure communication over a computer network.
 - **Virtual Private Network (VPN)**: Technology that creates a secure connection over a less secure network.
 - **Internet Protocol Security (IPSec)**: Protocol suite used to secure IP communications by authenticating and encrypting each IP packet in a data stream.
+> SSL has been compromised and is not recommended for use.
 ## Data in Use
 Refers to data in the process of being created, retrieved, updated, or deleted.
 #### Protection:

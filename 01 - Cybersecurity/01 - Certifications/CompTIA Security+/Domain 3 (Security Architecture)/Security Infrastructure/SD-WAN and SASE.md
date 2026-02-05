@@ -11,7 +11,7 @@ Used to consolidate numerous networking and security functions into a single clo
 - Firewalls
 - VPNs
 - Zero-Trust Network Access
-- CASBs
+- Cloud Access Security Broker (CASB) - Acts between users and cloud service providers. 
 SASE ensures secure and efficient user-device connections to applications and services.
 - Amazon Web Services (AWS) - Virtual Private Cloud (VPC)
 - Microsoft Azure - Azure's Virtual Wan, Express Route

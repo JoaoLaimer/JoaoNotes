@@ -16,6 +16,10 @@ Open standard for token-based authentication and authorization that allows an in
 OAuth protocol is commonly used for authentication and authorization in RESTful APIs.
 The client app or service registers with the authorization server, provides a redirect URL, and gets an ID and secret.
 > Implementing a central OAuth authorization server to handle user authentication and issue access tokens to third-party applications is the most effective way to implement OAuth.
+
+> It's easy to get confused about what OAuth does because the name is ambiguous! Remember that the "Auth" in OAuth stands for authorization, not authentication!
 ## Security Assertion Markup Language (SAML)
 A standard for logging users into applications based on their sessions in another context.
 SAML allows services to separate from identity providers and removes the need for direct user authentication.
+> SAML is an XML-based standard used to exchange authentication and authorization information between different parties. SAML provides SSO for web-based application.
+

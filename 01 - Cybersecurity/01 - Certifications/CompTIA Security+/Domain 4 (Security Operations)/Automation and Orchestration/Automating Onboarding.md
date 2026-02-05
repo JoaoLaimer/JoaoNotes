@@ -15,9 +15,10 @@ Involves the creation and management of users accounts and access rights to inte
 - Send out the proper notification and confirmation
 - Conduct continuous synchronization and updates.
 ## Resource Provisioning 
-Allocating the necessary tools and resources that new employees need to perform their jobs.
+Is a continuous process, that allocates the necessary tools and resources that new employees need to perform their jobs.
 - Requirements Analysis
 - Resource Allocation
 - Configuration and Customization
 - Verification and Auditing
 - Gathering Feedback
+> Automating resource provisioning allows for on-the-fly adjustments, enabling an environment to quickly adapt to workload needs.

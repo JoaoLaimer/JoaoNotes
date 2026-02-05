@@ -2,7 +2,7 @@ A method of which IT infrastructure are defined in code files that can be versio
 - YAML
 - JSON
 - HashiCorp Configuration Language (HCL)
-## Snowflake SYstem
+## Snowflake System
 A configuration that lacks consistency that might introduce risks, so it has to be eliminated.
 ## Idempotence 
 The ability of an operation to produce the same results as may times as it is executed.

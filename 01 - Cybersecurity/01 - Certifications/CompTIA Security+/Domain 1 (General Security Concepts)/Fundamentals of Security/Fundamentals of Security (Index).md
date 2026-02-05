@@ -30,3 +30,5 @@ Security model that operates on the principle that no one, whether inside or out
  Focused on the subject/system, policy engine, policy administrator, and establishing policy enforcement points.
 ### [[Gap Analysis]]
 Analyses the current organization security or performance posture and compares to an ideal posture to find differences and improvements opportunities.
+
+> **Identification** occurs when a user claims an identity, such as with a username or email address. **Authentication** occurs when the user proves the claimed identity (such as with a password) and the credentials are verified (such as with a password). **Access control systems** provide **authorization** by granting access to resources based on permissions granted to the proves identity. **Logging** provides accounting. 

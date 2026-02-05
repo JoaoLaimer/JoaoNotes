@@ -22,6 +22,7 @@ Focuses on extracting files and data fragments from storage media without relyin
 Involves systematically scrutinizing the data to uncover relevant information, such as potential signs of criminal activity, hidden files, timestamps, and user interactions.
 ## Reporting
 Involves documenting the findings, processes and methodologies used during a digital forensic investigation.
+> A investigator have to write the report to the intended audience of the report.
 ## Legal Hold
 Formal notification that instructs employees to preserve all potentially relevant electronic data, documents, and records.
 ## Electronic Discovery (e-discovery)

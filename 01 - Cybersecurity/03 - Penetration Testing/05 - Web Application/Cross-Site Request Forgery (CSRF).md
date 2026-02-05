@@ -85,4 +85,3 @@ Or as a pathname:
 ```
 Referer: attacker.com/example.com
 ```
-56

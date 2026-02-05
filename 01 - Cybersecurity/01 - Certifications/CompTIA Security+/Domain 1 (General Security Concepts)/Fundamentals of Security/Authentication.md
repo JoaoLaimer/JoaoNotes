@@ -12,11 +12,11 @@ Security measure that ensures individuals or entities are who they claim to be d
 	Relies on the user being in a certain geographic location before access is granted.
 ### Two-Factor authentication (2FA)
 Two authentication methods
-
 ### Multi-factor Authentication (MFA)
 Security process that requires users to provide multiple methods of identification to verify their identity.
-
-
 1. Prevent unauthorized access.
 2. Protect user data and privacy.
 3. Ensure resource validity.
+
+> Complex passwords use a mix of characters types. Strong passwords use a mix of characters types and have a minimum password length of at least eight characters. A password expiration identifies when a password must be changed.
+

@@ -12,7 +12,7 @@ Failover tests require more resources, time, and energy but verify planned actio
 Computer-generated representation of real-world scenarios.
 Simulations allow responders to perform actions in a virtualized environment.
 ## Parallel Processing 
-Replicates data an processes onto a secondary system, running both in parallel.
+Replicates data and processes onto a secondary system, running both in parallel.
 Parallel processing aims to check the reliability and stability of the secondary setup.
 - **In resilience testing**, tests ability to handle multiple failure scenarios.
 - **In recovery testing** tests efficiency to recover from multiple failure points.

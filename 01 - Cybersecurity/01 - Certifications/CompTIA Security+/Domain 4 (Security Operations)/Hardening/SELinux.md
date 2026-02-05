@@ -1,5 +1,5 @@
 ## Mandatory Access Control (MAC)
-System-enforced access control mechaninsm that's based on subject clearance and the object labels.
+System-enforced access control mechanism that's based on subject clearance and the object labels.
 ## Context-Based Permission
 Permission schemes that are defined by various properties for a given file or process.
 - AppArmor

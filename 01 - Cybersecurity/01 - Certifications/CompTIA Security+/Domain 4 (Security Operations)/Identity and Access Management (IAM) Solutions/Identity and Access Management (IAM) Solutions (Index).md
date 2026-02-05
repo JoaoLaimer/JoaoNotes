@@ -6,6 +6,7 @@ IAM secures resource access for authorized users
 - Authentication
 - Authorization
 - Accounting
+> Requiring administrators to use two accounts, one with administrative privileges and another with regular user privileges, helps prevent privilege escalation attacks. Users should not use shared accounts.
 ## [[Multifactor Authentication]]
 - Something you know
 - Something you have

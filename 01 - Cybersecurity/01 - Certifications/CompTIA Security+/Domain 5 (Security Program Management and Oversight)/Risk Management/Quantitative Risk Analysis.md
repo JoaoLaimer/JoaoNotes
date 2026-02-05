@@ -21,3 +21,8 @@ $$ SLE = \$10.000 \times 50\% = \$5.000$$
 SLE = 5.000
 ARO = 0.5
 $$ ALE = \$5.000 \times 0.5 = \$2.500 $$
+## ALE Modified (ALEm) Mitigation Rate
+Estimated rate of occurrences that are mitigated.
+## Return on Security Investment (ROSI)
+$$ ROSI = \frac{(ALE \times ALEm) - Cost\ of\ Solution}{Cost\ of\ Solution} $$
+This will give the percentage of the return. 

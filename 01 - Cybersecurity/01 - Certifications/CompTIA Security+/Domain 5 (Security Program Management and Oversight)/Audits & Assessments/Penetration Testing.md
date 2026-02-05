@@ -15,4 +15,4 @@ Reactive approach that entails fortifying systems, identifying and addressing at
 - Strengthen systems
 - Enhance detection capabilities
 ## Integrated Pentesting (Purple Teaming)
-Combination of aspects of both offensive and defensive testing into a single penetration test.
+Combination of aspects of both offensive and defensive testing into a single penetration test. Also covers multiple security domains from physical infrastructure to software applications and network configurations.
