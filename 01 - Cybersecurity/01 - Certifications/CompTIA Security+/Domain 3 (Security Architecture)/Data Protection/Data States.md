@@ -2,12 +2,13 @@ Each state represents a different phase of the data lifecycle, and requires spec
 ## Data at Rest
 Refers to any data stored in databases, file systems, or other storage systems.
 #### Protection:
-- **Full Disk Encryption** (FDE): Encrypts the entire hard drive.
+- **Full Disk Encryption** (FDE): Encrypts the entire hard drive (Windows BitLocker, macOS FileVault).
 - **Partition Encryption**: Encrypts specific partitions of a hard drive.
 - **File Encryption**: Encrypts individual files.
 - **Volume Encryption**: Encrypts a set of selected files or directories.
 - **Database Encryption**: Encrypts data stored in a database.
 - **Record Encryption**: Encrypts specific fields within a database record.
+- **Self-encrypting drives (SEDs)**: Includes encryption circuitry built into the device.
 ## Data in Transit/Data in Motion
 Refers to data actively moving from one location to another, such as across the Internet or through a private network.
 #### Protection:

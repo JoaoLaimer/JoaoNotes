@@ -3,6 +3,10 @@
 Traditional method of setting up infrastructure and services locally, within an organization's own premises.
 ### Cloud Computing
 Involves delivering computing services over the Internet.
+### Edge Computing
+Is the practice of storing and processing data close to the devices that generate and use the data.
+### Fog Computing
+A network of multiple devices and nodes sensing and processing data within the fog network.
 ##  [[Cloud Security]]
 - Shared Physical Server Vulnerabilities
 - Inadequate Virtual Environment Security

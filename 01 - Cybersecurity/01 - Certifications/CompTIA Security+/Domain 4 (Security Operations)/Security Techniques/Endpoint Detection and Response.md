@@ -27,7 +27,8 @@ Used to validate the integrity of operating system and application software file
 - System and Application
 - Configuration and Parameter
 FIM uses a software known as an agent to continuously monitor critical system files for changes.
-
+## Antivirus software
+Scans endpoints for the presence of viruses, worms, trojans, and other malicious code.
 ## Extended Detection and Response (XDR)
 Security strategy that integrates multiple protection technologies into a single platform to improve detection accuracy and simplify the incident response process.
 - Email 

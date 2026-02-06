@@ -1,6 +1,7 @@
 ## 1. Allow and Deny Lists
 ### Allow List
-Permitted entities
+Permitted entities.
+> An application allow list is a list of authorized software, and it prevents users from installing or running software that isn't on the list.
 ### Deny List
 Prevented entities.
 

@@ -8,3 +8,4 @@ Occurs when the systems's settings are not properly configured and this leaves t
 Unauthorized data transfers from within an organization to an external location.
 ## Malicious Updates 
 Occur when an attacker has been able to craft a malicious update to a well-known and trusted program in order to compromise the system of the program's end user
+

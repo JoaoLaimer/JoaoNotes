@@ -6,6 +6,9 @@ Streamlined security and compliance through automation.
 Enforce industry standards through automated policies.
 ## Implementing standard infrastructure configuration
 Standardized configurations for security and stability.
+## Configuration Enforcement 
+Configuration management practices help organization deploy systems with secure configurations and enforce requirements that those secure configurations remain in place.
+> Baselining and imaging.
 ## Scaling in a secure manner
 Dynamic resource scaling with security compliance.
 ## Increasing employee retention
