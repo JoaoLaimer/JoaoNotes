@@ -24,3 +24,5 @@ Guidelines that dictate the terms of interaction between an organization and its
 Mechanism to ensure that the vendors still aligns with the organizational needs and standards.
 ## Feedback Loops
 Involve a two-way communication channel where both the organization and the vendor share feedback.
+## Supportability 
+Having team members with the necessary expertise to manage, troubleshoot, and update the tool is vital to ensure its ongoing supportability and secure operations.

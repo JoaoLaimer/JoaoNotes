@@ -11,6 +11,7 @@ System that creates, maintains, and manages identity information for principals 
 Used to access and maintain distributed directory information services over an Internet protocol network.
 An organization might use use LDAP to form a directory of its employees.
 LDAP is also used to in authentication and server as a central repository for user information.
+> Directory services, such as Microsoft Active Directory Domain Services (ADDS), proide authentication and authorization services for a network. ADDS uses LDAP, encrypted with TLS when querying the directory. 
 ## Open Authorization (OAuth)
 Open standard for token-based authentication and authorization that allows an individual's account information to be used by third-party services without exposing the user's password.
 OAuth protocol is commonly used for authentication and authorization in RESTful APIs.

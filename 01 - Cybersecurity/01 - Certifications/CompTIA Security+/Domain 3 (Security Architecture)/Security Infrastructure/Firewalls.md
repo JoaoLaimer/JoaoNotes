@@ -3,6 +3,7 @@ Firewalls can be hardware appliances or specialized software installed on a devi
 
 > You can use a memory trick to remember the order of the OSI layers - make a sentence that has words starting with the seven letters of the model layers in order. As an example: "Please Do Not Throw Sausage Pizza Away!"
 
+> You should use host-based firewalls and network-based firewalls together to achieve a defense-in-depth approach to network security.
 ## Screened Subnet (Dual-homed Host)
 Acts as a security barrier between external untrusted networks and internal trusted networks, using a protected host with security measures like a packet-filtering firewall.
 Install a firewall in a network to set up a screened subnet.
@@ -50,3 +51,6 @@ WAF can function as standalone appliances or as software integrated into web ser
 Devices sits between the network firewall an the web servers.
 **Out-of-Band Configuration**
 Device receives a mirrored copy of web server traffic.
+# Host-based Firewalls
+Provide protection for individual hosts, such as servers or workstations.
+

@@ -18,3 +18,7 @@ Default community strings of public (read-only) or private (read-write) devices 
 SNMP Version 3 provides three security enhancements which added integrity, authentication, and confidentiality to the SNMP protocol.
 
 Since DES is considered a weak algorithm, it is being replaced with 3DES and AES in newer devices that reply on SNMPv3
+
+> Administrators use SNMPv3 to manage and monitor network devices, and SNMP uses UDP ports 161 and 162. SNMPv3 encrypts credentials before sending them over the network and is more secure than earlier versions.
+
+

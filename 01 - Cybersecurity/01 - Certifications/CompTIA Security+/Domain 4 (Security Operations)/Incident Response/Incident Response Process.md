@@ -6,7 +6,8 @@ Guidelines for handling security incidents.
 Involves strengthening systems and networks to resist attacks.
 The preparation phase is about getting ready for future incidents
 ### 2. Detection / Identification
-Identifies security incidents
+Identifies security incidents.
+Identifying and classifying incidents based on their severity and impact to the organization
 ### 2.1 Analysis
 Involves thorough examination and evaluation of the incident
 Stakeholders are informed, containment begins, and initial response actions are taken.

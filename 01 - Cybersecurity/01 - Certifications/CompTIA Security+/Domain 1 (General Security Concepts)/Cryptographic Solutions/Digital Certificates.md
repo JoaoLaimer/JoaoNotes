@@ -29,10 +29,10 @@ Trusted third party who is going to issue these digital certificates.
 Requests identifying information from the user and forwards that certificate request up to the certificate authority to create the digital certificate.
 ## Certificate Signing Request (CSR)
 A block of encoded text that contains information about the entity requesting the certificate.
-## Certificate Revocation List
+## Certificate Revocation List (CRL)
 Server as an online list of digital certificates that the certificate authority has already revoked.
 ## OCSP (Online Certificate Status Protocol)
-Allows to determine the revocation status of any digital certificate using its serial number.
+Allows to determine the revocation status of any digital certificate using its serial number or name.
 ## OCSP Stapling
 Allows the certificate holder to get the OCSP record from the server at regular intervals.
 ## Public Key Pinning 

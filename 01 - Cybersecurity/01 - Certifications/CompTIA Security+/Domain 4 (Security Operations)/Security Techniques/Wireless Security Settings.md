@@ -3,6 +3,8 @@ Outdated 1999 wireless security standard meant to match wired LAN security for w
 - 64-bit WEP: 40 bits of key data and 24 of IV.
 - 128-bit WEP: 104 bits of key data and 24 of IV.
 WEP is insecure because of the 24-bit IV and should be avoided.
+### IV Attacks
+Initialization vector is a number used by encryption systems. When an encryption system reuses the same IV, an IV attack can discover the IV. WEP, uses a small 24-bit number for IV making WEP easy to crack.
 ## Wi-Fi Protected Access (WPA)
 Introduced in 2003 as a temporary improvement over WEP while the more robust IEEE 802.11i standard was in development.
 Improved security with TKIP, which generates new 128-bit keys for each packet, eliminating WEP's key-reuse vulnerabilities.

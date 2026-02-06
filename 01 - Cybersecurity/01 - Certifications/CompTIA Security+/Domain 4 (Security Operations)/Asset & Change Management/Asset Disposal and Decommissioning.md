@@ -10,6 +10,7 @@ Each overwrite makes it increasingly difficult for potential adversaries to retr
 ### Degaussing
 Involves using a machine called a degausser to produce a strong magnetic field that can disrupt the magnetic domains on storage devices like hard drives or tapes.
 After degaussing, a device loses its data storage capability.
+> Degaussing doesn't work on SSDs.
 ### Secure Erase
 Completely deletes data from a storage device while ensuring that it can't be recovered using traditional recovery tools.
 Cryptographic Erase (CE) was introduced to replace the Secure Erase technique in most modern storage devices.

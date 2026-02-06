@@ -19,6 +19,9 @@ Proxy servers facilitate the smooth operation of a high-availability network.
 - Implementing user authentication protocols.
 - Providing secure tunnels
 - Routing traffic
+
+> Reverse Proxy, is a server in front of the another server, filtering requests.
+> Forward Proxy, is a server in front of clients, forwarding requests to servers.
 ## Network Scanner
 Designed to monitor, detect, and analyze traffic and data flow across a network in order to identify any unusual activities, potential security breaches, or performance issues.
 - Aiding in performance monitoring

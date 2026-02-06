@@ -1,5 +1,7 @@
 ## Virtual Private Network (VPN)
 Extends a private network over a public one, enabling users to security send and receive data.
+### VPN Concentrator
+Dedicated device that includes all the services needed to create a VPN, including strong encyption and authentication techniques.
 ### Site-to-Site
 Establishes secure tunnels over the public internet for interconnecting remote sites.
 ### Client-to-Site

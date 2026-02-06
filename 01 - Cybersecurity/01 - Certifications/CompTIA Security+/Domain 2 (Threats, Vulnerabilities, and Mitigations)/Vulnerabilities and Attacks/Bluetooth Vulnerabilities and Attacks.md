@@ -24,3 +24,9 @@ Target Bluetooth devices and it can spread through the air to potentially infect
 - Only pairing with known and trusted devices.
 - Always using unique PINs or passkeys.
 - Always being cautions of unsolicited connections requests.
+## War Driving
+Practice of looking for vulnerable wireless networks by driving or walking around a city.
+##  War Flying
+Similar to war driving but by flying, either drones or planes.
+> Administrator use war driving/flying as part of a wireless auditing.
+

@@ -6,6 +6,7 @@ The overarching framework and set of components responsible for defining, managi
 > Responsible for making determinations on access requests.
 ### Adaptive Identity
 Real-time validation that takes into account the user's behavior, device, location, and more.
+> The system changes the way that it asks a user to authenticate based on context of the request.
 ### Threat Scope Reduction
 Limit the users's access to only what they need for their work tasks.
 ### Policy-Driven Access Control

@@ -12,6 +12,15 @@ Interference:
 - Co-Channel: two AP using the same channel, causing retransmission of data.
 - Adjacent Channel: when adjacent channels do not have enough space between them.
 Always select Channels 1, 6, and 11 when operating in the 2.4 GHz wireless frequency band.
+## Band Selection and Channel Overlaps
+There are two primary radio bands: 2.4 Ghz and 5 Ghz
+- **802.11b**, 2.4Ghz
+- **802.11g**, 2.4Ghz
+- **802.11n**, 2.4 Ghz and 5 Ghz
+- **802.11ac**, 5 Ghz
+- **802.11ax**, 2.4 and 5 Ghz
+## Access Point SSID
+The Service set identifier (SSID) is simply the wireless network name. Default SSID can giveaway the model of the Access Point.
 ## Site Survey
 Process of planning and designing a wireless network to provide a solution.
 - Wireless Coverage

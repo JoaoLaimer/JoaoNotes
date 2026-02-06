@@ -11,3 +11,5 @@ Rules are made up with:
 - Source
 - Destination
 - Action
+> Firewalls use a deny any any, deny any, or a drop all statement at the end of the ACL to enforce an implicit deny strategy. The statement forces the firewall to block any traffic that wasn't previously allowed in the ACL. The implicit deny strategy provides a secure starting point for a firewall.
+- 

@@ -13,8 +13,8 @@ Standardized framework that is used for port-based authentication for both wired
 - Supplicant: Client requesting access.
 - Authenticator: Device which the client is trying to access the network.
 - Authentication Server.
-**RADIUS**: Cross-platform
-**TACACS+**: Cisco-proprietary protocol
+**RADIUS**: Cross-platform (UDP)
+**TACACS+**: Cisco-proprietary protocol (TCP)
 ## Extensible Authentication Protocol
 Series of protocol used for authentication.
 - Simple Passwords
@@ -28,5 +28,12 @@ Variants:
 - **PEAP**: Supports mutual authentication by using certificates and the Microsoft Active Directory databases for it to authenticate a password from the client.
 - **EAP-LEAP**: Only works on Cisco-based devices.
 
+> Enterprise mode requires an 802.1X server. EAP-FAST supports PACs. PEAP and EAP-TTLS require a certificate on the 802.1X server. EAP-TLS also uses TLS, but it requires certificates on both the 802.1X server and each of the clients. An 802.1X server provides port-based authentication, ensuring that only authorized clients can connect to a device or a network. It prevents rogue devices from connecting.
 ## Wiretapping
 Wiretapping, in the context of a wired network, refers to the act of connecting directly to the network's physical infrastructure (cables) to monitor and capture data traffic. It is a direct method to eavesdrop on communications.
+
+## Password Authentication Protocol (PAP)
+Primarily used with dial-up connection, uses Point-to-Point Protocol (PPP) to authenticate clientes. PAP sends passwords over a network in cleartext, representing a considerable security risks. 
+## Challenge Handshake Authentication Protocol (CHAP)
+Also uses PPP and authenticate remote users, but is more secure than PAP. The client and server both know a shared secret. The client sends a hashed password combining it with a nonce (number used once) provided by the server.
+
