@@ -1,7 +1,7 @@
 Specialized computing component designed to perform dedicated functions within a large structure.
+> System-on-chip (SoC) integrates many components of a computer system onto a single chip, including processor, memory, i/o interfaces and other components.
 ## Real-Time Operating System (RTOS)
 Ensures data processing in real-time and is crucial for time-sensitive applications.
-
 ## Vulnerabilities
 - Hardware Failure
 - Software Bugs
