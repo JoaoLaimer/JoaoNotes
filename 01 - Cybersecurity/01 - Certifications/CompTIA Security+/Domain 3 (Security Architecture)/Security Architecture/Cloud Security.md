@@ -33,3 +33,7 @@ Residual data left behind after deletion or erasure processes.
 - Using Secure Deletion Methods that Overwrite Data
 - Managing Backups Securily
 - Verifying that data has been completely removed after deletion.
+## Cloud Security Alliance (CSA)
+Is a non-profit organization that promotes best practices related to the cloud.
+They created the **Certificate of Cloud Security Knowledge (CCSK)** 
+They also created the CSA Cloud Controls Matrix (CCM), a cybersecurity framework. Version 4.0 of the CCM is over 200 security control objectives in 17 domains.

@@ -19,4 +19,3 @@ Show only the entry and exit points of the data when travelling between networks
 This can be achieved thorough secure coding practices, code reviews, and automated testing
 ## Inability to Patch
 Strategies like over-the-air (OTA) updates, where patches are delivered and installed remotely, can be applied.
-

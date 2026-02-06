@@ -20,3 +20,6 @@ COPE and CYOD have higher upfront costs but save on ongoing support due to fewer
 CYOD provides optimal control over devices and enables management through the organizations's MDM solution.
 BYOD and CYOD models are suitable or prioritizing employee's freedom and choice.
 
+## NIST SP 800-124
+"Guidelines for Managing the Security of Mobile Devices in the Enterprise"
+Excludes laptop and desktop computers.

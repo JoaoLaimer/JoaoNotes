@@ -18,3 +18,18 @@ Involves identifying and counting assets, especially in large organizations or d
 Lets organizations securely oversee employee devices, ensuring policy enforcement, software consistency, and data protection.
 MDM's centralization boosts security by ensuring all devices comply with the latest standards and protocols.
 MDM lowers risks tied to unsecured or outdated devices.
+- Application Management
+- Full Device Encryption
+- Storage Segmentation: provides data isolation.
+- Content Management
+- Containerization
+- Password and PINs
+- Biometrics
+- Screen Locks
+- Remote Wipe
+- Geolocation
+- Geofancing: security controls respond differently depending on geolocation.
+- GPS tagging (Geo tagging): Tags the location of device on the meta data of a content.
+- Context-aware authentication
+- Push notifications
+- 
