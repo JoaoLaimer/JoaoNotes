@@ -16,3 +16,4 @@ Responsible for handling the management of the system on which the data assets a
 - System monitoring.
 ## Privacy Officer
 Role that is responsible for the oversight of any kind of privacy-related data, like PII, SPI or PHI.
+`

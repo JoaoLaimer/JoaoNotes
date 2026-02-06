@@ -17,3 +17,8 @@ Logging events happening at odd times when no none is supposed to be active.
 Attackers delete logs to cover their tracks and hinder investigations.
 ## Articles or Documents on Security Breach
 Attackers may publicly announce their hacks to brag about their abilities or harm the organization's reputation.
+## Encrypted/Encoded Traffic
+Some malware will encrypt the data before data exfiltration attempts to bypass DLP. 
+## Extra Traffic
+Malware typically adds a lot of extra traffic to a network.
+

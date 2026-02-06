@@ -4,7 +4,7 @@ Ability of an attacker to trick an user into doing something for them.
 The power or right to give orders, make decision, and enforce obedience.
 ## Urgency
 Compelling sense of immediacy that driver individuals to act swiftly or prioritize certain actions. They use this sense of urgency to get organization's employees to ignore or bypass their normal security procedures.
-## Social Proof
+## Social Proof/Consensus
 Psychological phenomenon where individuals look to the behaviors and actions of others to determine their own decisions or actions in similar situations.
 ## Scarcity
 Psychological pressure people feel when they believe a product, opportunity, or resource is limited or in short supply.
