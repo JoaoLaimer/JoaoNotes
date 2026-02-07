@@ -19,3 +19,5 @@ Specific guidelines set by an organization to prevent access to certain websites
 Blocking or allowing websites based on their reputation score. The web reputation score is a assessment of a website's trustworthiness.
 ## DNS Filtering
 Techniques used to block access to certain websites by preventing the translation of specific domain names to their corresponding IP addresses.
+## DNS Sinkhole
+Is a DNS server that uses DNS filtering of incorrect results for one or more domain names. If a filtered name is caught by the sinkhole, it never resolves the name, making the site unreachable.

@@ -1,9 +1,10 @@
-##Log Aggregation
+## Log Aggregation
 Process of collecting and consolidating log data from various sources into a centralized location.
 Consolidated log data provides insight's about system performance.
 - Detect security incidents
 - Investigate breaches
 - Gather evidence
+> Error messages should be generic but log files must be detailed.
 ## Alerting
 Involves setting up notification to inform relevant stakeholders when specific events or conditions occurs.
 - Issue Resolutions

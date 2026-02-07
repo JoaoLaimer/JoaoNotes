@@ -5,6 +5,9 @@ The number of minutes or hours that the system remains online over a given perio
 99.9999% equate to only 31 seconds of downtime each and every year.
 ## Load Balancing 
 The process of distributing workloads across multiple computing resources.
+- **Active/Active**: is one way to implement clustering, where several different servers work together to appear as one resource to end users.
+- **Active/Passive**: one server is active, and the other is inactive. If the active server fails, the inactive server takes over.
+- **Persistent**: records the IP address and sends his requests to only one server.
 ## Clustering
 The use of multiple computers, multiple storage devices, and redundant network connections that all work together as a single system to provide high levels of availability, reliability, and scalability.
 Clustering provides redundancy in the event of system failure to ensure that continuity of service is maintained.

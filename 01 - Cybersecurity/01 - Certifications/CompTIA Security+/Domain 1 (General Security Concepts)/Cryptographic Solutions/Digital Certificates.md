@@ -42,3 +42,8 @@ If the browser doesn't get the matching public key from the certificate authorit
 Occurs when a secure copy of a user's private key is being held just in case the user lose access to the private key.
 ## Key Recovery Agent
 Specialized type of software that allows the restoration of a lost or corrupted key to be performed.
+
+## Certificate Stapling 
+Sending a certificate with a OSCP signed timestamp, to reduce queries to the CA
+## Certificate Pinning
+Prevents hackers from impersonating a website using fraudulent certificates. The server sends a extra head with a list of hashes derived from valid public keys.

@@ -15,3 +15,6 @@ Use domain registry lock services to prevent any unauthorized changes to the dom
 ## DNS Zone Transfer Attack
 The attacker mimics an authorized system to request and obtain the entire DNS zone data for a domain.
 
+## Pharming Attack
+Is a kind os DNS Poisoning attack that happens on the DNS information of the victim's system. 
+Exemple: Modified *host* file.

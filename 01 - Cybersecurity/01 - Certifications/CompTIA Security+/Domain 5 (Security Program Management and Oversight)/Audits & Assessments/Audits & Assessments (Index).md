@@ -12,10 +12,11 @@ Systematic evaluations of an organization's information systems, applications, a
 	- Assessor
 ## Assessments
 Performing a detailed analysis of an organization's security systems to identify vulnerabilities and risks.
-- Risk Assessments
 - Vulnerability Assessments
 - Threat Assessments
-
+## Risk Assessment
+- **Risk control assessment**: examines an organization's known risks and evaluates the effectiveness of in-place controls.
+- **Risk control self-assessment**: Is a risk control assessment, but employees perform it.
 ## [[Penetration Testing]]
 Simulated cyber attack against a computer system, network, or web application.
 ### [[Reconnaissance in Pentesting]]

@@ -1,5 +1,7 @@
 ## Risk Monitoring
 Involves continuously tracking identified risks, assessing new risks, executing response plans, and evaluating their effectiveness during a project's lifecycle.
+### Inherent Risk
+Refers to the risk that exists before controls are in place to manage the risk
 ### Residual Risk
 Likelihood and impact after implementing mitigation, transference, or acceptance measures on the initial risk.
 ### Control Risk

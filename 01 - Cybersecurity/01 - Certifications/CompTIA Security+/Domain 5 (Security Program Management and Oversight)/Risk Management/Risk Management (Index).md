@@ -31,3 +31,9 @@ Involves communicating information about risk and the effectiveness of the risk 
 - Dashboards
 - Heat Maps
 - Detailed Reports
+## Risk Types
+- Interal.
+- External.
+- Intellectual property theft.
+- Software compliance/licensing.
+- Legacy systems and legacy platforms.

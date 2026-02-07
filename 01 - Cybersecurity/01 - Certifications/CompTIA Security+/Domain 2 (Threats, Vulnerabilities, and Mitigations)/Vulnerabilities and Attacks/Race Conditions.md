@@ -16,6 +16,8 @@ Type of race condition that occurs when an attacker can change the state of a sy
 ## Time-of-Evaluation (TOE)
 Type of race condition that involves the manipulation of data or resources during the time window when a system is making a decision or evaluation.
 
+## Time of Check to Time of Use (TOCTOU)
+Also called a state attack.
 ## Mutex
 Mutually exclusive flag that acts as a gatekeeper toa section of code so that only one thread can be processed at a time.
 ## Deadlock
