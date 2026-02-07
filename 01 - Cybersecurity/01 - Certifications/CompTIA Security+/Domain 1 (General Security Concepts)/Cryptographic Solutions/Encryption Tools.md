@@ -22,3 +22,8 @@ Integrated approach for generating, distributing and managing cryptographic keys
 Sometimes known as trusted execution environment (TEE).
 Co-processor integrated into the main processor of some devices, designed with the sole purpose of ensuring data protection.
 By keeping this data separate from the main processor, even if a device gets compromised, the data within the Secure Enclave remains untouched.
+
+## Perfect Forward Secrecy (PFS)
+Indicates that a cryptographic system generates random public keys to each session, and it doesn't use a deterministic algorithm to do so. The result is that the compromise of a key does not compromise any past key.
+## Homomorphic Cryptographic
+Allows for data operations on encrypted data. 
