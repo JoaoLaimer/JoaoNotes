@@ -20,7 +20,7 @@ Switching to WPA2 provides stronger encryption and Introduces Message Integrity 
 The WPA2-PSK uses a passphrase to create a key, called Pairwise Master Key (PMK), to encrypt communications. The 4-way handshake is part WPA2 standard, using a pre-shared key (PSK)
 ## WPA3
 Latest version using AES encryption and introducing new features like SAE, Enhanced Open, updated cryptographic protocols, and management protection frames.
-Replaced WPA2 standard, 4-way handshake pre-shared key (PSK) that was repplaced with the Diffie-Hellman key agreement.
+Replaced WPA2 standard, 4-way handshake pre-shared key (PSK) that was replaced with the Diffie-Hellman key agreement.
 ### Simultaneous Authentication of Equals (SAE)
 Enhances security by offering a key establishment protocol to guard against offline dictionary attacks.
 ## Enhanced Open/Opportunistic Wireless Encryption (OWE)

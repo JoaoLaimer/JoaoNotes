@@ -8,7 +8,7 @@ The organization should consider a wide range of risks, including operational, f
 After identifying potential risks, document and analyze them based on their possible impact and pr obability.
 
 Risk identification is a critical first step in the risk management process.
-## Business Impact Analysis
+## Business Impact Analysis (BIA)
 Process that involves evaluating the potential effects of disruption to an organization's business functions and processes.
 ### Recovery Time Objective (RTO)
 It represents the maximum acceptable length of time that can elapse before the lack of a business function severely impacts the organization.

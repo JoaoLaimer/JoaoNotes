@@ -7,18 +7,20 @@ The standard of service a client can expect from a provider.
 - Performance metrics
 - Response times
 - Service-related
+> THE LEVEL OF THE SERVICE (QUALITY)
 ## Memorandum of Agreement (MOA)
 Formal and outlines the specific responsibilities of the parties involved.
 ## Memorandum of Understanding (MOU)
 **Less binding** and more of a declaration of mutual intent. Outlines their mutual understanding and intentions to collaborate. It serves as a precursor to a legally binding contract and establishes a framework for future negotiations
 ## Master Service Agreement (MSA)
-Blanket agreement that covers the general terms of engagement between parties across multiple transactions. 
+Blanket agreement that covers the general terms of engagement between parties across multiple transactions.  **More detailed and more binding.**
 ## Statement of Work (SOW)
 Used to specify details for a particular project.
 - Deliverables
 - Timelines
 - Milestones
 - Costs
+> WHAT IS TO BE DONE.
 ## Non-Disclosure Agreement (NDA)
 Commitment to privacy that ensures that any sensitive information shared during negotiations remains confidential between both parties.
 ## Business Partnership Agreement (BPA)
