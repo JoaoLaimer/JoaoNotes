@@ -78,7 +78,6 @@ Scan Timing: `-T<0-5>`
 - normal (3)
 - aggressive (4)
 - insane (5)
-Packet Rate: `--min-rate=<num> --max-rate=<num>` packets per minute.
 Parallelization: `--min-parallelism=<numprobes> --max-parallelism=<numprobes>`
 
 **Null Scan**
@@ -128,6 +127,16 @@ Decoy Scan: `nmap -D DECOY_IP,ME,RND TARGET_IP`
 Where, ME indicate your IP, RND is a random IP address, and DECOY_IP can be specified.
 Decoy scans execute IP addresses in order.
 
+# Timeouts
+When Nmap sends a packet, it takes time (RTT). You can set a round trip time timeout with `--min-RTT-timeout`.
+- `--initial-rtt-timeout 50ms`
+- `--max-rtt-timeout`
+- `--min-rtt-timemout`
+# Max Retries
+Another way to increase scan speed is by specifying retry rates of sent packets. The default 10.
+- `--max-retries`
+# Min Rate
+Packet Rate: `--min-rate=<num> --max-rate=<num>` packets per minute.
 # Fragmented Packets
 
 You can fragment packets in multiples of 8 bytes.
