@@ -176,7 +176,7 @@ Sw-floor-1(config-line)# end
 Sw-floor-1#
 ```
 O acesso ao console agora exigirá uma senha antes de permitir o acesso ao modo EXEC do usuário.
-Para proteger o acesso EXEC privilegiado, use o comando de configura��o:
+Para proteger o acesso EXEC privilegiado, use o comando de configuração:
 ```
 Sw-floor-1# configure terminal
 Sw-floor-1(config)# enable secret class

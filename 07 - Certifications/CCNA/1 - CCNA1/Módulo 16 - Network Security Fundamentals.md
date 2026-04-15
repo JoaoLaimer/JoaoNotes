@@ -188,7 +188,7 @@ Strong passwords are only useful if they are secret. There are several steps tha
 - Deterring brute-force password guessing attacks
 - Disabling an inactive privileged EXEC mode access after a specified amount of time.
 
-To ensure that all configured passwords are a minimum of a specified length, use the **security passwords min-length** _length_ command in global configuration mode.
+To ensure that all configured passwords are a minimum of a specified length, use the **security password min-length** _length_ command in global configuration mode.
 
 Threat actors may use password cracking software to conduct a brute-force attack on a network device. This attack continuously attempts to guess the valid passwords until one works. Use the **login block-for _#_ attempts _#_ within _#_** global configuration command to deter this type of attack. In the figure for example, the **login block-for 120 attempts 3 within 60** command will block vty login attempts for 120 seconds if there are three failed login attempts within 60 seconds.
 
