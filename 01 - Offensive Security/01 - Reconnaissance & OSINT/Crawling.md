@@ -33,8 +33,6 @@ For web reconnaissance, robots.txt serves as a valuable source of intelligence. 
 
 Here's an example of a robots.txt file:
 
-Code: txt
-
 ```txt
 User-agent: *
 Disallow: /admin/
