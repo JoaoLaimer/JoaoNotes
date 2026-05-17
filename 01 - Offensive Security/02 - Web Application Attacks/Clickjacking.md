@@ -22,4 +22,13 @@ Content-Security-Policy: frame ancestors 'self' *.example.com;
 
 Another way of protecting against clickjacking is with SameSite cookies.
 
-
+## Hunting for Clickjacking
+### Step 1. Look for State-Changing Actions
+Clickjacking vulnerabilities are valuable only when the target page contains state-changing actions. You should look for pages that allow users to make changes to their accounts.
+- Change passwords
+- Transfer data
+You should also check that the action can be achieved via clicks alone.
+### Step 2. Check the Response Headers
+Go through each of the state-changing functionalities and revisit the pages that containing them. See if the pages are being served with `X-Frame-Options` or `Content-Security-Policy`, if not they might be vulnerable to clickjacking. Also check if the site uses `SameSite` cookies. If it does, you won't be able to exploit a clickjacking attack on the site's features that require authentication.
+### Step 3. Confirm the Vulnerability
+Confirm by executing a clickjacking attack on your test account. Try changing any state through the framed page. If you can trigger the action via clicks alone through the iframe, the action is vulnerable to clickjacking.

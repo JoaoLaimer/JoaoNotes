@@ -85,3 +85,5 @@ Or as a pathname:
 ```
 Referer: attacker.com/example.com
 ```
+#### Bypass CSRF Protection by Using XSS
+In addition, any XSS vuln will defeat CSRF protections, because XSS will allow attackers to steal the legitimate CSRF token and then craft forged requests by using `XMLHttpRequest`. Often, attackers will find XSS as the starting point to launch CSRFs to take over admin accounts.

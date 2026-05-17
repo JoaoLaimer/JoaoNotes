@@ -90,4 +90,5 @@ This request will send a copy of document 3001 to the registered email of the cu
 Maybe changing a request method can reveal an IDOR.
 ### Change the Requested File Type
 Switching file type of the requested file sometimes leads the server to process the authorization differently. For example, application commonly store information in the JSON file. Try adding the .json extension to the end of the request URL and see what happens.
-###
+## Automating
+The burp suite extension [Authorize](https://github.com/Quitten/Autorize/) scnas for authorization issues by accessing higher-privileged accounts with lower-privileged accounts, whereas the Burp extensions [AutoRepeater](https://github.com/nccgroup/AutoRepeater) and [AuthMatrix](https://github.com/SecurityInnovation/AuthMatrix) allow you to automate the process of switching out cookies, headers, and parameters.

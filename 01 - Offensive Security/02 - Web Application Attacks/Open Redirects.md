@@ -38,6 +38,11 @@ Also try:
 inurl:%3d%2f site:example.com
 ```
 This will search for `=/`, the relative URL paths.
+Alternatively, you can serach for the names of common URL redirect parameters.
+```
+inurl: redir site:example.com
+```
+`redirect redirecturi redirect_uri redirecturl redirect_url return returnurl relaystate forward forwardurl forward_url url uri dest destination next`
 
 #### Test for Parameter-Based Open Redirects
 If a redirect was found, you can test it just by simple inserting a random hostname to the parameter.
@@ -49,3 +54,40 @@ Test on a referer-based open redirect by hosting this HTML in your own server:
 </html>
 ```
 Click the anchor, if after you interacted with the target, and you got redirected back to your site, the open redirect works.
+## Bypass Open-Redirect Protection
+Sometimes using different URL schemes can bypass simple Open-Redirect protections:
+``` 
+https://user:password:8080/example.com@attacker.com
+``` 
+Different browsers will handle this URL differently.
+You can also try to bypass any filter by appending or making the first part of the URL using the @ symbol with a custom URL.
+
+```
+https://example.com/login?redir=https://example.com@attacker.com/example.com
+```
+
+### Use of Data URLs
+```
+data:text/plain,hello!
+data:text/plain;base64,aGVsbG8h
+```
+You can use data: scheme to construct a base64-encoded redirect URL that evades the validator.
+```
+data:text/html;base64,PHNjcmlwdD5sb2NhdGlvbj0iaHR0cHM6Ly9leGFtcGxlLmNvbSI8L3NjcmlwdD4=
+``` 
+### Double Encoding
+Whenever a mismatch between how the validator and the browser decode these special characters, you can exploit the mismatch to induce an open redirect.
+### Use of non-ASCII Characters.
+```
+https://attacker.com%ff.example.com
+```
+%ff is the character ÿ, which is non-ASCII.
+Using a "most alike" character like `%E2%95%B1` (long slash) the browser can convert the slash look-alike character into an actual slash, altering the hostname.
+```
+https://attacker.com%E2%95%B1.example.com
+to
+https://attacker.com/.example.com
+```
+
+[Unicode Chart](https://www.unicode.org/charts/)
+### Combine Tactics

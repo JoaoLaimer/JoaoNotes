@@ -37,7 +37,7 @@ Attackers induce verbose errors as a way to force the application to reveal its 
 4. **Form Manipulation**: Tweaking form fields or parameters can trick the application into displaying errors that disclose backend logic or sensitive user information. For example, altering hidden form fields to trigger validation errors might reveal insights into the expected data format or structure.
 5. **Application Fuzzing**: Sending unexpected inputs to various parts of the application to see how it reacts can help identify weak points. For example, tools like Burp Suite Intruder are used to automate the process, bombarding the application with varied payloads to see which ones provoke informative errors.
 
-## **Data Breach Information**
+## Data Breach Information
 If an attacker finds a match, in a breached data base, it suggests not only that the username is reused but also potential password recycling, especially if the platform has been breached before.
 
 ## HTTP Basic Authentication

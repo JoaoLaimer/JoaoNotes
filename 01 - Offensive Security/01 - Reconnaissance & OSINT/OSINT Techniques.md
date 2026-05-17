@@ -14,4 +14,5 @@ Consult archive websites like the Wayback Machine, for old endpoints, directory 
 ### Tech Stack Fingerprinting
 Fingerprinting is identifying software brands and versions that an application or project uses. If we identify technologies and it's version we can search if a CVE is already known for it.
 Several application can automate this process.[Wappalizer](https://www.wappalyzer.com/) is a browser extension that identifies content management systems, frameworks, and programming languages. [BuildWith](https://buildwith.com/) is a website that shows you which web technologies a site is build with. [StackShare](https:stackshare.io/) is an online platform that allows developers to share the tech they use.
-Retire.js is a tool that detects outdated JavaScript libraries and Node.js packages.
+[Retire.js](https://retirejs.github.io/retire.js) is a tool that detects outdated JavaScript libraries and Node.js packages.
+
