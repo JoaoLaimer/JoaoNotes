@@ -25,15 +25,15 @@ It is vital to determine early on in the process who has signatory authority for
 
 This stage also requires the preparation of several documents before a penetration test can be conducted that must be signed by our client and us so that the declaration of consent can also be presented in written form if required.
 
-|**Document**|**Timing for Creation**|
-|---|---|
-|`1. Non-Disclosure Agreement` (`NDA`)|`After` Initial Contact|
-|`2. Scoping Questionnaire`|`Before` the Pre-Engagement Meeting|
-|`3. Scoping Document`|`During` the Pre-Engagement Meeting|
-|`4. Penetration Testing Proposal` (`Contract/Scope of Work` (`SoW`))|`During` the Pre-engagement Meeting|
-|`5. Rules of Engagement` (`RoE`)|`Before` the Kick-Off Meeting|
-|`6. Contractors Agreement` (Physical Assessments)|`Before` the Kick-Off Meeting|
-|`7. Reports`|`During` and `after` the conducted Penetration Test|
+| **Document**                                                         | **Timing for Creation**                             |
+| -------------------------------------------------------------------- | --------------------------------------------------- |
+| `1. Non-Disclosure Agreement` (`NDA`)                                | `After` Initial Contact                             |
+| `2. Scoping Questionnaire`                                           | `Before` the Pre-Engagement Meeting                 |
+| `3. Scoping Document`                                                | `During` the Pre-Engagement Meeting                 |
+| `4. Penetration Testing Proposal` (`Contract/Scope of Work` (`SoW`)) | `During` the Pre-engagement Meeting                 |
+| `5. Rules of Engagement` (`RoE`)                                     | `Before` the Kick-Off Meeting                       |
+| `6. Contractors Agreement` (Physical Assessments)                    | `Before` the Kick-Off Meeting                       |
+| `7. Reports`                                                         | `During` and `after` the conducted Penetration Test |
 ## Scoping Questionnaire
 After initial contact is made with the client, we typically send them a `Scoping Questionnaire` to better understand the services they are seeking. This scoping questionnaire should clearly explain our services and may typically ask them to choose one or more from the following list:
 
@@ -83,31 +83,31 @@ This meeting discusses all relevant and essential components with the customer b
 | `☐ Payment Terms`                    | Finally, prices and the terms of payment are explained.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 #### Rules of Engagement - Checklist
 
-|**Checkpoint**|**Contents**|
-|---|---|
-|`☐ Introduction`|Description of this document.|
-|`☐ Contractor`|Company name, contractor full name, job title.|
-|`☐ Penetration Testers`|Company name, pentesters full name.|
-|`☐ Contact Information`|Mailing addresses, e-mail addresses, and phone numbers of all client parties and penetration testers.|
-|`☐ Purpose`|Description of the purpose for the conducted penetration test.|
-|`☐ Goals`|Description of the goals that should be achieved with the penetration test.|
-|`☐ Scope`|All IPs, domain names, URLs, or CIDR ranges.|
-|`☐ Lines of Communication`|Online conferences or phone calls or face-to-face meetings, or via e-mail.|
-|`☐ Time Estimation`|Start and end dates.|
-|`☐ Time of the Day to Test`|Times of the day to test.|
-|`☐ Penetration Testing Type`|External/Internal Penetration Test/Vulnerability Assessments/Social Engineering.|
-|`☐ Penetration Testing Locations`|Description of how the connection to the client network is established.|
-|`☐ Methodologies`|OSSTMM, PTES, OWASP, and others.|
-|`☐ Objectives / Flags`|Users, specific files, specific information, and others.|
-|`☐ Evidence Handling`|Encryption, secure protocols|
-|`☐ System Backups`|Configuration files, databases, and others.|
-|`☐ Information Handling`|Strong data encryption|
-|`☐ Incident Handling and Reporting`|Cases for contact, pentest interruptions, type of reports|
-|`☐ Status Meetings`|Frequency of meetings, dates, times, included parties|
-|`☐ Reporting`|Type, target readers, focus|
-|`☐ Retesting`|Start and end dates|
-|`☐ Disclaimers and Limitation of Liability`|System damage, data loss|
-|`☐ Permission to Test`|Signed contract, contractors agreement|
+| **Checkpoint**                              | **Contents**                                                                                          |
+| ------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `☐ Introduction`                            | Description of this document.                                                                         |
+| `☐ Contractor`                              | Company name, contractor full name, job title.                                                        |
+| `☐ Penetration Testers`                     | Company name, pentesters full name.                                                                   |
+| `☐ Contact Information`                     | Mailing addresses, e-mail addresses, and phone numbers of all client parties and penetration testers. |
+| `☐ Purpose`                                 | Description of the purpose for the conducted penetration test.                                        |
+| `☐ Goals`                                   | Description of the goals that should be achieved with the penetration test.                           |
+| `☐ Scope`                                   | All IPs, domain names, URLs, or CIDR ranges.                                                          |
+| `☐ Lines of Communication`                  | Online conferences or phone calls or face-to-face meetings, or via e-mail.                            |
+| `☐ Time Estimation`                         | Start and end dates.                                                                                  |
+| `☐ Time of the Day to Test`                 | Times of the day to test.                                                                             |
+| `☐ Penetration Testing Type`                | External/Internal Penetration Test/Vulnerability Assessments/Social Engineering.                      |
+| `☐ Penetration Testing Locations`           | Description of how the connection to the client network is established.                               |
+| `☐ Methodologies`                           | OSSTMM, PTES, OWASP, and others.                                                                      |
+| `☐ Objectives / Flags`                      | Users, specific files, specific information, and others.                                              |
+| `☐ Evidence Handling`                       | Encryption, secure protocols                                                                          |
+| `☐ System Backups`                          | Configuration files, databases, and others.                                                           |
+| `☐ Information Handling`                    | Strong data encryption                                                                                |
+| `☐ Incident Handling and Reporting`         | Cases for contact, pentest interruptions, type of reports                                             |
+| `☐ Status Meetings`                         | Frequency of meetings, dates, times, included parties                                                 |
+| `☐ Reporting`                               | Type, target readers, focus                                                                           |
+| `☐ Retesting`                               | Start and end dates                                                                                   |
+| `☐ Disclaimers and Limitation of Liability` | System damage, data loss                                                                              |
+| `☐ Permission to Test`                      | Signed contract, contractors agreement                                                                |
 ### Kick-Off Meeting
 The `kick-off meeting` usually occurs at a scheduled time and in-person after signing all contractual documents. This meeting usually includes client POC(s) (from Internal Audit, Information Security, IT, Governance & Risk, etc., depending on the client), client technical support staff (developers, sysadmins, network engineers, etc.), and the penetration testing team (someone in a management role (such as the Practice Lead), the actual penetration tester(s), and sometimes a Project Manager or even the Sales Account Executive or similar). We will go over the nature of the penetration test and how it will take place.
 
